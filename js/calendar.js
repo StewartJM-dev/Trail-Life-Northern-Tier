@@ -1,3 +1,4 @@
+
 // Trail Life Northern Tier - Calendar Integration
 // This file handles pulling events from multiple calendar feeds
 
@@ -27,27 +28,28 @@ const CALENDAR_FEEDS = {
 // ========================================
 
 /**
- * Fetch and parse iCal feed
- * Note: Trail Life Connect feeds may require CORS handling
+ * Fetch and parse iCal feed using CORS proxy
+ * Note: Using AllOrigins as CORS proxy to bypass restrictions
  * @param {string} url - iCal feed URL
  * @returns {Promise<Array>} Array of parsed events
  */
 async function fetchCalendarFeed(url) {
     try {
-        // For Trail Life Connect feeds, we may need to use a CORS proxy
-        // or fetch server-side. For now, try direct fetch.
-        const response = await fetch(url);
+        // Use AllOrigins CORS proxy to fetch the calendar data
+        const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+        
+        const response = await fetch(proxyUrl);
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         
         const icalData = await response.text();
+        console.log('Successfully fetched calendar data from:', url);
         return parseICalData(icalData);
     } catch (error) {
         console.error('Error fetching calendar feed:', error);
         console.log('URL attempted:', url);
-        console.log('Note: If CORS error, see CALENDAR_SETUP.md for solutions');
         return [];
     }
 }
@@ -58,47 +60,72 @@ async function fetchCalendarFeed(url) {
  * @returns {Array} Parsed events
  */
 function parseICalData(icalData) {
-    // Basic iCal parsing
-    // For production, consider using a library like ical.js
     const events = [];
-    const lines = icalData.split('\n');
-    let currentEvent = {};
+    const lines = icalData.split(/\r?\n/);
+    let currentEvent = null;
+    let currentField = '';
+    let currentValue = '';
     
-    for (let line of lines) {
-        line = line.trim();
+    for (let i = 0; i < lines.length; i++) {
+        let line = lines[i].trim();
         
+        // Handle line continuations (lines starting with space or tab)
+        if (line.startsWith(' ') || line.startsWith('\t')) {
+            currentValue += line.trim();
+            continue;
+        }
+        
+        // Save previous field if we have one
+        if (currentField && currentEvent) {
+            if (currentField === 'SUMMARY') {
+                currentEvent.title = currentValue;
+            } else if (currentField.startsWith('DTSTART')) {
+                currentEvent.date = parseICalDate(currentValue);
+            } else if (currentField === 'DESCRIPTION') {
+                currentEvent.description = currentValue.replace(/\\n/g, ' ').replace(/\\,/g, ',');
+            } else if (currentField === 'LOCATION') {
+                currentEvent.location = currentValue.replace(/\\,/g, ',');
+            }
+        }
+        
+        // Process current line
         if (line === 'BEGIN:VEVENT') {
             currentEvent = {};
         } else if (line === 'END:VEVENT') {
-            events.push(currentEvent);
-        } else if (line.startsWith('SUMMARY:')) {
-            currentEvent.title = line.substring(8);
-        } else if (line.startsWith('DTSTART')) {
-            // Parse date (simplified - enhance for production)
-            const dateMatch = line.match(/\d{8}/);
-            if (dateMatch) {
-                currentEvent.date = parseICalDate(dateMatch[0]);
+            if (currentEvent && currentEvent.title && currentEvent.date) {
+                events.push(currentEvent);
             }
-        } else if (line.startsWith('DESCRIPTION:')) {
-            currentEvent.description = line.substring(12);
-        } else if (line.startsWith('LOCATION:')) {
-            currentEvent.location = line.substring(9);
+            currentEvent = null;
+        } else if (line.includes(':')) {
+            const colonIndex = line.indexOf(':');
+            currentField = line.substring(0, colonIndex).split(';')[0];
+            currentValue = line.substring(colonIndex + 1);
         }
     }
     
+    console.log(`Parsed ${events.length} events from calendar`);
     return events;
 }
 
 /**
- * Parse iCal date format (YYYYMMDD) to JavaScript Date
- * @param {string} icalDate - Date in YYYYMMDD format
+ * Parse iCal date format to JavaScript Date
+ * Handles both date-only (YYYYMMDD) and datetime (YYYYMMDDTHHmmssZ) formats
+ * @param {string} icalDate - Date in iCal format
  * @returns {Date} JavaScript Date object
  */
 function parseICalDate(icalDate) {
-    const year = icalDate.substring(0, 4);
-    const month = icalDate.substring(4, 6) - 1;
-    const day = icalDate.substring(6, 8);
-    return new Date(year, month, day);
+    // Remove any extra characters and get just the date part
+    const dateStr = icalDate.replace(/[;:]/g, '').split('T')[0];
+    
+    if (dateStr.length >= 8) {
+        const year = dateStr.substring(0, 4);
+        const month = dateStr.substring(4, 6) - 1; // JS months are 0-indexed
+        const day = dateStr.substring(6, 8);
+        return new Date(year, month, day);
+    }
+    
+    // Fallback to current date if parsing fails
+    return new Date();
 }
 
 /**
