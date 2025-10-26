@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trail Life Northern Tier Blog - Latest news, updates, and stories from troops across the Northern Tier">
+    <meta name="theme-color" content="#ba262d">
+    <title>Regional Blog - Trail Life Northern Tier</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="images/TL_ClassicLogo_1_RGB.png">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(193, 39, 45, 0.2);
+        }
+        
+        .blog-card-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .blog-card:hover .blog-card-image img {
+            transform: scale(1.1);
+        }
+        
+        .blog-card-content {
+            padding: 30px;
+        }
+        
+        .blog-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .blog-card h3 {
+            color: var(--primary-red);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .blog-card p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .blog-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .blog-tag {
+            background: var(--light-gray);
+            color: var(--gold);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .read-more {
+            color: var(--primary-red);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+        }
+        
+        .read-more:hover {
+            gap: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/TL_ClassicLogo_1_RGB.png" alt="Trail Life USA Logo">
+                <span class="nav-title">Northern Tier</span>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="troops.html">Troops</a></li>
+                <li><a href="spotlight.html">Spotlight</a></li>
+                <li><a href="leaders.html">Leaders</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Regional Blog</h1>
+        <p>Latest news, stories, and updates from the trail</p>
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="content-section">
+        <div class="container">
+            <!-- EDITOR NOTE: Add new blog posts here. Copy the blog-card div and update content -->
+            <div class="blog-grid">
+                
+                <!-- Blog Post 1 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="images/placeholder-blog.jpg" alt="Northern Tier Launch">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> October 20, 2025</span>
+                            <span><i class="far fa-user"></i> Regional Team</span>
+                        </div>
+                        <h3>Welcome to Trail Life Northern Tier!</h3>
+                        <p>We're thrilled to launch our new regional website, designed to connect troops, share resources, and celebrate the amazing work happening across the Northern Tier. This platform will serve as your central hub for regional news, events, training opportunities, and more.</p>
+                        <div class="blog-tags">
+                            <span class="blog-tag">Announcement</span>
+                            <span class="blog-tag">Regional News</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="images/placeholder-blog.jpg" alt="Fall Leadership Training">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> October 15, 2025</span>
+                            <span><i class="far fa-user"></i> Training Team</span>
+                        </div>
+                        <h3>Fall Leadership Training Registration Open</h3>
+                        <p>Our Fall Leadership Training event is scheduled for November 15th at Camp Woodland, PA. This comprehensive training covers essential leadership skills, safety protocols, and program planning. All troop leaders are encouraged to attend.</p>
+                        <div class="blog-tags">
+                            <span class="blog-tag">Training</span>
+                            <span class="blog-tag">Events</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="images/placeholder-blog.jpg" alt="Service Project">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> October 10, 2025</span>
+                            <span><i class="far fa-user"></i> Troop PA-4031</span>
+                        </div>
+                        <h3>Troop PA-4031 Reaches 1,000 Service Hours</h3>
+                        <p>Congratulations to Troop PA-4031 for achieving an incredible milestone - 1,000 hours of community service this year! From park cleanups to food drives, these young men are making a real difference in their community.</p>
+                        <div class="blog-tags">
+                            <span class="blog-tag">Service</span>
+                            <span class="blog-tag">Achievements</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 4 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="images/placeholder-blog.jpg" alt="Backpacking Adventure">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> October 5, 2025</span>
+                            <span><i class="far fa-user"></i> Troop PA-997</span>
+                        </div>
+                        <h3>Epic AT Adventure: 50 Miles on the Appalachian Trail</h3>
+                        <p>Troop PA-997 recently completed an incredible 50-mile backpacking trek on the Appalachian Trail. The boys faced challenges, built character, and created memories that will last a lifetime. Read about their adventure and see photos from the trail.</p>
+                        <div class="blog-tags">
+                            <span class="blog-tag">Adventure</span>
+                            <span class="blog-tag">Outdoor Skills</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 5 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="images/placeholder-blog.jpg" alt="New Troops">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> September 28, 2025</span>
+                            <span><i class="far fa-user"></i> Regional Team</span>
+                        </div>
+                        <h3>Growing the Trail: 5 New Troops Chartered in 2025</h3>
+                        <p>We're excited to announce that the Northern Tier has chartered five new troops in 2025! This growth represents dozens of new boys who will experience the character-building adventure of Trail Life. Welcome to the trail, new troops!</p>
+                        <div class="blog-tags">
+                            <span class="blog-tag">Growth</span>
+                            <span class="blog-tag">Regional News</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 6 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="images/placeholder-blog.jpg" alt="Winter Preparation">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> September 20, 2025</span>
+                            <span><i class="far fa-user"></i> Training Team</span>
+                        </div>
+                        <h3>Preparing for Winter: Cold Weather Camping Tips</h3>
+                        <p>As we head into the colder months, it's time to prepare for winter camping adventures. Our training team shares essential tips for staying warm, safe, and comfortable during cold weather activities. Learn about proper gear, shelter setup, and winter safety protocols.</p>
+                        <div class="blog-tags">
+                            <span class="blog-tag">Training</span>
+                            <span class="blog-tag">Safety</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- EDITOR NOTE: To add more blog posts, copy one of the blog-card sections above and update:
+                 - Image src
+                 - Date
+                 - Author
+                 - Title
+                 - Content
+                 - Tags
+            -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="images/TL_ClassicLogo_1_RGB.png" alt="Trail Life USA" class="footer-logo">
+                    <p>Trail Life USA Northern Tier</p>
+                    <p class="footer-tagline">Adventure > Character > Leadership</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="blog.html">Regional Blog</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="troops.html">Our Troops</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="leaders.html">Leader Directory</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="https://www.traillife.org" target="_blank">Trail Life USA</a></li>
+                        <li><a href="https://www.traillifeconnect.com" target="_blank">TL Connect</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Stay Updated</h4>
+                    <p>Follow us for the latest news and updates</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Trail Life USA Northern Tier. All rights reserved.</p>
+                <p>Trail Life USA is a registered trademark.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

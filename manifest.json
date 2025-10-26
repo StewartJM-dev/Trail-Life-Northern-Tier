@@ -1,0 +1,32 @@
+{
+  "name": "Trail Life Northern Tier",
+  "short_name": "TL Northern Tier",
+  "description": "Trail Life USA Northern Tier - Building boys into godly men through outdoor adventure, character development, and leadership training.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ba262d",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "images/TL_ClassicLogo_1_RGB.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/TL_ClassicLogo_1_RGB.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "lifestyle", "social"],
+  "screenshots": [
+    {
+      "src": "images/TL_ClassicLogo_1_RGB.png",
+      "sizes": "540x720",
+      "type": "image/png"
+    }
+  ]
+}

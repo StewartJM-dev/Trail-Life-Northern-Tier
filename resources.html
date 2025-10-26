@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trail Life Northern Tier Resources - Training materials, forms, templates, and leader guides">
+    <meta name="theme-color" content="#ba262d">
+    <title>Resources - Trail Life Northern Tier</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="images/TL_ClassicLogo_1_RGB.png">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .resource-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .resource-category {
+            background: white;
+            border-radius: 10px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-top: 4px solid var(--primary-red);
+        }
+        
+        .resource-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(193, 39, 45, 0.2);
+        }
+        
+        .resource-category i {
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .resource-category h3 {
+            color: var(--primary-red);
+            margin-bottom: 15px;
+        }
+        
+        .resource-list {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .resource-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid var(--light-gray);
+            transition: background 0.3s ease;
+        }
+        
+        .resource-item:last-child {
+            border-bottom: none;
+        }
+        
+        .resource-item:hover {
+            background: var(--light-gray);
+        }
+        
+        .resource-info {
+            flex: 1;
+        }
+        
+        .resource-info h4 {
+            color: var(--black);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .resource-info p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        .resource-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .resource-btn {
+            padding: 10px 20px;
+            background: var(--primary-red);
+            color: white;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .resource-btn:hover {
+            background: var(--dark-red);
+            transform: translateY(-2px);
+        }
+        
+        .gear-swap {
+            background: var(--light-gray);
+            border-radius: 10px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+        
+        .gear-item {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .gear-item h4 {
+            color: var(--primary-red);
+            margin-bottom: 10px;
+        }
+        
+        .gear-meta {
+            display: flex;
+            gap: 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/TL_ClassicLogo_1_RGB.png" alt="Trail Life USA Logo">
+                <span class="nav-title">Northern Tier</span>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="resources.html" class="active">Resources</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="troops.html">Troops</a></li>
+                <li><a href="spotlight.html">Spotlight</a></li>
+                <li><a href="leaders.html">Leaders</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Resource Center</h1>
+        <p>Tools, training, and materials for troop leaders</p>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            
+            <!-- Resource Categories -->
+            <div class="resource-categories">
+                <div class="resource-category">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Training Materials</h3>
+                    <p>Leader training guides and certification resources</p>
+                </div>
+                <div class="resource-category">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Forms & Templates</h3>
+                    <p>Essential forms for troop operations</p>
+                </div>
+                <div class="resource-category">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Program Ideas</h3>
+                    <p>Activity plans and program suggestions</p>
+                </div>
+                <div class="resource-category">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>Fundraising</h3>
+                    <p>Proven fundraising ideas and vendor partners</p>
+                </div>
+                <div class="resource-category">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h3>Gear Swap</h3>
+                    <p>Buy, sell, or trade gear between troops</p>
+                </div>
+            </div>
+
+            <!-- Document Library -->
+            <div class="resource-list">
+                <h2 class="section-title">Document Library</h2>
+                
+                <!-- EDITOR NOTE: Add new resources here -->
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>Leader Training Manual 2025</h4>
+                        <p>Comprehensive guide for new and experienced leaders</p>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="#" class="resource-btn"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>Safety & Medical Forms</h4>
+                        <p>Required forms for all troop activities and outings</p>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="#" class="resource-btn"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>Annual Planning Template</h4>
+                        <p>Template for planning your troop's year of activities</p>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="#" class="resource-btn"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>Charter Renewal Checklist</h4>
+                        <p>Step-by-step guide for charter renewal process</p>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="#" class="resource-btn"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>Outdoor Skills Curriculum</h4>
+                        <p>Detailed curriculum for teaching outdoor skills by rank</p>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="#" class="resource-btn"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Training Calendar -->
+            <div class="resource-list">
+                <h2 class="section-title">Upcoming Training</h2>
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>Fall Leadership Training</h4>
+                        <p>November 15, 2025 • Camp Woodland, PA • Essential leadership skills</p>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="events.html" class="resource-btn">Register</a>
+                    </div>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>Worthyworks Training</h4>
+                        <p>December 3, 2025 • Online • Character development and spiritual formation</p>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="events.html" class="resource-btn">Register</a>
+                    </div>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>Wilderness First Aid Certification</h4>
+                        <p>January 12-13, 2026 • Various Locations • Required for outdoor leaders</p>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="events.html" class="resource-btn">Register</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gear Swap -->
+            <div class="gear-swap">
+                <h2 class="section-title">Gear Swap</h2>
+                <p style="text-align: center; margin-bottom: 40px; color: var(--gray);">
+                    Buy, sell, or trade outdoor gear between troops. Contact the listing troop directly.
+                </p>
+                
+                <!-- EDITOR NOTE: Add new gear listings here -->
+                <div class="gear-item">
+                    <h4>4 Patrol Tents - $200 for all</h4>
+                    <p>Eureka patrol tents, 6-person capacity. Good condition, lightly used. Great for troops just starting out!</p>
+                    <div class="gear-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Troop PA-4031</span>
+                        <span><i class="far fa-calendar"></i> Posted Oct 15</span>
+                        <span><i class="fas fa-envelope"></i> Contact: leader@trooppa4031.org</span>
+                    </div>
+                </div>
+                
+                <div class="gear-item">
+                    <h4>Dutch Oven Set - $75</h4>
+                    <p>Camp Chef cast iron Dutch oven set with lid lifter and tripod stand. Perfect for campfire cooking.</p>
+                    <div class="gear-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Troop PA-997</span>
+                        <span><i class="far fa-calendar"></i> Posted Oct 10</span>
+                        <span><i class="fas fa-envelope"></i> Contact: info@trooppa997.org</span>
+                    </div>
+                </div>
+                
+                <div class="gear-item">
+                    <h4>WANTED: Backpacking Stoves</h4>
+                    <p>Looking for 6-8 backpacking stoves for our upcoming trek. MSR or Jetboil preferred. Will buy or borrow.</p>
+                    <div class="gear-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Regional Team</span>
+                        <span><i class="far fa-calendar"></i> Posted Oct 5</span>
+                        <span><i class="fas fa-envelope"></i> Contact via contact page</span>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="contact.html" class="btn btn-primary">Submit a Listing</a>
+                </div>
+            </div>
+
+            <!-- Program Ideas Database -->
+            <div class="resource-list">
+                <h2 class="section-title">Program Ideas Database</h2>
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>Pinewood Derby Kit</h4>
+                        <p>Complete planning guide, rules, and tips for hosting a successful Pinewood Derby</p>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="#" class="resource-btn"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>Service Project Ideas</h4>
+                        <p>50+ community service project ideas for troops of all sizes</p>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="#" class="resource-btn"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>Winter Camp Program</h4>
+                        <p>Activities, games, and skills for cold weather camping</p>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="#" class="resource-btn"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>Parent Night Presentation</h4>
+                        <p>Customizable PowerPoint for recruiting and parent information nights</p>
+                    </div>
+                    <div class="resource-actions">
+                        <a href="#" class="resource-btn"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fundraising Section -->
+            <div style="margin-top: 80px;">
+                <h2 class="section-title"><i class="fas fa-hand-holding-usd"></i> Troop Fundraising Resources</h2>
+                <p style="text-align: center; color: var(--gray); margin-bottom: 40px; font-size: 1.1rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    Don't let limited funds prevent your troop from delivering on the promise of adventure! These proven fundraising solutions help troops across the Northern Tier fund their entire annual program with just one major fundraiser.
+                </p>
+
+                <!-- Key Principles -->
+                <div style="background: linear-gradient(135deg, var(--primary-red), var(--dark-red)); color: white; padding: 40px; border-radius: 10px; margin-bottom: 40px;">
+                    <h3 style="color: white; margin-bottom: 25px; text-align: center;"><i class="fas fa-lightbulb"></i> Fundraising Best Practices</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                        <div>
+                            <h4 style="color: var(--gold); margin-bottom: 10px;">✓ Plan Your Program First</h4>
+                            <p style="font-size: 0.95rem; line-height: 1.7;">Hold an annual planning session with parents, leaders, and boys. Create a full calendar of activities, then budget for it.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gold); margin-bottom: 10px;">✓ One Major Fundraiser</h4>
+                            <p style="font-size: 0.95rem; line-height: 1.7;">Choose ONE fundraiser that covers most/all annual costs. Work together as a team rather than nickle-and-diming families.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gold); margin-bottom: 10px;">✓ 4-5 Days, Not Every Weekend</h4>
+                            <p style="font-size: 0.95rem; line-height: 1.7;">Dedicate a few focused weeks once per year instead of constant car washes and bake sales.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proven Fundraising Vendors -->
+                <div style="margin-bottom: 60px;">
+                    <h3 style="color: var(--primary-red); margin-bottom: 30px; text-align: center;">
+                        <i class="fas fa-star"></i> Proven Fundraising Partners
+                    </h3>
+                    <p style="text-align: center; color: var(--gray); margin-bottom: 40px;">
+                        These vendors have been successfully used by troops across the Northern Tier
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+                        <!-- Country Meats -->
+                        <div style="background: white; border-radius: 10px; padding: 35px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-top: 4px solid var(--gold);">
+                            <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                                <i class="fas fa-drumstick-bite" style="font-size: 3rem; color: var(--gold); margin-right: 20px;"></i>
+                                <div>
+                                    <h4 style="color: var(--primary-red); margin-bottom: 5px;">Country Meats</h4>
+                                    <p style="color: var(--gray); font-size: 0.9rem; margin: 0;">Premium Meat Products</p>
+                                </div>
+                            </div>
+                            <p style="color: var(--gray); line-height: 1.8; margin-bottom: 20px;">
+                                Premium quality meat sticks and summer sausage that sell themselves! High profit margins and products families actually want. Perfect for funding your annual program.
+                            </p>
+                            <div style="background: var(--light-gray); padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                                <p style="margin: 0; color: var(--dark-gray); font-size: 0.9rem;"><strong>Why It Works:</strong> Premium products, simple sales process, high demand, excellent profit margins</p>
+                            </div>
+                            <a href="https://www.countrymeats.com" target="_blank" class="btn btn-primary" style="width: 100%; text-align: center; display: block;">
+                                <i class="fas fa-external-link-alt"></i> Visit Country Meats
+                            </a>
+                        </div>
+
+                        <!-- HL Fundraising -->
+                        <div style="background: white; border-radius: 10px; padding: 35px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-top: 4px solid var(--gold);">
+                            <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                                <i class="fas fa-shopping-basket" style="font-size: 3rem; color: var(--gold); margin-right: 20px;"></i>
+                                <div>
+                                    <h4 style="color: var(--primary-red); margin-bottom: 5px;">HL Fundraising</h4>
+                                    <p style="color: var(--gray); font-size: 0.9rem; margin: 0;">Variety Product Fundraising</p>
+                                </div>
+                            </div>
+                            <p style="color: var(--gray); line-height: 1.8; margin-bottom: 20px;">
+                                Wide variety of fundraising products including cookie dough, discount cards, and specialty items. Flexible options to match your troop's needs and community preferences.
+                            </p>
+                            <div style="background: var(--light-gray); padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                                <p style="margin: 0; color: var(--dark-gray); font-size: 0.9rem;"><strong>Why It Works:</strong> Multiple product options, proven track record, customizable campaigns, great support</p>
+                            </div>
+                            <a href="https://hlfundraising.com" target="_blank" class="btn btn-primary" style="width: 100%; text-align: center; display: block;">
+                                <i class="fas fa-external-link-alt"></i> Visit HL Fundraising
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Official Guidelines -->
+                <div style="background: white; padding: 40px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-left: 5px solid var(--primary-red);">
+                    <h3 style="color: var(--primary-red); margin-bottom: 25px;">
+                        <i class="fas fa-file-contract"></i> Trail Life USA Fundraising Policy
+                    </h3>
+                    <p style="color: var(--gray); margin-bottom: 25px; line-height: 1.8;">
+                        All fundraising activities must comply with Trail Life USA's official guidelines:
+                    </p>
+                    
+                    <div style="display: grid; gap: 20px;">
+                        <div style="background: var(--light-gray); padding: 20px; border-radius: 8px;">
+                            <h4 style="color: var(--black); margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--gold);"></i> Required Approvals</h4>
+                            <ul style="color: var(--gray); line-height: 2; margin-left: 20px;">
+                                <li>All fundraisers must be approved by your Chartering Organization</li>
+                                <li>Must align with Trail Life USA's motto "Walk Worthy!", Mission, and Trailmen Oath</li>
+                                <li>Use of Trail Life USA logo requires approval from Home Office (email Branding@TrailLifeUSA.com at least 3 weeks in advance)</li>
+                            </ul>
+                        </div>
+
+                        <div style="background: var(--light-gray); padding: 20px; border-radius: 8px;">
+                            <h4 style="color: var(--black); margin-bottom: 10px;"><i class="fas fa-list-ul" style="color: var(--gold);"></i> Key Guidelines</h4>
+                            <ul style="color: var(--gray); line-height: 2; margin-left: 20px;">
+                                <li><strong>Maximum 3 fundraisers per year</strong> per troop</li>
+                                <li><strong>Voluntary participation</strong> - All families must be informed; participation is optional</li>
+                                <li><strong>Two-deep leadership</strong> required at all fundraising activities</li>
+                                <li><strong>No solicitation of donations</strong></li>
+                                <li>Approved fundraisers may be done in official Trail Life USA uniform</li>
+                                <li>Must comply with all Health & Safety guidelines</li>
+                            </ul>
+                        </div>
+
+                        <div style="background: var(--light-gray); padding: 20px; border-radius: 8px;">
+                            <h4 style="color: var(--black); margin-bottom: 10px;"><i class="fas fa-ban" style="color: var(--primary-red);"></i> Prohibited Activities</h4>
+                            <ul style="color: var(--gray); line-height: 2; margin-left: 20px;">
+                                <li>Games of chance, lotteries, or bingo (unless specifically donated and compliant with local laws)</li>
+                                <li>Activities that could be construed as gambling</li>
+                                <li>Raffle ticket sales (only if consistent with Charter Organization's faith and compliant with all laws)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px; padding: 20px; background: linear-gradient(135deg, var(--gold), var(--dark-brown)); border-radius: 8px; color: white; text-align: center;">
+                        <h4 style="color: white; margin-bottom: 15px;"><i class="fas fa-info-circle"></i> Need to Submit a Fundraiser?</h4>
+                        <p style="margin-bottom: 20px;">Download the TLUSA License Application from Trail Life USA's website</p>
+                        <p style="margin: 0; font-size: 0.95rem;">Include: Troop number, contact info, duration, product description, costs, and sale price</p>
+                        <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.9;">Email to: <strong>Branding@TrailLifeUSA.com</strong></p>
+                    </div>
+                </div>
+
+                <!-- Success Tips -->
+                <div style="margin-top: 40px; padding: 40px; background: var(--light-gray); border-radius: 10px;">
+                    <h3 style="color: var(--primary-red); text-align: center; margin-bottom: 30px;">
+                        <i class="fas fa-trophy"></i> Tips for Fundraising Success
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+                        <div>
+                            <h4 style="color: var(--gold); margin-bottom: 10px;">📋 Plan Together</h4>
+                            <p style="color: var(--gray); line-height: 1.7;">Involve parents in annual planning so they understand and support the need for fundraising.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gold); margin-bottom: 10px;">💰 Show the Budget</h4>
+                            <p style="color: var(--gray); line-height: 1.7;">Help families see the full cost of the program you're planning. Transparency builds buy-in.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gold); margin-bottom: 10px;">🤝 Work as a Team</h4>
+                            <p style="color: var(--gray); line-height: 1.7;">Everyone contributes to ONE major fundraiser vs. individual families bearing the burden.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gold); margin-bottom: 10px;">⏰ Focus & Finish</h4>
+                            <p style="color: var(--gray); line-height: 1.7;">Dedicate 4-5 days over a few weeks. Get it done, then enjoy your fully-funded year!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Share Your Success -->
+                <div style="margin-top: 40px; text-align: center; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                    <h3 style="color: var(--primary-red); margin-bottom: 20px;">
+                        <i class="fas fa-share-alt"></i> Share Your Fundraising Success!
+                    </h3>
+                    <p style="color: var(--gray); margin-bottom: 30px; font-size: 1.1rem;">
+                        Found a fundraiser that works great for your troop? Let us know so we can share it with other troops!
+                    </p>
+                    <a href="contact.html" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Submit Your Fundraising Idea
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="images/TL_ClassicLogo_1_RGB.png" alt="Trail Life USA" class="footer-logo">
+                    <p>Trail Life USA Northern Tier</p>
+                    <p class="footer-tagline">Adventure > Character > Leadership</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="blog.html">Regional Blog</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="troops.html">Our Troops</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="leaders.html">Leader Directory</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="https://www.traillife.org" target="_blank">Trail Life USA</a></li>
+                        <li><a href="https://www.traillifeconnect.com" target="_blank">TL Connect</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Stay Updated</h4>
+                    <p>Follow us for the latest news and updates</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Trail Life USA Northern Tier. All rights reserved.</p>
+                <p>Trail Life USA is a registered trademark.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

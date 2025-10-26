@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Trail Life USA - Our Mission, Vision, Oath, Statement of Faith, and Values">
+    <meta name="theme-color" content="#ba262d">
+    <title>About Trail Life USA - Northern Tier</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="images/TL_ClassicLogo_1_RGB.png">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .about-section {
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .about-section h2 {
+            color: var(--primary-red);
+            font-size: 2rem;
+            margin-bottom: 25px;
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 15px;
+        }
+        
+        .about-section h3 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .about-section p {
+            color: var(--gray);
+            line-height: 1.9;
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+        }
+        
+        .motto-box {
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(186, 38, 45, 0.3);
+        }
+        
+        .motto-box h2 {
+            color: white;
+            border: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        
+        .motto-box p {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+        
+        .oath-box {
+            background: var(--light-gray);
+            padding: 40px;
+            border-left: 5px solid var(--primary-red);
+            border-radius: 5px;
+            margin: 30px 0;
+        }
+        
+        .oath-box p {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: var(--dark-gray);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .value-card {
+            background: white;
+            border: 2px solid var(--gold);
+            padding: 30px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(135, 98, 55, 0.2);
+        }
+        
+        .value-card h4 {
+            color: var(--primary-red);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        
+        .value-card p {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/TL_ClassicLogo_1_RGB.png" alt="Trail Life USA Logo">
+                <span class="nav-title">Northern Tier</span>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="troops.html">Troops</a></li>
+                <li><a href="spotlight.html">Spotlight</a></li>
+                <li><a href="leaders.html">Leaders</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>About Trail Life USA</h1>
+        <p>Walk Worthy</p>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            
+            <!-- Motto -->
+            <div class="motto-box">
+                <h2><i class="fas fa-hiking"></i> The Motto: Walk Worthy</h2>
+                <p>Colossians 1:10—"...that you may walk worthy of the Lord, fully pleasing Him, being fruitful in every good work and increasing in the knowledge of God;..."</p>
+            </div>
+
+            <!-- Slogan -->
+            <div class="about-section">
+                <h2>The Slogan</h2>
+                <p style="font-size: 1.5rem; color: var(--primary-red); font-weight: 700; text-align: center;">
+                    Adventure > Character > Leadership
+                </p>
+            </div>
+
+            <!-- Mission Statement -->
+            <div class="about-section">
+                <h2><i class="fas fa-bullseye"></i> Mission Statement</h2>
+                <p>Our Mission is to guide generations of courageous young men to honor God, lead with integrity, serve others, and experience outdoor adventure.</p>
+            </div>
+
+            <!-- Vision Statement -->
+            <div class="about-section">
+                <h2><i class="fas fa-eye"></i> Vision Statement</h2>
+                <p>Our Vision is to be the premier national character development organization for young men, which produces godly and responsible husbands, fathers, and citizens.</p>
+            </div>
+
+            <!-- The Oath -->
+            <div class="about-section">
+                <h2><i class="fas fa-hand-paper"></i> The Oath</h2>
+                <div class="oath-box">
+                    <p>
+                        On my honor, I will do my best<br>
+                        To serve God and my country;<br>
+                        To respect authority;<br>
+                        To be a good steward of creation;<br>
+                        And to treat others as I want to be treated.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Statement of Faith -->
+            <div class="about-section">
+                <h2><i class="fas fa-bible"></i> Statement of Faith</h2>
+                <p>We believe there is One Triune God—God the Father; Jesus Christ, His one and only Son; and the Holy Spirit, Creator of the universe and eternally existent.</p>
+                
+                <p>We believe the Holy Scriptures (Old and New Testaments) to be the inspired and authoritative Word of God.</p>
+                
+                <p>We believe each person is created in His image for the purpose of communing with and worshiping God.</p>
+                
+                <p>We believe in the ministry of the Holy Spirit, Who enables us to live godly lives.</p>
+                
+                <p>We believe each of us is called to love the Lord our God with all of our heart, mind, soul, and strength, and to love our neighbors as ourselves.</p>
+                
+                <p>We believe God calls us to lives of purity, service, stewardship, and integrity.</p>
+            </div>
+
+            <!-- Statement of Values -->
+            <div class="about-section">
+                <h2><i class="fas fa-heart"></i> Statement of Values</h2>
+                
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h4><i class="fas fa-dove"></i> Purity</h4>
+                        <p>God calls us to lives of holiness, being pure of heart, mind, word, and deed. We are to reserve sexual activity for the sanctity of marriage, a lifelong commitment before God between a man and a woman.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <h4><i class="fas fa-hands-helping"></i> Service</h4>
+                        <p>God calls us to become responsible members of our community and the world through selfless acts that contribute to the welfare of others.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <h4><i class="fas fa-hand-holding-heart"></i> Stewardship</h4>
+                        <p>God calls us to use our God-given time, talents, and money wisely.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <h4><i class="fas fa-shield-alt"></i> Integrity</h4>
+                        <p>God calls us to live moral lives that demonstrate an inward motivation to do what is biblically right regardless of the cost.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin-top: 60px; padding: 60px 40px; background: var(--light-gray); border-radius: 10px;">
+                <h2 style="color: var(--primary-red); margin-bottom: 20px;">Ready to Join the Adventure?</h2>
+                <p style="font-size: 1.2rem; color: var(--gray); margin-bottom: 30px;">Find a troop near you and start your journey on the trail.</p>
+                <a href="https://www.traillife.org/find-a-troop/" target="_blank" class="btn btn-primary" style="margin-right: 15px;">Find a Troop</a>
+                <a href="troops.html" class="btn btn-secondary">Northern Tier Troops</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="images/TL_ClassicLogo_1_RGB.png" alt="Trail Life USA" class="footer-logo">
+                    <p>Trail Life USA Northern Tier</p>
+                    <p class="footer-tagline">Adventure > Character > Leadership</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Trail Life</a></li>
+                        <li><a href="blog.html">Regional Blog</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="troops.html">Our Troops</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="leaders.html">Leader Directory</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="https://www.traillife.org" target="_blank">Trail Life USA</a></li>
+                        <li><a href="https://www.traillifeconnect.com" target="_blank">TL Connect</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Stay Updated</h4>
+                    <p>Follow us for the latest news and updates</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Trail Life USA Northern Tier. All rights reserved.</p>
+                <p>Trail Life USA is a registered trademark.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

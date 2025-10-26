@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Trail Life Northern Tier</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="images/TL_ClassicLogo_1_RGB.png">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .calendar-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        #calendar {
+            min-height: 600px;
+        }
+        
+        .calendar-legend {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding: 20px;
+            background: var(--light-gray);
+            border-radius: 8px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        
+        .event-source {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .source-regional { background: var(--primary-red); color: white; }
+        .source-pa1997 { background: var(--gold); color: white; }
+        .source-ny2911 { background: var(--light-blue); color: white; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/TL_ClassicLogo_1_RGB.png" alt="Trail Life USA Logo">
+                <span class="nav-title">Northern Tier</span>
+            </div>
+            <button class="nav-toggle"><span></span><span></span><span></span></button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="events.html" class="active">Events</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="troops.html">Troops</a></li>
+                <li><a href="spotlight.html">Spotlight</a></li>
+                <li><a href="leaders.html">Leaders</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Regional Events</h1>
+        <p>Adventures, training, and gatherings across the Northern Tier</p>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            
+            <!-- Calendar Integration Section -->
+            <div class="calendar-container">
+                <h2 class="section-title">Regional Calendar</h2>
+                <p style="text-align: center; margin-bottom: 30px; color: var(--gray);">
+                    <i class="fas fa-calendar-alt" style="color: var(--primary-red); margin-right: 10px;"></i>
+                    Integrated calendar showing events from all Northern Tier troops and regional activities
+                </p>
+                
+                <!-- Calendar Placeholder -->
+                <div id="calendar" style="background: var(--light-gray); padding: 80px 40px; border-radius: 10px; text-align: center;">
+                    <i class="fas fa-calendar-alt" style="font-size: 5rem; color: var(--gold); margin-bottom: 20px;"></i>
+                    <h3 style="color: var(--primary-red); margin-bottom: 15px;">Calendar Integration Ready</h3>
+                    <p style="color: var(--gray); font-size: 1.1rem; line-height: 1.8; max-width: 600px; margin: 0 auto;">
+                        The calendar system is configured to automatically pull events from Trail Life Connect and troop calendar feeds. 
+                        See <code>CALENDAR_SETUP.md</code> for instructions on adding your calendar feed URLs.
+                    </p>
+                </div>
+                
+                <!-- Calendar Legend -->
+                <div class="calendar-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--primary-red);"></div>
+                        <span>Northern Tier Area Events</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--gold);"></div>
+                        <span>Troop Events</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Events Section -->
+            <div>
+                <h2 class="section-title">Upcoming Events</h2>
+                <p style="text-align: center; margin-bottom: 40px; color: var(--gray);">
+                    <i class="fas fa-sync-alt" style="color: var(--primary-red); margin-right: 8px;"></i>
+                    Events will automatically update from calendar feeds
+                </p>
+                
+                <div class="events-grid">
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="event-month">NOV</span>
+                            <span class="event-day">15</span>
+                        </div>
+                        <div class="event-info">
+                            <h3>Fall Leadership Training</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> Regional Training Site</p>
+                            <p class="event-description">Essential training for new and experienced leaders.</p>
+                            <span class="event-source source-regional">Regional Event</span>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="event-month">DEC</span>
+                            <span class="event-day">7</span>
+                        </div>
+                        <div class="event-info">
+                            <h3>Winter Outdoor Skills Day</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> Various Locations</p>
+                            <p class="event-description">Regional winter camping and outdoor skills training.</p>
+                            <span class="event-source source-regional">Regional Event</span>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="event-month">JAN</span>
+                            <span class="event-day">18</span>
+                        </div>
+                        <div class="event-info">
+                            <h3>Regional Planning Meeting</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> Online</p>
+                            <p class="event-description">Q1 planning for regional leaders.</p>
+                            <span class="event-source source-regional">Regional Event</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendar Setup Instructions -->
+            <div style="margin-top: 60px; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                <h3 style="color: var(--primary-red); margin-bottom: 20px;">
+                    <i class="fas fa-cog"></i> Calendar Feed Integration Setup
+                </h3>
+                <p style="color: var(--gray); margin-bottom: 20px; line-height: 1.8;">
+                    This events page is designed to automatically pull and display events from multiple calendar sources:
+                </p>
+                <ul style="color: var(--gray); line-height: 2; margin-left: 20px; margin-bottom: 20px;">
+                    <li><strong>Trail Life Connect:</strong> Pull regional events directly from your TL Connect calendar</li>
+                    <li><strong>Troop Calendars:</strong> Aggregate events from PA-1997, NY-2911, and other troop calendars</li>
+                    <li><strong>Auto-Sync:</strong> Events update automatically as calendars change</li>
+                    <li><strong>Color Coding:</strong> Events are color-coded by source for easy identification</li>
+                </ul>
+                <p style="color: var(--gray); margin-bottom: 20px;">
+                    <strong>To enable calendar integration, you'll need:</strong>
+                </p>
+                <ol style="color: var(--gray); line-height: 2; margin-left: 20px;">
+                    <li>iCal feed URLs from Trail Life Connect and each troop calendar</li>
+                    <li>Add these URLs to the <code>js/calendar.js</code> configuration file</li>
+                    <li>The calendar will automatically fetch and display events</li>
+                </ol>
+                <p style="margin-top: 20px;">
+                    <a href="contact.html" class="btn btn-primary">Request Calendar Setup Assistance</a>
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="images/TL_ClassicLogo_1_RGB.png" alt="Trail Life USA" class="footer-logo">
+                    <p>Trail Life USA Northern Tier</p>
+                    <p class="footer-tagline">Adventure > Character > Leadership</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="blog.html">Regional Blog</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="troops.html">Our Troops</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="leaders.html">Leader Directory</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="https://www.traillife.org" target="_blank">Trail Life USA</a></li>
+                        <li><a href="https://www.traillifeconnect.com" target="_blank">TL Connect</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Stay Updated</h4>
+                    <p>Follow us for the latest news and updates</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Trail Life USA Northern Tier. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+    <script src="js/calendar.js"></script>
+</body>
+</html>
