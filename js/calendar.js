@@ -5,32 +5,18 @@
 // Calendar Feed Configuration
 // ========================================
 const CALENDAR_FEEDS = {
-    // Regional/Area calendar from Trail Life Connect
-    regional: {
-        name: 'Northern Tier Area Events',
-        url: 'https://www.traillifeconnect.com/icalendar/tkekboggp6qa/aajala0vlv0b/area',
-        color: '#ba262d' // Primary red
-    },
-    
-    // Troop events from Trail Life Connect
+    // Troop Events via Google Calendar
     troopEvents: {
         name: 'Troop Events',
-        url: 'https://www.traillifeconnect.com/icalendar/tkekboggp6qa/aajala0vlv0b/troop',
+        url: 'https://calendar.google.com/calendar/ical/4rmk9e2v6c5ngo39n7g9i679b737h7gm%40import.calendar.google.com/public/basic.ics',
         color: '#876237' // Gold
     },
     
-    // Troop PA-1997 calendar (add if you have a separate feed)
-    pa1997: {
-        name: 'Troop PA-1997',
-        url: '', // ADD TROOP PA-1997 iCal FEED URL HERE IF AVAILABLE
-        color: '#876237' // Gold
-    },
-    
-    // Troop NY-2911 calendar (add if you have a separate feed)
-    ny2911: {
-        name: 'Troop NY-2911',
-        url: '', // ADD TROOP NY-2911 iCal FEED URL HERE IF AVAILABLE
-        color: '#4fa7c5' // Light blue
+    // Northern Tier Area Events via Google Calendar
+    regional: {
+        name: 'Northern Tier Area Events',
+        url: 'https://calendar.google.com/calendar/ical/vd66q5sembl1l479m829q8mgnqgu2sm8%40import.calendar.google.com/public/basic.ics',
+        color: '#ba262d' // Primary red
     }
     
     // Add more troop calendars here as needed
