@@ -28,15 +28,15 @@ const CALENDAR_FEEDS = {
 
 /**
  * Fetch and parse iCal feed using CORS proxy
- * Note: Using AllOrigins as CORS proxy to bypass restrictions
  * @param {string} url - iCal feed URL
  * @returns {Promise<Array>} Array of parsed events
  */
 async function fetchCalendarFeed(url) {
     try {
-        // Use AllOrigins CORS proxy to fetch the calendar data
-        const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+        // Use corsproxy.io to bypass CORS restrictions
+        const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(url)}`;
         
+        console.log('Fetching calendar from:', url);
         const response = await fetch(proxyUrl);
         
         if (!response.ok) {
@@ -44,11 +44,11 @@ async function fetchCalendarFeed(url) {
         }
         
         const icalData = await response.text();
-        console.log('Successfully fetched calendar data from:', url);
+        console.log('Successfully fetched calendar data');
         return parseICalData(icalData);
     } catch (error) {
         console.error('Error fetching calendar feed:', error);
-        console.log('URL attempted:', url);
+        console.log('Failed URL:', url);
         return [];
     }
 }
@@ -203,25 +203,7 @@ function initializeCalendar(events) {
     const calendarDiv = document.getElementById('calendar');
     if (!calendarDiv) return;
     
-    // This is a placeholder for full calendar implementation
-    // Recommended: Use FullCalendar.js or similar library
-    // For now, we'll just display a message
     console.log('Calendar events loaded:', events);
-    
-    // You can integrate with FullCalendar.js like this:
-    /*
-    const calendar = new FullCalendar.Calendar(calendarDiv, {
-        initialView: 'dayGridMonth',
-        events: events.map(event => ({
-            title: event.title,
-            start: event.date,
-            description: event.description,
-            location: event.location,
-            backgroundColor: event.color
-        }))
-    });
-    calendar.render();
-    */
 }
 
 // ========================================
