@@ -1,4 +1,3 @@
-
 // Trail Life Northern Tier - Calendar Integration
 // This file handles pulling events from multiple calendar feeds
 
@@ -232,8 +231,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Check if we're on the events page
     if (!document.getElementById('calendar')) return;
     
+    console.log('Loading calendar feeds...');
+    
     // Load calendar feeds
     const events = await loadAllCalendars();
+    
+    console.log(`Total events loaded: ${events.length}`);
     
     // Display upcoming events
     displayUpcomingEvents(events);
