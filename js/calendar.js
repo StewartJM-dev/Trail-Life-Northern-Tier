@@ -12,10 +12,20 @@ const CALENDAR_FEEDS = {
         calendarId: '4rmk9e2v6c5ngo39n7g9i679b737h7gm@import.calendar.google.com',
         color: '#876237' // Gold
     },
-    regional: {
+    northernTier: {
         name: 'Northern Tier Area Events',
         calendarId: 'vd66q5sembl1l479m829q8mgnqgu2sm8@import.calendar.google.com',
         color: '#ba262d' // Primary red
+    },
+    northeast: {
+        name: 'Northeast Region Events',
+        calendarId: 'ul0fcc6vnih5c2sicq2l1j6trtkc5vjj@import.calendar.google.com',
+        color: '#1e5a8e' // Blue
+    },
+    national: {
+        name: 'Trail Life USA National Events',
+        calendarId: 'luhdkcig271vbof0khlesai309va3bpu@import.calendar.google.com',
+        color: '#2e7d32' // Green
     }
 };
 
