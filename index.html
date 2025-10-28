@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,40 +120,12 @@
     <section class="upcoming-events">
         <div class="container">
             <h2 class="section-title">Upcoming Events</h2>
-            <div class="events-grid">
-                <div class="event-card">
-                    <div class="event-date">
-                        <span class="event-month">NOV</span>
-                        <span class="event-day">15</span>
-                    </div>
-                    <div class="event-info">
-                        <h3>Fall Leadership Training</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> Camp Woodland, PA</p>
-                        <p class="event-description">Essential training for new and experienced leaders</p>
-                    </div>
-                </div>
-                <div class="event-card">
-                    <div class="event-date">
-                        <span class="event-month">DEC</span>
-                        <span class="event-day">7</span>
-                    </div>
-                    <div class="event-info">
-                        <h3>Winter Camp-O-Ree</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> Various Locations</p>
-                        <p class="event-description">Regional winter camping adventure</p>
-                    </div>
-                </div>
-                <div class="event-card">
-                    <div class="event-date">
-                        <span class="event-month">JAN</span>
-                        <span class="event-day">18</span>
-                    </div>
-                    <div class="event-info">
-                        <h3>Regional Planning Meeting</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> Online</p>
-                        <p class="event-description">Q1 planning for regional leaders</p>
-                    </div>
-                </div>
+            <p style="text-align: center; color: var(--gray); margin-bottom: 30px;">
+                Next month's events from all Northern Tier calendars
+            </p>
+            <!-- This will be populated by calendar.js -->
+            <div id="home-events-list" class="events-grid">
+                <p style="text-align: center; color: var(--gray); padding: 2rem;">Loading events...</p>
             </div>
             <div class="text-center">
                 <a href="events.html" class="btn btn-secondary">View All Events</a>
@@ -252,6 +225,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="js/calendar.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
