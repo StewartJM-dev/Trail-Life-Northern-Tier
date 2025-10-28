@@ -392,48 +392,187 @@
                 </div>
             </div>
 
-            <!-- Gear Swap -->
+            <!-- Gear Swap - Automated with Google Forms/Sheets -->
             <div class="gear-swap">
                 <h2 class="section-title">Gear Swap</h2>
-                <p style="text-align: center; margin-bottom: 40px; color: var(--gray);">
-                    Buy, sell, or trade outdoor gear between troops. Contact the listing troop directly.
+                <p style="text-align: center; margin-bottom: 20px; color: var(--gray);">
+                    Buy, sell, or trade outdoor gear between Northern Tier troops.
+                </p>
+                <p style="text-align: center; margin-bottom: 30px; color: var(--primary-red); font-weight: 600;">
+                    <i class="fas fa-magic"></i> All listings are managed automatically - no website updates needed!
                 </p>
                 
-                <!-- EDITOR NOTE: Add new gear listings here -->
-                <div class="gear-item">
-                    <h4>4 Patrol Tents - $200 for all</h4>
-                    <p>Eureka patrol tents, 6-person capacity. Good condition, lightly used. Great for troops just starting out!</p>
-                    <div class="gear-meta">
-                        <span><i class="fas fa-map-marker-alt"></i> Troop PA-4031</span>
-                        <span><i class="far fa-calendar"></i> Posted Oct 15</span>
-                        <span><i class="fas fa-envelope"></i> Contact: leader@trooppa4031.org</span>
-                    </div>
+                <!-- Submit Button -->
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <button onclick="openGearSwapForm()" class="btn btn-primary">
+                        <i class="fas fa-plus-circle"></i> Submit a Listing
+                    </button>
+                    <p style="margin-top: 10px; font-size: 0.9rem; color: var(--gray);">
+                        List items for sale, trade, or post WANTED requests
+                    </p>
                 </div>
                 
-                <div class="gear-item">
-                    <h4>Dutch Oven Set - $75</h4>
-                    <p>Camp Chef cast iron Dutch oven set with lid lifter and tripod stand. Perfect for campfire cooking.</p>
-                    <div class="gear-meta">
-                        <span><i class="fas fa-map-marker-alt"></i> Troop PA-997</span>
-                        <span><i class="far fa-calendar"></i> Posted Oct 10</span>
-                        <span><i class="fas fa-envelope"></i> Contact: info@trooppa997.org</span>
-                    </div>
+                <!-- Current Listings -->
+                <div id="gear-listings" style="margin-bottom: 30px;">
+                    <p style="text-align: center; color: var(--gray); padding: 2rem;">
+                        <i class="fas fa-spinner fa-spin"></i> Loading gear listings...
+                    </p>
                 </div>
                 
-                <div class="gear-item">
-                    <h4>WANTED: Backpacking Stoves</h4>
-                    <p>Looking for 6-8 backpacking stoves for our upcoming trek. MSR or Jetboil preferred. Will buy or borrow.</p>
-                    <div class="gear-meta">
-                        <span><i class="fas fa-map-marker-alt"></i> Regional Team</span>
-                        <span><i class="far fa-calendar"></i> Posted Oct 5</span>
-                        <span><i class="fas fa-envelope"></i> Contact via contact page</span>
-                    </div>
-                </div>
-                
+                <!-- View All Link -->
                 <div style="text-align: center; margin-top: 30px;">
-                    <a href="contact.html" class="btn btn-primary">Submit a Listing</a>
+                    <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTrindDbxPT9ohrEJZpK8btV-QWq6vKaYwxYU5DexrCCiGMKzNnI2JdpcU2h4QONGUMKPKhjOuKukfQ/pubhtml" target="_blank" style="color: var(--primary-red); font-weight: 600;">
+                        <i class="fas fa-table"></i> View Full Spreadsheet
+                    </a>
                 </div>
             </div>
+
+            <!-- Gear Swap Form Modal -->
+            <div id="gear-swap-modal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); overflow: auto;">
+                <div style="background-color: white; margin: 3% auto; padding: 0; width: 90%; max-width: 700px; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
+                    <!-- Modal Header -->
+                    <div style="background: linear-gradient(135deg, var(--primary-red), var(--dark-brown)); padding: 25px; border-radius: 10px 10px 0 0; color: white;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h3 style="margin: 0; color: white;">
+                                <i class="fas fa-tags"></i> Submit Gear Listing
+                            </h3>
+                            <button onclick="closeGearSwapForm()" style="background: none; border: none; color: white; font-size: 2rem; cursor: pointer; line-height: 1; padding: 0; width: 30px; height: 30px;">&times;</button>
+                        </div>
+                        <p style="margin: 10px 0 0 0; font-size: 0.95rem; color: rgba(255,255,255,0.9);">
+                            List items for sale, trade, or post what you're looking for
+                        </p>
+                    </div>
+                    
+                    <!-- Modal Body with Google Form -->
+                    <div style="padding: 20px; max-height: 70vh; overflow-y: auto;">
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdXLjC_pXK_mCnHrgDSnt_sxkdN4MHsDvdFG45L4Yt7gdrIMA/viewform?embedded=true" width="100%" height="2036" frameborder="0" marginheight="0" marginwidth="0">Loading form...</iframe>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+            // ============================================
+            // Gear Swap Modal Control Functions
+            // ============================================
+            function openGearSwapForm() {
+                document.getElementById('gear-swap-modal').style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeGearSwapForm() {
+                document.getElementById('gear-swap-modal').style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+
+            // Close modal if user clicks outside
+            window.onclick = function(event) {
+                const modal = document.getElementById('gear-swap-modal');
+                if (event.target === modal) {
+                    closeGearSwapForm();
+                }
+            }
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    closeGearSwapForm();
+                }
+            });
+
+            // ============================================
+            // Load Gear Listings from Google Sheet
+            // ============================================
+            async function loadGearListings() {
+                const container = document.getElementById('gear-listings');
+                
+                try {
+                    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTrindDbxPT9ohrEJZpK8btV-QWq6vKaYwxYU5DexrCCiGMKzNnI2JdpcU2h4QONGUMKPKhjOuKukfQ/pub?output=csv';
+                    
+                    const response = await fetch(csvUrl);
+                    const csvText = await response.text();
+                    
+                    // Parse CSV (simple parser)
+                    const lines = csvText.split('\n');
+                    const listings = [];
+                    
+                    // Skip header row, parse data rows
+                    for (let i = 1; i < lines.length; i++) {
+                        if (!lines[i].trim()) continue;
+                        
+                        // Split by comma, but handle commas in quotes
+                        const values = lines[i].match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || [];
+                        const cleanValues = values.map(v => v.replace(/^"|"$/g, '').trim());
+                        
+                        if (cleanValues.length < 6) continue; // Skip incomplete rows
+                        
+                        const listing = {
+                            timestamp: cleanValues[0],
+                            title: cleanValues[1],
+                            price: cleanValues[2],
+                            description: cleanValues[3],
+                            condition: cleanValues[4],
+                            troop: cleanValues[5],
+                            email: cleanValues[6],
+                            phone: cleanValues[7] || '',
+                            location: cleanValues[8] || ''
+                        };
+                        
+                        listings.push(listing);
+                    }
+                    
+                    // Display listings (newest first)
+                    if (listings.length === 0) {
+                        container.innerHTML = '<p style="text-align: center; color: var(--gray); padding: 2rem;">No gear listings yet. Be the first to post!</p>';
+                        return;
+                    }
+                    
+                    container.innerHTML = listings.reverse().map(listing => `
+                        <div class="gear-item">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
+                                <h4 style="margin: 0; color: var(--primary-red);">
+                                    ${listing.title}${listing.price ? ' - ' + listing.price : ''}
+                                </h4>
+                            </div>
+                            <p style="margin-bottom: 10px; line-height: 1.6;">${listing.description}</p>
+                            ${listing.condition ? `<p style="margin-bottom: 5px; font-size: 0.9rem; color: var(--gray);"><strong>Condition:</strong> ${listing.condition}</p>` : ''}
+                            <div class="gear-meta">
+                                <span><i class="fas fa-user"></i> ${listing.troop}</span>
+                                ${listing.location ? `<span><i class="fas fa-map-marker-alt"></i> ${listing.location}</span>` : ''}
+                                <span><i class="far fa-calendar"></i> ${formatDate(listing.timestamp)}</span>
+                                <span><i class="fas fa-envelope"></i> <a href="mailto:${listing.email}" style="color: var(--primary-red);">Contact Seller</a></span>
+                            </div>
+                        </div>
+                    `).join('');
+                    
+                } catch (error) {
+                    console.error('Error loading gear listings:', error);
+                    container.innerHTML = '<p style="text-align: center; color: var(--gray); padding: 2rem;">Unable to load listings. Please try again later.</p>';
+                }
+            }
+
+            // Format timestamp for display
+            function formatDate(timestamp) {
+                try {
+                    const date = new Date(timestamp);
+                    const now = new Date();
+                    const daysAgo = Math.floor((now - date) / (1000 * 60 * 60 * 24));
+                    
+                    if (daysAgo === 0) return 'Today';
+                    if (daysAgo === 1) return 'Yesterday';
+                    if (daysAgo < 7) return daysAgo + ' days ago';
+                    if (daysAgo < 30) return Math.floor(daysAgo / 7) + ' weeks ago';
+                    
+                    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                } catch {
+                    return 'Recently';
+                }
+            }
+
+            // Load listings when page loads
+            if (document.getElementById('gear-listings')) {
+                loadGearListings();
+            }
+            </script>
 
             <!-- Program Ideas Database -->
             <div class="resource-list">
