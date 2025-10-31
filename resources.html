@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -134,6 +135,25 @@
             color: var(--gray);
             font-size: 0.9rem;
             margin-top: 10px;
+        }
+        
+        /* Fundraising Cards Grid */
+        .fundraising-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        @media (max-width: 1200px) {
+            .fundraising-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .fundraising-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -609,7 +629,7 @@
                         These vendors have been successfully used by troops across the Northern Tier
                     </p>
 
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+                    <div class="fundraising-grid">
                         <!-- Country Meats -->
                         <div style="background: white; border-radius: 10px; padding: 35px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-top: 4px solid var(--gold);">
                             <div style="display: flex; align-items: center; margin-bottom: 20px;">
