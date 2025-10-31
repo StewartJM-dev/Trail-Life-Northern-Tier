@@ -1,3 +1,4 @@
+[README-CORRECTED.md](https://github.com/user-attachments/files/23248165/README-CORRECTED.md)
 # Trail Life USA Northern Tier Website
 
 ![Trail Life Logo](images/TL_ClassicLogo_1_RGB.png)
@@ -14,7 +15,7 @@ This is the official website for the Trail Life USA Northern Tier, designed to c
 - **Resources** - Document library, training calendar, gear swap, program ideas
 - **Events** - Regional calendar and upcoming activities
 - **Photo Gallery** - Troop photos and adventures (ready for uploads)
-- **Troop Directory** - PA-997, PA-4031, and expandable for new troops
+- **Troop Directory** - PA-1997, NY-2911, PA-4031, and expandable for new troops
 - **Troop Spotlight** - Monthly feature on outstanding troops
 - **Leader Directory** - Regional leadership contacts
 - **Achievement Board** - Celebrating troop milestones and successes
@@ -32,14 +33,16 @@ This is the official website for the Trail Life USA Northern Tier, designed to c
 
 ## 🎨 Design Colors
 
-The site uses Trail Life USA's official brand colors:
-- **Primary Red:** #C1272D
-- **Gold:** #A67C52
-- **Dark Red:** #8B1A1F
-- **Dark Gold:** #8B6B47
-- **Orange Accent:** #E87722
-- **Black:** #1a1a1a
-- **White:** #ffffff
+The site uses Trail Life USA's official brand colors (Pantone-matched):
+- **Primary Red:** #ba262d (Pantone 1795)
+- **Dark Red:** #8b1f24 (Pantone 188)
+- **Gold:** #876237 (Pantone 7575)
+- **Dark Brown:** #5d432b (Pantone 462)
+- **Light Gray:** #f4f4f4 (Backgrounds)
+- **Gray:** #666666 (Body text)
+- **Dark Gray:** #333333 (Headings)
+- **Black:** #1a1a1a (Strong emphasis)
+- **White:** #ffffff (Base background)
 
 ## 📁 File Structure
 
@@ -60,7 +63,8 @@ traillife-northern-tier-region/
 ├── css/
 │   └── style.css          # Main stylesheet
 ├── js/
-│   └── main.js            # JavaScript functionality
+│   ├── main.js            # JavaScript functionality
+│   └── calendar.js        # Calendar integration
 └── images/
     ├── TL_ClassicLogo_1_RGB.png    # Trail Life logo (horizontal)
     ├── TL_ClassicLogo_3_RGB.png    # Trail Life logo (stacked)
