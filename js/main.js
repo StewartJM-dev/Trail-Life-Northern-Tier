@@ -1,4 +1,4 @@
-// Trail Life Northeast Region - Main JavaScript
+// Trail Life Northern Tier - Main JavaScript
 
 // ========================================
 // Navigation Toggle for Mobile
@@ -329,6 +329,6 @@ backToTopButton.addEventListener('mouseleave', () => {
 // ========================================
 // Console Welcome Message
 // ========================================
-console.log('%c Trail Life Northeast Region ', 'background: #C1272D; color: white; font-size: 20px; padding: 10px;');
-console.log('%c Adventure • Character • Leadership ', 'background: #A67C52; color: white; font-size: 14px; padding: 5px;');
-console.log('Website built for connecting troops across the Northeast region.');
+console.log('%c Trail Life Northern Tier ', 'background: #ba262d; color: white; font-size: 20px; padding: 10px;');
+console.log('%c Adventure • Character • Leadership ', 'background: #876237; color: white; font-size: 14px; padding: 5px;');
+console.log('Website built for connecting troops across the Northern Tier.');
