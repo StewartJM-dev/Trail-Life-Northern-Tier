@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +37,10 @@
         .blog-card-image {
             height: 250px;
             overflow: hidden;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .blog-card-image img {
@@ -73,10 +78,17 @@
             font-size: 1.5rem;
         }
         
-        .blog-card p {
+        .blog-card .excerpt {
             color: var(--gray);
             line-height: 1.8;
             margin-bottom: 20px;
+        }
+        
+        .blog-card .content {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            white-space: pre-wrap;
         }
         
         .blog-tags {
@@ -102,10 +114,28 @@
             align-items: center;
             gap: 8px;
             transition: gap 0.3s ease;
+            text-decoration: none;
         }
         
         .read-more:hover {
             gap: 12px;
+        }
+        
+        #loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2rem;
+            color: var(--gray);
+        }
+        
+        #error {
+            background-color: #fee;
+            border: 1px solid #fcc;
+            color: #c33;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+            display: none;
         }
     </style>
 </head>
@@ -147,139 +177,11 @@
     <!-- Blog Posts -->
     <section class="content-section">
         <div class="container">
-            <!-- EDITOR NOTE: Add new blog posts here. Copy the blog-card div and update content -->
-            <div class="blog-grid">
-                
-                <!-- Blog Post 1 -->
-                <article class="blog-card">
-                    <div class="blog-card-image">
-                        <img src="images/placeholder-blog.jpg" alt="Northern Tier Launch">
-                    </div>
-                    <div class="blog-card-content">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> October 20, 2025</span>
-                            <span><i class="far fa-user"></i> Regional Team</span>
-                        </div>
-                        <h3>Welcome to Trail Life Northern Tier!</h3>
-                        <p>We're thrilled to launch our new regional website, designed to connect troops, share resources, and celebrate the amazing work happening across the Northern Tier. This platform will serve as your central hub for regional news, events, training opportunities, and more.</p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Announcement</span>
-                            <span class="blog-tag">Regional News</span>
-                        </div>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 2 -->
-                <article class="blog-card">
-                    <div class="blog-card-image">
-                        <img src="images/placeholder-blog.jpg" alt="Fall Leadership Training">
-                    </div>
-                    <div class="blog-card-content">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> October 15, 2025</span>
-                            <span><i class="far fa-user"></i> Training Team</span>
-                        </div>
-                        <h3>Fall Leadership Training Registration Open</h3>
-                        <p>Our Fall Leadership Training event is scheduled for November 15th at Camp Woodland, PA. This comprehensive training covers essential leadership skills, safety protocols, and program planning. All troop leaders are encouraged to attend.</p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Training</span>
-                            <span class="blog-tag">Events</span>
-                        </div>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 3 -->
-                <article class="blog-card">
-                    <div class="blog-card-image">
-                        <img src="images/placeholder-blog.jpg" alt="Service Project">
-                    </div>
-                    <div class="blog-card-content">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> October 10, 2025</span>
-                            <span><i class="far fa-user"></i> Troop PA-4031</span>
-                        </div>
-                        <h3>Troop PA-4031 Reaches 1,000 Service Hours</h3>
-                        <p>Congratulations to Troop PA-4031 for achieving an incredible milestone - 1,000 hours of community service this year! From park cleanups to food drives, these young men are making a real difference in their community.</p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Service</span>
-                            <span class="blog-tag">Achievements</span>
-                        </div>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 4 -->
-                <article class="blog-card">
-                    <div class="blog-card-image">
-                        <img src="images/placeholder-blog.jpg" alt="Backpacking Adventure">
-                    </div>
-                    <div class="blog-card-content">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> October 5, 2025</span>
-                            <span><i class="far fa-user"></i> Troop PA-997</span>
-                        </div>
-                        <h3>Epic AT Adventure: 50 Miles on the Appalachian Trail</h3>
-                        <p>Troop PA-997 recently completed an incredible 50-mile backpacking trek on the Appalachian Trail. The boys faced challenges, built character, and created memories that will last a lifetime. Read about their adventure and see photos from the trail.</p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Adventure</span>
-                            <span class="blog-tag">Outdoor Skills</span>
-                        </div>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 5 -->
-                <article class="blog-card">
-                    <div class="blog-card-image">
-                        <img src="images/placeholder-blog.jpg" alt="New Troops">
-                    </div>
-                    <div class="blog-card-content">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> September 28, 2025</span>
-                            <span><i class="far fa-user"></i> Regional Team</span>
-                        </div>
-                        <h3>Growing the Trail: 5 New Troops Chartered in 2025</h3>
-                        <p>We're excited to announce that the Northern Tier has chartered five new troops in 2025! This growth represents dozens of new boys who will experience the character-building adventure of Trail Life. Welcome to the trail, new troops!</p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Growth</span>
-                            <span class="blog-tag">Regional News</span>
-                        </div>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 6 -->
-                <article class="blog-card">
-                    <div class="blog-card-image">
-                        <img src="images/placeholder-blog.jpg" alt="Winter Preparation">
-                    </div>
-                    <div class="blog-card-content">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> September 20, 2025</span>
-                            <span><i class="far fa-user"></i> Training Team</span>
-                        </div>
-                        <h3>Preparing for Winter: Cold Weather Camping Tips</h3>
-                        <p>As we head into the colder months, it's time to prepare for winter camping adventures. Our training team shares essential tips for staying warm, safe, and comfortable during cold weather activities. Learn about proper gear, shelter setup, and winter safety protocols.</p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Training</span>
-                            <span class="blog-tag">Safety</span>
-                        </div>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
+            <div id="loading">
+                <i class="fas fa-spinner fa-spin"></i> Loading posts...
             </div>
-
-            <!-- EDITOR NOTE: To add more blog posts, copy one of the blog-card sections above and update:
-                 - Image src
-                 - Date
-                 - Author
-                 - Title
-                 - Content
-                 - Tags
-            -->
+            <div id="error"></div>
+            <div id="blog-posts" class="blog-grid"></div>
         </div>
     </section>
 
@@ -328,5 +230,6 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/blog-cms.js"></script>
 </body>
 </html>
