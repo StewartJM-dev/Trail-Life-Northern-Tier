@@ -1,7 +1,8 @@
-// Trail Life Northeast Region - Service Worker
+
+// Trail Life Northern Tier - Service Worker
 // Version 1.0.0
 
-const CACHE_NAME = 'traillife-northeast-v1';
+const CACHE_NAME = 'traillife-northern-tier-v1';
 const urlsToCache = [
   '/',
   '/index.html',
