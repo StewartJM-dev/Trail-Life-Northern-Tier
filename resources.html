@@ -175,35 +175,35 @@
             
             <!-- Resource Categories -->
             <div class="resource-categories">
-                <div class="resource-category">
+                <a href="#training-materials" class="resource-category" style="text-decoration: none; color: inherit;">
                     <i class="fas fa-chalkboard-teacher"></i>
                     <h3>Training Materials</h3>
                     <p>Leader training guides and certification resources</p>
-                </div>
-                <div class="resource-category">
+                </a>
+                <a href="#forms-templates" class="resource-category" style="text-decoration: none; color: inherit;">
                     <i class="fas fa-file-alt"></i>
                     <h3>Forms & Templates</h3>
                     <p>Essential forms for troop operations</p>
-                </div>
-                <div class="resource-category">
+                </a>
+                <a href="#program-ideas" class="resource-category" style="text-decoration: none; color: inherit;">
                     <i class="fas fa-lightbulb"></i>
                     <h3>Program Ideas</h3>
                     <p>Activity plans and program suggestions</p>
-                </div>
-                <div class="resource-category">
+                </a>
+                <a href="#fundraising" class="resource-category" style="text-decoration: none; color: inherit;">
                     <i class="fas fa-hand-holding-usd"></i>
                     <h3>Fundraising</h3>
                     <p>Proven fundraising ideas and vendor partners</p>
-                </div>
-                <div class="resource-category">
+                </a>
+                <a href="#gear-swap" class="resource-category" style="text-decoration: none; color: inherit;">
                     <i class="fas fa-exchange-alt"></i>
                     <h3>Gear Swap</h3>
                     <p>Buy, sell, or trade gear between troops</p>
-                </div>
+                </a>
             </div>
 
             <!-- Document Library -->
-            <div class="resource-list">
+            <div class="resource-list" id="training-materials">
                 <h2 class="section-title">Document Library</h2>
                 
                 <!-- Trail Life Store -->
@@ -359,7 +359,7 @@
             </div>
 
             <!-- Training Calendar -->
-            <div class="resource-list">
+            <div class="resource-list" id="forms-templates">
                 <h2 class="section-title">Upcoming Training</h2>
                 <div class="resource-item">
                     <div class="resource-info">
@@ -393,7 +393,7 @@
             </div>
 
             <!-- Gear Swap - Automated with Google Forms/Sheets -->
-            <div class="gear-swap">
+            <div class="gear-swap" id="gear-swap">
                 <h2 class="section-title">Gear Swap</h2>
                 <p style="text-align: center; margin-bottom: 20px; color: var(--gray);">
                     Buy, sell, or trade outdoor gear between Northern Tier troops.
@@ -575,51 +575,99 @@
             </script>
 
             <!-- Program Ideas Database -->
-            <div class="resource-list">
-                <h2 class="section-title">Program Ideas Database</h2>
+            <div class="resource-list" id="program-ideas">
+                <h2 class="section-title"><i class="fas fa-lightbulb"></i> Program Ideas Database</h2>
+                <p style="text-align: center; color: var(--gray); margin-bottom: 40px; font-size: 1.1rem;">
+                    Downloadable guides for exciting troop activities and projects
+                </p>
+                
+                <!-- Pinewood Derby Guide -->
                 <div class="resource-item">
                     <div class="resource-info">
-                        <h4>Pinewood Derby Kit</h4>
-                        <p>Complete planning guide, rules, and tips for hosting a successful Pinewood Derby</p>
+                        <h4><i class="fas fa-car" style="color: var(--primary-red); margin-right: 10px;"></i>Pinewood Derby Guide</h4>
+                        <p><strong>Complete guide with official rules, building tips, speed secrets, and racing guidelines.</strong> Includes dimension rules, weight strategies, step-by-step construction instructions, friction reduction techniques, aerodynamics, sportsmanship values, and race day checklist.</p>
+                        <div style="margin-top: 12px; padding: 12px; background: var(--light-gray); border-radius: 6px;">
+                            <p style="margin: 0; font-size: 0.9rem; color: var(--dark-gray);"><strong>Topics covered:</strong> Car specifications • Weight placement • Wheel/axle prep • Friction reduction • Speed secrets • Sportsmanship</p>
+                        </div>
                     </div>
                     <div class="resource-actions">
-                        <a href="#" class="resource-btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="downloads/Trail_Life_Pinewood_Derby_Guide.docx" class="resource-btn">
+                            <i class="fas fa-download"></i> Download
+                        </a>
                     </div>
                 </div>
                 
+                <!-- Raingutter Regatta Guide -->
                 <div class="resource-item">
                     <div class="resource-info">
-                        <h4>Service Project Ideas</h4>
-                        <p>50+ community service project ideas for troops of all sizes</p>
+                        <h4><i class="fas fa-ship" style="color: var(--primary-red); margin-right: 10px;"></i>Raingutter Regatta Rules</h4>
+                        <p><strong>Official rules and guidelines for hosting a Raingutter Regatta sailboat race.</strong> Father-son project building miniature sailboats powered by lung power! Includes boat specifications, waterproofing tips, mast installation, sail attachment, racing rules, and sportsmanship guidance.</p>
+                        <div style="margin-top: 12px; padding: 12px; background: var(--light-gray); border-radius: 6px;">
+                            <p style="margin: 0; font-size: 0.9rem; color: var(--dark-gray);"><strong>Topics covered:</strong> Boat specifications • Waterproofing • Hull shaping • Racing competition rules • Awards categories</p>
+                            <p style="margin: 10px 0 0 0; font-size: 0.9rem;"><i class="fas fa-shopping-cart" style="color: var(--gold);"></i> <strong>Equipment:</strong> <a href="https://www.amazon.com/dp/B0FH15ZQ3F" target="_blank" style="color: var(--primary-red);">Inflatable Raingutter Track on Amazon</a></p>
+                        </div>
                     </div>
                     <div class="resource-actions">
-                        <a href="#" class="resource-btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="downloads/Trail_Life_Raingutter_Regatta_Rules.docx" class="resource-btn">
+                            <i class="fas fa-download"></i> Download
+                        </a>
                     </div>
                 </div>
                 
+                <!-- Rope Making Guide -->
                 <div class="resource-item">
                     <div class="resource-info">
-                        <h4>Winter Camp Program</h4>
-                        <p>Activities, games, and skills for cold weather camping</p>
+                        <h4><i class="fas fa-tools" style="color: var(--primary-red); margin-right: 10px;"></i>Rope Making Machine Guide</h4>
+                        <p><strong>Build your own rope making machine and master an ancient craft!</strong> Complete guide to constructing a simple rope-making machine from basic materials and creating functional rope. Combines woodworking, mechanical engineering, and traditional skills. Perfect troop project!</p>
+                        <div style="margin-top: 12px; padding: 12px; background: var(--light-gray); border-radius: 6px;">
+                            <p style="margin: 0; font-size: 0.9rem; color: var(--dark-gray);"><strong>Topics covered:</strong> Machine construction • Materials list • Two-stage rope process • Operating techniques • Safety guidelines • Project ideas</p>
+                            <p style="margin: 10px 0 0 0; font-size: 0.9rem;"><i class="fab fa-youtube" style="color: #FF0000;"></i> <strong>Video Tutorials:</strong></p>
+                            <ul style="margin: 5px 0 0 20px; font-size: 0.9rem; color: var(--primary-red);">
+                                <li><a href="https://www.youtube.com/watch?v=ddenqErLL0Q" target="_blank" style="color: var(--primary-red);">Simple Hand-Crank Design</a></li>
+                                <li><a href="https://www.youtube.com/watch?v=uEvM6ue3L7E" target="_blank" style="color: var(--primary-red);">Building and Operation</a></li>
+                                <li><a href="https://www.youtube.com/watch?v=RM9GY-n6PEA" target="_blank" style="color: var(--primary-red);">Advanced Techniques</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="resource-actions">
-                        <a href="#" class="resource-btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="downloads/Trail_Life_Rope_Making_Guide.docx" class="resource-btn">
+                            <i class="fas fa-download"></i> Download
+                        </a>
                     </div>
                 </div>
                 
+                <!-- GaGa Ball Guide -->
                 <div class="resource-item">
                     <div class="resource-info">
-                        <h4>Parent Night Presentation</h4>
-                        <p>Customizable PowerPoint for recruiting and parent information nights</p>
+                        <h4><i class="fas fa-futbol" style="color: var(--primary-red); margin-right: 10px;"></i>GaGa Ball Guide</h4>
+                        <p><strong>Rules and setup guide for GaGa Ball - the fast-paced, high-energy game perfect for Trail Life!</strong> Easy to learn, fun for all ages, requires minimal equipment. Great for meetings, camps, and events. Includes pit construction options, safety guidelines, and tournament formats.</p>
+                        <div style="margin-top: 12px; padding: 12px; background: var(--light-gray); border-radius: 6px;">
+                            <p style="margin: 0; font-size: 0.9rem; color: var(--dark-gray);"><strong>Topics covered:</strong> Game rules • Pit construction • Safety guidelines • Age variations • Tournament formats</p>
+                        </div>
                     </div>
                     <div class="resource-actions">
-                        <a href="#" class="resource-btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="downloads/Trail_Life_GaGa_Ball_Guide.docx" class="resource-btn">
+                            <i class="fas fa-download"></i> Download
+                        </a>
                     </div>
+                </div>
+                
+                <!-- Call to Action -->
+                <div style="text-align: center; margin-top: 50px; padding: 40px; background: var(--light-gray); border-radius: 10px;">
+                    <h4 style="color: var(--primary-red); margin-bottom: 15px;">
+                        <i class="fas fa-share-alt"></i> Share Your Program Ideas!
+                    </h4>
+                    <p style="color: var(--gray); margin-bottom: 20px; font-size: 1.05rem;">
+                        Have a great activity or project that worked well for your troop? Submit it so we can share with other Northern Tier troops!
+                    </p>
+                    <a href="contact.html" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Submit Your Idea
+                    </a>
                 </div>
             </div>
 
             <!-- Fundraising Section -->
-            <div style="margin-top: 80px;">
+            <div style="margin-top: 80px;" id="fundraising">
                 <h2 class="section-title"><i class="fas fa-hand-holding-usd"></i> Troop Fundraising Resources</h2>
                 <p style="text-align: center; color: var(--gray); margin-bottom: 40px; font-size: 1.1rem; max-width: 800px; margin-left: auto; margin-right: auto;">
                     Don't let limited funds prevent your troop from delivering on the promise of adventure! These proven fundraising solutions help troops across the Northern Tier fund their entire annual program with just one major fundraiser.
