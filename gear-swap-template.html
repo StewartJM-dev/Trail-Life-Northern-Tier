@@ -1,0 +1,242 @@
+<!-- ============================================ -->
+<!-- GEAR SWAP SECTION - AUTOMATED WITH GOOGLE -->
+<!-- ============================================ -->
+
+<!-- This section replaces the hardcoded gear listings -->
+<!-- Users submit through Google Form, listings appear automatically -->
+
+<div class="gear-swap">
+    <h2 class="section-title">Gear Swap</h2>
+    <p style="text-align: center; margin-bottom: 30px; color: var(--gray);">
+        Buy, sell, or trade outdoor gear between Northern Tier troops. 
+        <strong>All listings are managed automatically - no website updates needed!</strong>
+    </p>
+    
+    <!-- Submit Button -->
+    <div style="text-align: center; margin-bottom: 40px;">
+        <button onclick="openGearSwapForm()" class="btn btn-primary">
+            <i class="fas fa-plus-circle"></i> Submit a Listing
+        </button>
+        <p style="margin-top: 10px; font-size: 0.9rem; color: var(--gray);">
+            List items for sale, trade, or post WANTED requests
+        </p>
+    </div>
+    
+    <!-- Current Listings -->
+    <div id="gear-listings" style="margin-bottom: 30px;">
+        <p style="text-align: center; color: var(--gray); padding: 2rem;">
+            <i class="fas fa-spinner fa-spin"></i> Loading gear listings...
+        </p>
+    </div>
+    
+    <!-- View All Link -->
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="YOUR_GOOGLE_SHEET_LINK" target="_blank" style="color: var(--primary-red); font-weight: 600;">
+            <i class="fas fa-external-link-alt"></i> View Full Spreadsheet
+        </a>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- GEAR SWAP FORM MODAL -->
+<!-- ============================================ -->
+
+<div id="gear-swap-modal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); overflow: auto;">
+    <div style="background-color: white; margin: 5% auto; padding: 0; width: 90%; max-width: 700px; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
+        <!-- Modal Header -->
+        <div style="background: linear-gradient(135deg, var(--primary-red), var(--dark-brown)); padding: 25px; border-radius: 10px 10px 0 0; color: white;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="margin: 0; color: white;">
+                    <i class="fas fa-tags"></i> Submit Gear Listing
+                </h3>
+                <button onclick="closeGearSwapForm()" style="background: none; border: none; color: white; font-size: 2rem; cursor: pointer; line-height: 1;">&times;</button>
+            </div>
+            <p style="margin: 10px 0 0 0; font-size: 0.95rem; color: rgba(255,255,255,0.9);">
+                List items for sale, trade, or post what you're looking for
+            </p>
+        </div>
+        
+        <!-- Modal Body with Google Form -->
+        <div style="padding: 20px; max-height: 70vh; overflow-y: auto;">
+            <!-- PASTE YOUR GOOGLE FORM IFRAME HERE -->
+            <iframe 
+                src="YOUR_GOOGLE_FORM_EMBED_LINK" 
+                width="100%" 
+                height="1200" 
+                frameborder="0" 
+                marginheight="0" 
+                marginwidth="0">
+                Loading form...
+            </iframe>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- GEAR SWAP JAVASCRIPT -->
+<!-- ============================================ -->
+
+<script>
+// Modal Control Functions
+function openGearSwapForm() {
+    document.getElementById('gear-swap-modal').style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+function closeGearSwapForm() {
+    document.getElementById('gear-swap-modal').style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restore scrolling
+}
+
+// Close modal if user clicks outside of it
+window.onclick = function(event) {
+    const modal = document.getElementById('gear-swap-modal');
+    if (event.target === modal) {
+        closeGearSwapForm();
+    }
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeGearSwapForm();
+    }
+});
+
+// ============================================
+// Load Gear Listings from Google Sheet
+// ============================================
+
+async function loadGearListings() {
+    const container = document.getElementById('gear-listings');
+    
+    try {
+        // Your Google Sheet CSV export link
+        const csvUrl = 'YOUR_GOOGLE_SHEET_CSV_LINK';
+        
+        const response = await fetch(csvUrl);
+        const csvText = await response.text();
+        
+        // Parse CSV
+        const lines = csvText.split('\n');
+        const headers = lines[0].split(',');
+        
+        // Find column indices
+        const timestampIdx = 0;
+        const titleIdx = 1;
+        const priceIdx = 2;
+        const descriptionIdx = 3;
+        const conditionIdx = 4;
+        const troopIdx = 5;
+        const emailIdx = 6;
+        const phoneIdx = 7;
+        const locationIdx = 8;
+        const statusIdx = headers.length - 1; // Status column (if you added it)
+        
+        const listings = [];
+        
+        // Parse each row (skip header)
+        for (let i = 1; i < lines.length; i++) {
+            if (!lines[i].trim()) continue;
+            
+            const values = lines[i].split(',');
+            
+            // Check status (skip if Hidden or Sold)
+            const status = values[statusIdx]?.trim().toLowerCase();
+            if (status === 'hidden') continue;
+            
+            const listing = {
+                timestamp: values[timestampIdx],
+                title: values[titleIdx],
+                price: values[priceIdx],
+                description: values[descriptionIdx],
+                condition: values[conditionIdx],
+                troop: values[troopIdx],
+                email: values[emailIdx],
+                phone: values[phoneIdx],
+                location: values[locationIdx],
+                status: status,
+                isSold: status === 'sold'
+            };
+            
+            listings.push(listing);
+        }
+        
+        // Display listings (newest first)
+        if (listings.length === 0) {
+            container.innerHTML = '<p style="text-align: center; color: var(--gray); padding: 2rem;">No gear listings yet. Be the first to post!</p>';
+            return;
+        }
+        
+        container.innerHTML = listings.reverse().map(listing => `
+            <div class="gear-item" style="${listing.isSold ? 'opacity: 0.6; background: #f5f5f5;' : ''}">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
+                    <h4 style="margin: 0; color: var(--primary-red);">
+                        ${listing.title}
+                        ${listing.price ? ` - ${listing.price}` : ''}
+                    </h4>
+                    ${listing.isSold ? '<span style="background: #dc3545; color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.85rem; font-weight: 600;">SOLD</span>' : ''}
+                </div>
+                <p style="margin-bottom: 10px; line-height: 1.6;">${listing.description}</p>
+                ${listing.condition ? `<p style="margin-bottom: 5px; font-size: 0.9rem; color: var(--gray);"><strong>Condition:</strong> ${listing.condition}</p>` : ''}
+                <div class="gear-meta">
+                    <span><i class="fas fa-user"></i> ${listing.troop}</span>
+                    ${listing.location ? `<span><i class="fas fa-map-marker-alt"></i> ${listing.location}</span>` : ''}
+                    <span><i class="far fa-calendar"></i> ${formatDate(listing.timestamp)}</span>
+                    ${!listing.isSold ? `<span><i class="fas fa-envelope"></i> <a href="mailto:${listing.email}" style="color: var(--primary-red);">Contact Seller</a></span>` : ''}
+                </div>
+            </div>
+        `).join('');
+        
+    } catch (error) {
+        console.error('Error loading gear listings:', error);
+        container.innerHTML = '<p style="text-align: center; color: var(--gray); padding: 2rem;">Unable to load listings. Please try again later.</p>';
+    }
+}
+
+// Format timestamp for display
+function formatDate(timestamp) {
+    const date = new Date(timestamp);
+    const now = new Date();
+    const daysAgo = Math.floor((now - date) / (1000 * 60 * 60 * 24));
+    
+    if (daysAgo === 0) return 'Today';
+    if (daysAgo === 1) return 'Yesterday';
+    if (daysAgo < 7) return `${daysAgo} days ago`;
+    
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+// Load listings when page loads
+document.addEventListener('DOMContentLoaded', loadGearListings);
+</script>
+
+<!-- ============================================ -->
+<!-- USAGE INSTRUCTIONS -->
+<!-- ============================================ -->
+
+<!--
+SETUP STEPS:
+
+1. Create your Google Form following the guide
+2. Create your Google Sheet (responses)
+3. Publish the sheet to web and get CSV link
+4. Replace these placeholders:
+   - YOUR_GOOGLE_FORM_EMBED_LINK (line 37)
+   - YOUR_GOOGLE_SHEET_LINK (line 24)
+   - YOUR_GOOGLE_SHEET_CSV_LINK (line 72)
+
+5. Copy this entire section and replace the current Gear Swap section in resources.html
+
+WHAT THIS CODE DOES:
+
+✅ "Submit a Listing" button opens modal with Google Form
+✅ Automatically fetches listings from Google Sheet
+✅ Filters out "Hidden" status items
+✅ Shows "SOLD" badge for sold items
+✅ Displays newest listings first
+✅ Shows contact info for active listings
+✅ Mobile responsive
+✅ No GitHub updates needed!
+
+-->
