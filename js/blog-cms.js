@@ -3,7 +3,7 @@
 
 // Configuration
 const BLOG_CONFIG = {
-    https://docs.google.com/spreadsheets/d/e/2PACX-1vQqINnO1dKed1eqWwjd-1rpqfUEGdBWiOI4S4F_pYzHl2q6hbHYawPp5bvv23PR14ipwXNMwr510sGn/pub?output=csv
+    SHEET_URL: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQqINnO1dKed1eqWwjd-1rpqfUEGdBWiOI4S4F_pYzHl2q6hbHYawPp5bvv23PR14ipwXNMwr510sGn/pub?output=csv'
 };
 
 // Parse CSV data
