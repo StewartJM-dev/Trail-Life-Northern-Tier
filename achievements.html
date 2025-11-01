@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .achievement-card {
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(186,38,45,0.3);
+            text-align: center;
+        }
+        .achievement-card-red {
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+        }
+        .achievement-card-gold {
+            background: linear-gradient(135deg, var(--gold), var(--dark-brown));
+        }
+        .achievement-card i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        .achievement-card h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        .achievement-card p {
+            margin-bottom: 10px;
+        }
+        #loading { text-align: center; padding: 40px; font-size: 1.2rem; color: var(--gray); }
+        #error { background-color: #fee; border: 1px solid #fcc; color: #c33; padding: 20px; border-radius: 4px; margin: 20px 0; display: none; }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -39,7 +73,10 @@
     </section>
     <section class="content-section">
         <div class="container">
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;"><div style="background: linear-gradient(135deg, var(--primary-red), var(--dark-red)); color: white; padding: 40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(186,38,45,0.3); text-align: center;"><i class="fas fa-flag" style="font-size: 4rem; color: var(--gold); margin-bottom: 20px;"></i><h3 style="color: white; margin-bottom: 15px;">30-Foot Flagpole</h3><p style="margin-bottom: 10px;"><strong>Troop PA-1997</strong></p><p>Built a 30-foot flagpole as a troop construction project</p></div><div style="background: linear-gradient(135deg, var(--gold), var(--dark-brown)); color: white; padding: 40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(135,98,55,0.3); text-align: center;"><i class="fas fa-rocket" style="font-size: 4rem; color: white; margin-bottom: 20px;"></i><h3 style="color: white; margin-bottom: 15px;">Rocket Launch</h3><p style="margin-bottom: 10px;"><strong>Troop PA-1997</strong></p><p>Successfully launched model rockets with STEM learning</p></div><div style="background: linear-gradient(135deg, var(--primary-red), var(--dark-red)); color: white; padding: 40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(186,38,45,0.3); text-align: center;"><i class="fas fa-mountain" style="font-size: 4rem; color: var(--gold); margin-bottom: 20px;"></i><h3 style="color: white; margin-bottom: 15px;">Ricketts Glen</h3><p style="margin-bottom: 10px;"><strong>Troop PA-1997</strong></p><p>Conquered challenging trails at Ricketts Glen State Park</p></div><div style="background: linear-gradient(135deg, var(--gold), var(--dark-brown)); color: white; padding: 40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(135,98,55,0.3); text-align: center;"><i class="fas fa-church" style="font-size: 4rem; color: white; margin-bottom: 20px;"></i><h3 style="color: white; margin-bottom: 15px;">New Troop</h3><p style="margin-bottom: 10px;"><strong>Troop PA-1997</strong></p><p>Chartered July 2024 - from dream to reality!</p></div><div style="background: linear-gradient(135deg, var(--primary-red), var(--dark-red)); color: white; padding: 40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(186,38,45,0.3); text-align: center;"><i class="fas fa-hands-helping" style="font-size: 4rem; color: var(--gold); margin-bottom: 20px;"></i><h3 style="color: white; margin-bottom: 15px;">1,000 Service Hours</h3><p style="margin-bottom: 10px;"><strong>Troop PA-4031</strong></p><p>Outstanding community service commitment</p></div><div style="background: linear-gradient(135deg, var(--gold), var(--dark-brown)); color: white; padding: 40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(135,98,55,0.3); text-align: center;"><i class="fas fa-users" style="font-size: 4rem; color: white; margin-bottom: 20px;"></i><h3 style="color: white; margin-bottom: 15px;">Regional Growth</h3><p style="margin-bottom: 10px;"><strong>Northern Tier</strong></p><p>Growing number of troops chartered in 2025</p></div></div><p style="text-align: center; color: var(--gray); margin-top: 50px;">Submit your troop's achievements! <a href="contact.html" style="color: var(--primary-red); font-weight: 600;">Contact us</a></p>
+            <div id="loading"><i class="fas fa-spinner fa-spin"></i> Loading achievements...</div>
+            <div id="error"></div>
+            <div id="achievements-grid" class="achievements-grid"></div>
+            <p style="text-align: center; color: var(--gray); margin-top: 50px;">Submit your troop's achievements! <a href="contact.html" style="color: var(--primary-red); font-weight: 600;">Contact us</a></p>
         </div>
     </section>
     <footer class="footer">
@@ -84,5 +121,6 @@
         </div>
     </footer>
     <script src="js/main.js"></script>
+    <script src="js/achievements-cms.js"></script>
 </body>
 </html>
