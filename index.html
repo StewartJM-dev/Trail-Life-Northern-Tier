@@ -40,7 +40,6 @@
             </button>
             <ul class="nav-menu">
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="resources.html">Resources</a></li>
                 <li><a href="events.html">Events</a></li>
@@ -138,27 +137,14 @@
     <section class="achievement-highlights">
         <div class="container">
             <h2 class="section-title">Recent Achievements</h2>
-            <div class="achievements-carousel">
+            <div id="home-achievements" class="achievements-carousel">
+                <!-- Achievements will load from Google Sheets -->
                 <div class="achievement-card">
                     <div class="achievement-icon">
-                        <i class="fas fa-flag"></i>
+                        <i class="fas fa-spinner fa-spin"></i>
                     </div>
-                    <h3>Troop PA-1997</h3>
-                    <p>Built a 30-foot flagpole as a troop construction project</p>
-                </div>
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Troop PA-1997</h3>
-                    <p>Launched model rockets with hands-on STEM learning</p>
-                </div>
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-mountain"></i>
-                    </div>
-                    <h3>Troop PA-1997</h3>
-                    <p>Conquered trails at Ricketts Glen State Park</p>
+                    <h3>Loading...</h3>
+                    <p>Loading recent achievements...</p>
                 </div>
             </div>
             <div class="text-center">
@@ -228,5 +214,6 @@
     <!-- Scripts -->
     <script src="js/calendar.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/home-achievements.js"></script>
 </body>
 </html>
