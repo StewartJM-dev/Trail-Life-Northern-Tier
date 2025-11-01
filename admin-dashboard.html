@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Trail Life Northern Tier</title>
+    <title>Content Dashboard - Trail Life Northern Tier</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -14,7 +15,6 @@
             --dark-brown: #5d432b;
             --light-gray: #f4f4f4;
             --gray: #666666;
-            --dark-gray: #333333;
             --black: #1a1a1a;
         }
         
@@ -27,18 +27,17 @@
         body {
             font-family: 'Open Sans', sans-serif;
             background: var(--light-gray);
-            color: var(--black);
+            min-height: 100vh;
         }
         
-        /* Header */
-        .admin-header {
+        .navbar {
             background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
             color: white;
-            padding: 20px 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
         
-        .header-content {
+        .navbar-content {
             max-width: 1400px;
             margin: 0 auto;
             display: flex;
@@ -46,698 +45,421 @@
             align-items: center;
         }
         
-        .header-title h1 {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-        }
-        
-        .header-title p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        
-        .header-actions {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-        
-        .user-info {
-            text-align: right;
-            margin-right: 20px;
-        }
-        
-        .user-info strong {
-            display: block;
-            font-size: 1rem;
-        }
-        
-        .user-info small {
-            font-size: 0.85rem;
-            opacity: 0.8;
-        }
-        
-        .btn-logout {
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.2);
+        .navbar h1 {
             color: white;
-            border: 2px solid white;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            font-size: 1.8rem;
         }
         
-        .btn-logout:hover {
+        .navbar .logout-btn {
             background: white;
             color: var(--primary-red);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
         }
         
-        /* Main Content */
-        .admin-container {
+        .navbar .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,255,255,0.3);
+        }
+        
+        .container {
             max-width: 1400px;
-            margin: 30px auto;
-            padding: 0 30px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
         
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+        .welcome-card {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             margin-bottom: 40px;
         }
         
-        .dashboard-card {
+        .welcome-card h2 {
+            color: var(--primary-red);
+            margin-bottom: 15px;
+        }
+        
+        .welcome-card p {
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .sheets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .sheet-card {
             background: white;
             border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-top: 4px solid var(--gold);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s;
         }
         
-        .dashboard-card:hover {
+        .sheet-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(186, 38, 45, 0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
         
-        .card-icon {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 20px;
+        .sheet-card-header {
+            padding: 30px;
+            text-align: center;
         }
         
-        .card-title {
-            font-size: 1.4rem;
-            color: var(--primary-red);
+        .sheet-card-blog {
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+        }
+        
+        .sheet-card-spotlight {
+            background: linear-gradient(135deg, var(--gold), var(--dark-brown));
+        }
+        
+        .sheet-card-achievements {
+            background: linear-gradient(135deg, #4fa7c5, #005c85);
+        }
+        
+        .sheet-card-header i {
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .sheet-card-header h3 {
+            color: white;
+            font-size: 1.8rem;
             margin-bottom: 10px;
         }
         
-        .card-description {
-            color: var(--gray);
+        .sheet-card-header p {
+            color: rgba(255,255,255,0.9);
             font-size: 0.95rem;
-            line-height: 1.6;
         }
         
-        .card-count {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid var(--light-gray);
-            color: var(--dark-gray);
-            font-weight: 600;
+        .sheet-card-body {
+            padding: 30px;
         }
         
-        /* Content Editor Section */
-        .content-editor {
-            background: white;
-            border-radius: 10px;
-            padding: 40px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            display: none;
+        .sheet-info {
+            margin-bottom: 20px;
         }
         
-        .content-editor.active {
-            display: block;
+        .sheet-info h4 {
+            color: var(--black);
+            font-size: 1rem;
+            margin-bottom: 10px;
         }
         
-        .editor-header {
+        .sheet-columns {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid var(--light-gray);
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
         }
         
-        .editor-header h2 {
-            color: var(--primary-red);
-            font-size: 1.8rem;
-        }
-        
-        .btn-back {
-            padding: 10px 20px;
-            background: var(--gray);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
+        .column-tag {
+            background: var(--light-gray);
+            color: var(--gray);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
             font-weight: 600;
-            transition: all 0.3s ease;
         }
         
-        .btn-back:hover {
-            background: var(--dark-gray);
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 10px;
         }
         
-        .form-group {
+        .btn-primary {
+            background: var(--primary-red);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--dark-red);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: var(--light-gray);
+            color: var(--gray);
+        }
+        
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+        
+        .quick-links {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .quick-links h2 {
+            color: var(--primary-red);
             margin-bottom: 25px;
         }
         
-        .form-group label {
-            display: block;
-            color: var(--black);
-            font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 1rem;
-        }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid var(--light-gray);
-            border-radius: 6px;
-            font-size: 1rem;
-            font-family: 'Open Sans', sans-serif;
-            transition: all 0.3s ease;
-        }
-        
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 0 4px rgba(135, 98, 55, 0.1);
-        }
-        
-        .form-row {
+        .quick-links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
         }
         
-        .btn-submit {
-            padding: 15px 40px;
-            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
+        .quick-link {
+            display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            padding: 15px;
+            background: var(--light-gray);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--black);
+            transition: all 0.3s;
         }
         
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(186, 38, 45, 0.3);
+        .quick-link:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateX(5px);
         }
         
-        .success-message {
+        .quick-link i {
+            font-size: 1.5rem;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .status-configured {
             background: #d4edda;
             color: #155724;
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            display: none;
-            border-left: 4px solid #28a745;
         }
         
-        .success-message.show {
-            display: block;
-        }
-        
-        /* Instructions Panel */
-        .instructions {
+        .status-pending {
             background: #fff3cd;
-            border-left: 4px solid var(--gold);
-            padding: 20px;
-            border-radius: 6px;
-            margin-bottom: 30px;
-        }
-        
-        .instructions h4 {
             color: #856404;
-            margin-bottom: 10px;
-        }
-        
-        .instructions p {
-            color: #856404;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .header-actions {
-                width: 100%;
-                justify-content: space-between;
-            }
-            
-            .dashboard-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="admin-header">
-        <div class="header-content">
-            <div class="header-title">
-                <h1><i class="fas fa-shield-alt"></i> Admin Dashboard</h1>
-                <p>Trail Life Northern Tier Content Management</p>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div>
+                <h1><i class="fas fa-table"></i> Content Management Dashboard</h1>
+                <p style="margin-top: 5px; font-size: 0.95rem; opacity: 0.9;">Trail Life USA Northern Tier</p>
             </div>
-            <div class="header-actions">
-                <div class="user-info">
-                    <strong id="username-display">Admin</strong>
-                    <small>Logged in</small>
-                </div>
-                <button class="btn-logout" onclick="logout()">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </button>
-            </div>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Back to Website
+            </button>
         </div>
-    </header>
-    
-    <!-- Main Container -->
-    <div class="admin-container">
-        <!-- Dashboard Cards -->
-        <div id="dashboard-view" class="dashboard-grid">
-            <div class="dashboard-card" onclick="showEditor('blog')">
-                <div class="card-icon">
+    </nav>
+
+    <div class="container">
+        <div class="welcome-card">
+            <h2><i class="fas fa-rocket"></i> Welcome to Your Content Dashboard!</h2>
+            <p>
+                This dashboard provides quick access to all your Google Sheets for managing blog posts, 
+                troop spotlights, and achievements. Click the buttons below to edit your content directly 
+                in Google Sheets - changes will appear on your website automatically within 30 seconds!
+            </p>
+        </div>
+
+        <h2 style="color: var(--primary-red); margin-bottom: 25px; font-size: 1.8rem;">
+            <i class="fas fa-database"></i> Your Google Sheets
+        </h2>
+
+        <div class="sheets-grid">
+            <!-- Blog Sheet Card -->
+            <div class="sheet-card">
+                <div class="sheet-card-header sheet-card-blog">
                     <i class="fas fa-blog"></i>
+                    <h3>Blog Posts</h3>
+                    <p>Regional news, updates, and stories</p>
                 </div>
-                <h3 class="card-title">Blog Posts</h3>
-                <p class="card-description">Create and manage blog posts for the Northern Tier community</p>
-                <div class="card-count">
-                    <i class="fas fa-file-alt"></i> 6 Posts
+                <div class="sheet-card-body">
+                    <span class="status-badge status-configured">✓ Configured</span>
+                    <div class="sheet-info">
+                        <h4>Required Columns:</h4>
+                        <div class="sheet-columns">
+                            <span class="column-tag">title</span>
+                            <span class="column-tag">author</span>
+                            <span class="column-tag">date</span>
+                            <span class="column-tag">excerpt</span>
+                            <span class="column-tag">content</span>
+                            <span class="column-tag">tags</span>
+                            <span class="column-tag">image</span>
+                            <span class="column-tag">published</span>
+                        </div>
+                    </div>
+                    <a href="#" onclick="openBlogSheet(); return false;" class="btn btn-primary">
+                        <i class="fas fa-edit"></i> Edit Blog Posts
+                    </a>
+                    <a href="blog.html" class="btn btn-secondary">
+                        <i class="fas fa-eye"></i> View Live Page
+                    </a>
                 </div>
             </div>
-            
-            <div class="dashboard-card" onclick="showEditor('spotlight')">
-                <div class="card-icon">
+
+            <!-- Spotlight Sheet Card -->
+            <div class="sheet-card">
+                <div class="sheet-card-header sheet-card-spotlight">
                     <i class="fas fa-star"></i>
+                    <h3>Troop Spotlight</h3>
+                    <p>Monthly featured troop</p>
                 </div>
-                <h3 class="card-title">Troop Spotlight</h3>
-                <p class="card-description">Feature outstanding troops and their achievements</p>
-                <div class="card-count">
-                    <i class="fas fa-trophy"></i> Monthly Feature
+                <div class="sheet-card-body">
+                    <span class="status-badge status-pending">⚠ Setup Required</span>
+                    <div class="sheet-info">
+                        <h4>Required Columns:</h4>
+                        <div class="sheet-columns">
+                            <span class="column-tag">troop_number</span>
+                            <span class="column-tag">location</span>
+                            <span class="column-tag">date</span>
+                            <span class="column-tag">description</span>
+                            <span class="column-tag">highlights</span>
+                            <span class="column-tag">quote</span>
+                            <span class="column-tag">website</span>
+                            <span class="column-tag">published</span>
+                        </div>
+                    </div>
+                    <a href="#" onclick="openSpotlightSheet(); return false;" class="btn btn-primary">
+                        <i class="fas fa-edit"></i> Edit Spotlight
+                    </a>
+                    <a href="spotlight.html" class="btn btn-secondary">
+                        <i class="fas fa-eye"></i> View Live Page
+                    </a>
                 </div>
             </div>
-            
-            <div class="dashboard-card" onclick="showEditor('achievements')">
-                <div class="card-icon">
-                    <i class="fas fa-medal"></i>
+
+            <!-- Achievements Sheet Card -->
+            <div class="sheet-card">
+                <div class="sheet-card-header sheet-card-achievements">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Achievements</h3>
+                    <p>Troop milestones and successes</p>
                 </div>
-                <h3 class="card-title">Achievements</h3>
-                <p class="card-description">Showcase troop accomplishments and milestones</p>
-                <div class="card-count">
-                    <i class="fas fa-award"></i> Recent Updates
-                </div>
-            </div>
-            
-            <div class="dashboard-card" onclick="showEditor('events')">
-                <div class="card-icon">
-                    <i class="fas fa-calendar-alt"></i>
-                </div>
-                <h3 class="card-title">Events</h3>
-                <p class="card-description">Manage regional events and activities</p>
-                <div class="card-count">
-                    <i class="fas fa-calendar-check"></i> Auto-Synced from Trail Life Connect
+                <div class="sheet-card-body">
+                    <span class="status-badge status-pending">⚠ Setup Required</span>
+                    <div class="sheet-info">
+                        <h4>Required Columns:</h4>
+                        <div class="sheet-columns">
+                            <span class="column-tag">title</span>
+                            <span class="column-tag">troop</span>
+                            <span class="column-tag">description</span>
+                            <span class="column-tag">icon</span>
+                            <span class="column-tag">date</span>
+                            <span class="column-tag">published</span>
+                        </div>
+                    </div>
+                    <a href="#" onclick="openAchievementsSheet(); return false;" class="btn btn-primary">
+                        <i class="fas fa-edit"></i> Edit Achievements
+                    </a>
+                    <a href="achievements.html" class="btn btn-secondary">
+                        <i class="fas fa-eye"></i> View Live Page
+                    </a>
                 </div>
             </div>
         </div>
-        
-        <!-- Blog Editor -->
-        <div id="blog-editor" class="content-editor">
-            <div class="editor-header">
-                <h2><i class="fas fa-blog"></i> Add New Blog Post</h2>
-                <button class="btn-back" onclick="hideEditor()">
-                    <i class="fas fa-arrow-left"></i> Back to Dashboard
-                </button>
-            </div>
-            
-            <div class="instructions">
-                <h4><i class="fas fa-info-circle"></i> How to Add a Blog Post</h4>
-                <p>Fill out the form below to create a new blog post. After clicking "Generate HTML Code", copy the code and add it to your blog.html file in GitHub, just below the "<!-- EDITOR NOTE: Add new blog posts here -->" comment.</p>
-            </div>
-            
-            <div id="blog-success" class="success-message">
-                <i class="fas fa-check-circle"></i> Blog post HTML generated! Scroll down to copy the code.
-            </div>
-            
-            <form id="blog-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="blog-date">Date</label>
-                        <input type="date" id="blog-date" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="blog-author">Author</label>
-                        <input type="text" id="blog-author" placeholder="John Smith" required>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="blog-title">Post Title</label>
-                    <input type="text" id="blog-title" placeholder="Summer Camp 2025 Registration Opens" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="blog-content">Content</label>
-                    <textarea id="blog-content" placeholder="Write your blog post content here..." required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="blog-tags">Tags (comma-separated)</label>
-                    <input type="text" id="blog-tags" placeholder="events, camping, summer">
-                </div>
-                
-                <button type="submit" class="btn-submit">
-                    <i class="fas fa-code"></i> Generate HTML Code
-                </button>
-            </form>
-            
-            <div id="blog-output" style="display: none; margin-top: 30px;">
-                <h3 style="color: var(--primary-red); margin-bottom: 15px;">Copy This Code:</h3>
-                <textarea id="blog-code" readonly style="width: 100%; min-height: 300px; padding: 15px; background: #f8f9fa; border: 2px solid var(--gold); border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.9rem;"></textarea>
-                <button onclick="copyCode('blog-code')" style="margin-top: 15px;" class="btn-submit">
-                    <i class="fas fa-copy"></i> Copy to Clipboard
-                </button>
-            </div>
-        </div>
-        
-        <!-- Spotlight Editor -->
-        <div id="spotlight-editor" class="content-editor">
-            <div class="editor-header">
-                <h2><i class="fas fa-star"></i> Create Troop Spotlight</h2>
-                <button class="btn-back" onclick="hideEditor()">
-                    <i class="fas fa-arrow-left"></i> Back to Dashboard
-                </button>
-            </div>
-            
-            <div class="instructions">
-                <h4><i class="fas fa-info-circle"></i> How to Add a Spotlight</h4>
-                <p>Create a spotlight feature for a troop. After generating the HTML code, replace the current spotlight content in spotlight.html with the new code.</p>
-            </div>
-            
-            <div id="spotlight-success" class="success-message">
-                <i class="fas fa-check-circle"></i> Spotlight HTML generated! Scroll down to copy the code.
-            </div>
-            
-            <form id="spotlight-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="spotlight-troop">Troop Number</label>
-                        <input type="text" id="spotlight-troop" placeholder="PA-1997" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="spotlight-location">Location</label>
-                        <input type="text" id="spotlight-location" placeholder="Sweet Valley, PA" required>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="spotlight-description">Troop Description</label>
-                    <textarea id="spotlight-description" placeholder="Tell us about this troop..." required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="spotlight-achievement">Recent Achievement</label>
-                    <textarea id="spotlight-achievement" placeholder="What has this troop accomplished recently?" required></textarea>
-                </div>
-                
-                <button type="submit" class="btn-submit">
-                    <i class="fas fa-code"></i> Generate HTML Code
-                </button>
-            </form>
-            
-            <div id="spotlight-output" style="display: none; margin-top: 30px;">
-                <h3 style="color: var(--primary-red); margin-bottom: 15px;">Copy This Code:</h3>
-                <textarea id="spotlight-code" readonly style="width: 100%; min-height: 300px; padding: 15px; background: #f8f9fa; border: 2px solid var(--gold); border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.9rem;"></textarea>
-                <button onclick="copyCode('spotlight-code')" style="margin-top: 15px;" class="btn-submit">
-                    <i class="fas fa-copy"></i> Copy to Clipboard
-                </button>
-            </div>
-        </div>
-        
-        <!-- Achievement Editor -->
-        <div id="achievements-editor" class="content-editor">
-            <div class="editor-header">
-                <h2><i class="fas fa-medal"></i> Add Achievement</h2>
-                <button class="btn-back" onclick="hideEditor()">
-                    <i class="fas fa-arrow-left"></i> Back to Dashboard
-                </button>
-            </div>
-            
-            <div class="instructions">
-                <h4><i class="fas fa-info-circle"></i> How to Add an Achievement</h4>
-                <p>Document a troop achievement. After generating the code, add it to achievements.html below the "<!-- EDITOR NOTE: Add new achievements here -->" comment.</p>
-            </div>
-            
-            <div id="achievement-success" class="success-message">
-                <i class="fas fa-check-circle"></i> Achievement HTML generated! Scroll down to copy the code.
-            </div>
-            
-            <form id="achievement-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="achievement-troop">Troop Number</label>
-                        <input type="text" id="achievement-troop" placeholder="PA-1997" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="achievement-date">Date</label>
-                        <input type="date" id="achievement-date" required>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="achievement-title">Achievement Title</label>
-                    <input type="text" id="achievement-title" placeholder="Completed First Campout" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="achievement-description">Description</label>
-                    <textarea id="achievement-description" placeholder="Describe the achievement..." required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="achievement-icon">Icon (Font Awesome class)</label>
-                    <input type="text" id="achievement-icon" placeholder="fa-campground" value="fa-award">
-                    <small style="color: var(--gray); font-size: 0.85rem; margin-top: 5px; display: block;">
-                        Browse icons at <a href="https://fontawesome.com/icons" target="_blank" style="color: var(--primary-red);">fontawesome.com/icons</a>
-                    </small>
-                </div>
-                
-                <button type="submit" class="btn-submit">
-                    <i class="fas fa-code"></i> Generate HTML Code
-                </button>
-            </form>
-            
-            <div id="achievement-output" style="display: none; margin-top: 30px;">
-                <h3 style="color: var(--primary-red); margin-bottom: 15px;">Copy This Code:</h3>
-                <textarea id="achievement-code" readonly style="width: 100%; min-height: 300px; padding: 15px; background: #f8f9fa; border: 2px solid var(--gold); border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.9rem;"></textarea>
-                <button onclick="copyCode('achievement-code')" style="margin-top: 15px;" class="btn-submit">
-                    <i class="fas fa-copy"></i> Copy to Clipboard
-                </button>
-            </div>
-        </div>
-        
-        <!-- Events Editor -->
-        <div id="events-editor" class="content-editor">
-            <div class="editor-header">
-                <h2><i class="fas fa-calendar-alt"></i> Events Management</h2>
-                <button class="btn-back" onclick="hideEditor()">
-                    <i class="fas fa-arrow-left"></i> Back to Dashboard
-                </button>
-            </div>
-            
-            <div class="instructions">
-                <h4><i class="fas fa-info-circle"></i> Events are Auto-Synced!</h4>
-                <p>Your calendar events are automatically synchronized from Trail Life Connect. To add or edit events, log into <a href="https://www.traillifeconnect.com" target="_blank" style="color: var(--primary-red); font-weight: 600;">Trail Life Connect</a> and manage your calendar there. Changes will appear on your website automatically within a few minutes.</p>
-            </div>
-            
-            <div style="background: white; padding: 30px; border-radius: 8px; border-left: 4px solid var(--gold); margin-top: 30px;">
-                <h3 style="color: var(--primary-red); margin-bottom: 15px;"><i class="fas fa-link"></i> Your Calendar Feeds</h3>
-                <div style="margin-bottom: 20px;">
-                    <strong style="color: var(--dark-gray);">Northern Tier Area Events:</strong>
-                    <p style="margin: 5px 0 0 0; color: var(--gray); font-size: 0.9rem; word-break: break-all;">
-                        https://www.traillifeconnect.com/icalendar/tkekboggp6qa/aajala0vlv0b/area
-                    </p>
-                </div>
-                <div>
-                    <strong style="color: var(--dark-gray);">Troop Events:</strong>
-                    <p style="margin: 5px 0 0 0; color: var(--gray); font-size: 0.9rem; word-break: break-all;">
-                        https://www.traillifeconnect.com/icalendar/tkekboggp6qa/aajala0vlv0b/troop
-                    </p>
-                </div>
+
+        <div class="quick-links">
+            <h2><i class="fas fa-link"></i> Quick Links</h2>
+            <div class="quick-links-grid">
+                <a href="index.html" class="quick-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home Page</span>
+                </a>
+                <a href="about.html" class="quick-link">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About</span>
+                </a>
+                <a href="resources.html" class="quick-link">
+                    <i class="fas fa-book"></i>
+                    <span>Resources</span>
+                </a>
+                <a href="events.html" class="quick-link">
+                    <i class="fas fa-calendar"></i>
+                    <span>Events</span>
+                </a>
+                <a href="troops.html" class="quick-link">
+                    <i class="fas fa-users"></i>
+                    <span>Troops</span>
+                </a>
+                <a href="leaders.html" class="quick-link">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Leaders</span>
+                </a>
             </div>
         </div>
     </div>
-    
+
     <script>
-        // Check if user is logged in
-        if (sessionStorage.getItem('adminLoggedIn') !== 'true') {
-            window.location.href = 'admin-login.html';
+        // Configuration - UPDATE THESE WITH YOUR GOOGLE SHEET URLS
+        const SHEET_URLS = {
+            blog: 'https://docs.google.com/spreadsheets/d/1SsAKY7EbI11X8Um619-q9vruoi0446lXQN_rRNDMo0I/edit?gid=0#gid=0',
+            spotlight: 'https://docs.google.com/spreadsheets/d/1CLfY8t675Oa7rHt5ZkghmUZ2Z_XCJdTj0P4ykD-MXmc/edit?gid=0#gid=0',
+            achievements: 'https://docs.google.com/spreadsheets/d/1ONwI6VTBUdkuHydsgTOr0X9Az4yPQz1rTUOoKxHhK_g/edit?gid=0#gid=0'
+        };
+
+        function openBlogSheet() {
+            if (SHEET_URLS.blog === 'YOUR_BLOG_GOOGLE_SHEET_URL_HERE') {
+                alert('Blog Google Sheet URL not configured yet!\n\nEdit this file (admin-dashboard.html) and add your Blog Google Sheet URL in the SHEET_URLS.blog variable.');
+                return;
+            }
+            window.open(SHEET_URLS.blog, '_blank');
         }
-        
-        // Display username
-        const username = sessionStorage.getItem('adminUsername');
-        if (username) {
-            document.getElementById('username-display').textContent = username.charAt(0).toUpperCase() + username.slice(1);
+
+        function openSpotlightSheet() {
+            if (SHEET_URLS.spotlight === 'YOUR_SPOTLIGHT_GOOGLE_SHEET_URL_HERE') {
+                alert('Spotlight Google Sheet URL not configured yet!\n\nTo set up:\n1. Create your Spotlight Google Sheet\n2. Edit this file (admin-dashboard.html)\n3. Add your Sheet URL to SHEET_URLS.spotlight');
+                return;
+            }
+            window.open(SHEET_URLS.spotlight, '_blank');
         }
-        
-        // Check session validity
-        const loginTime = sessionStorage.getItem('loginTime');
-        const now = new Date().getTime();
-        const hourInMs = 4 * 60 * 60 * 1000; // 4 hours
-        
-        if (now - loginTime > hourInMs) {
-            alert('Your session has expired. Please log in again.');
-            logout();
+
+        function openAchievementsSheet() {
+            if (SHEET_URLS.achievements === 'YOUR_ACHIEVEMENTS_GOOGLE_SHEET_URL_HERE') {
+                alert('Achievements Google Sheet URL not configured yet!\n\nTo set up:\n1. Create your Achievements Google Sheet\n2. Edit this file (admin-dashboard.html)\n3. Add your Sheet URL to SHEET_URLS.achievements');
+                return;
+            }
+            window.open(SHEET_URLS.achievements, '_blank');
         }
-        
-        // Logout function
+
         function logout() {
-            sessionStorage.clear();
-            window.location.href = 'admin-login.html';
+            window.location.href = 'index.html';
         }
-        
-        // Show/Hide Editors
-        function showEditor(type) {
-            document.getElementById('dashboard-view').style.display = 'none';
-            document.getElementById(`${type}-editor`).classList.add('active');
+
+        // Check if logged in (optional - remove if you don't want login requirement)
+        if (!sessionStorage.getItem('adminLoggedIn')) {
+            // If you want to require login, uncomment this:
+            // window.location.href = 'admin-login.html';
         }
-        
-        function hideEditor() {
-            document.querySelectorAll('.content-editor').forEach(editor => {
-                editor.classList.remove('active');
-            });
-            document.getElementById('dashboard-view').style.display = 'grid';
-        }
-        
-        // Copy code function
-        function copyCode(elementId) {
-            const codeElement = document.getElementById(elementId);
-            codeElement.select();
-            document.execCommand('copy');
-            alert('Code copied to clipboard!');
-        }
-        
-        // Format date for display
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            return date.toLocaleDateString('en-US', options);
-        }
-        
-        // Blog Form Handler
-        document.getElementById('blog-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const date = document.getElementById('blog-date').value;
-            const author = document.getElementById('blog-author').value;
-            const title = document.getElementById('blog-title').value;
-            const content = document.getElementById('blog-content').value;
-            const tags = document.getElementById('blog-tags').value;
-            
-            const formattedDate = formatDate(date);
-            const tagsArray = tags.split(',').map(tag => tag.trim()).filter(tag => tag);
-            const tagsHTML = tagsArray.map(tag => `<span class="post-tag">${tag}</span>`).join('\n                        ');
-            
-            const htmlCode = `<!-- EDITOR NOTE: Add new blog posts here -->
-                <article class="blog-card">
-                    <div class="post-date">
-                        <span class="date-day">${new Date(date).getDate()}</span>
-                        <span class="date-month">${new Date(date).toLocaleString('en-US', { month: 'short' })}</span>
-                    </div>
-                    <div class="post-content">
-                        <div class="post-meta">
-                            <span><i class="fas fa-user"></i> ${author}</span>
-                            <span><i class="fas fa-calendar"></i> ${formattedDate}</span>
-                        </div>
-                        <h3 class="post-title">${title}</h3>
-                        <p class="post-excerpt">${content}</p>
-                        <div class="post-tags">
-                            ${tagsHTML}
-                        </div>
-                    </div>
-                </article>`;
-            
-            document.getElementById('blog-code').value = htmlCode;
-            document.getElementById('blog-output').style.display = 'block';
-            document.getElementById('blog-success').classList.add('show');
-            
-            // Scroll to output
-            document.getElementById('blog-output').scrollIntoView({ behavior: 'smooth' });
-        });
-        
-        // Spotlight Form Handler
-        document.getElementById('spotlight-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const troop = document.getElementById('spotlight-troop').value;
-            const location = document.getElementById('spotlight-location').value;
-            const description = document.getElementById('spotlight-description').value;
-            const achievement = document.getElementById('spotlight-achievement').value;
-            
-            const htmlCode = `<div class="spotlight-card">
-                    <div class="spotlight-header">
-                        <h2>Troop ${troop}</h2>
-                        <p><i class="fas fa-map-marker-alt"></i> ${location}</p>
-                    </div>
-                    <div class="spotlight-content">
-                        <h3>About This Troop</h3>
-                        <p>${description}</p>
-                        
-                        <h3 style="margin-top: 30px;">Recent Achievement</h3>
-                        <p>${achievement}</p>
-                    </div>
-                </div>`;
-            
-            document.getElementById('spotlight-code').value = htmlCode;
-            document.getElementById('spotlight-output').style.display = 'block';
-            document.getElementById('spotlight-success').classList.add('show');
-            
-            document.getElementById('spotlight-output').scrollIntoView({ behavior: 'smooth' });
-        });
-        
-        // Achievement Form Handler
-        document.getElementById('achievement-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const troop = document.getElementById('achievement-troop').value;
-            const date = document.getElementById('achievement-date').value;
-            const title = document.getElementById('achievement-title').value;
-            const description = document.getElementById('achievement-description').value;
-            const icon = document.getElementById('achievement-icon').value;
-            
-            const formattedDate = formatDate(date);
-            
-            const htmlCode = `<!-- EDITOR NOTE: Add new achievements here -->
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas ${icon}"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <h3>${title}</h3>
-                        <p class="achievement-troop">Troop ${troop}</p>
-                        <p class="achievement-description">${description}</p>
-                        <p class="achievement-date"><i class="fas fa-calendar"></i> ${formattedDate}</p>
-                    </div>
-                </div>`;
-            
-            document.getElementById('achievement-code').value = htmlCode;
-            document.getElementById('achievement-output').style.display = 'block';
-            document.getElementById('achievement-success').classList.add('show');
-            
-            document.getElementById('achievement-output').scrollIntoView({ behavior: 'smooth' });
-        });
     </script>
 </body>
 </html>
