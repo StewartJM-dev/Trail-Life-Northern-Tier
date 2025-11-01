@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,89 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .gallery-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .gallery-intro p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .album-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .album-embed {
+            width: 100%;
+            min-height: 600px;
+            border: none;
+            border-radius: 8px;
+        }
+        
+        .setup-instructions {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .setup-instructions h3 {
+            color: var(--primary-red);
+            margin-bottom: 20px;
+        }
+        
+        .setup-instructions ol {
+            color: var(--gray);
+            line-height: 2;
+            margin-left: 20px;
+        }
+        
+        .setup-instructions ol li {
+            margin-bottom: 10px;
+        }
+        
+        .setup-instructions strong {
+            color: var(--black);
+        }
+        
+        .setup-note {
+            background: var(--light-gray);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .cta-box h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .cta-box p {
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 25px;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -33,15 +117,76 @@
             </ul>
         </div>
     </nav>
+    
     <section class="page-header">
         <h1>Photo Gallery</h1>
         <p>Capturing adventures from across the region</p>
     </section>
+    
     <section class="content-section">
         <div class="container">
-<p style="text-align: center; color: var(--gray); font-size: 1.1rem; padding: 40px 0;">Photo gallery coming soon! Upload your troop's photos to share adventures.</p><div style="text-align: center;"><a href="contact.html" class="btn btn-primary">Submit Photos</a></div>
+            <div class="gallery-intro">
+                <p>
+                    Browse photos from our troops' adventures, service projects, camping trips, 
+                    and special events. Click any photo to view it full size!
+                </p>
+            </div>
+            
+            <!-- SETUP INSTRUCTIONS (Remove this section after you set up your album) -->
+            <div class="setup-instructions">
+                <h3><i class="fas fa-info-circle"></i> Setup Instructions</h3>
+                <p><strong>Follow these steps to set up your photo gallery:</strong></p>
+                <ol>
+                    <li>Go to <strong>Google Photos</strong> (photos.google.com)</li>
+                    <li>Create a new album (click + New Album)</li>
+                    <li>Name it something like "Trail Life Northern Tier Gallery"</li>
+                    <li>Add photos to the album</li>
+                    <li>Click the <strong>3 dots menu</strong> → <strong>Share</strong></li>
+                    <li>Toggle on <strong>"Share link"</strong></li>
+                    <li>Copy the sharing link</li>
+                    <li>Open this HTML file in a text editor</li>
+                    <li>Find the line with <code>src="YOUR_GOOGLE_PHOTOS_ALBUM_URL_HERE"</code></li>
+                    <li>Replace <code>YOUR_GOOGLE_PHOTOS_ALBUM_URL_HERE</code> with your album link</li>
+                    <li>Save and upload to GitHub</li>
+                    <li><strong>Delete this yellow instruction box from the HTML!</strong></li>
+                </ol>
+                
+                <div class="setup-note">
+                    <strong>💡 Pro Tip:</strong> The Google Photos album link should look like:<br>
+                    <code>https://photos.app.goo.gl/abc123xyz</code> or<br>
+                    <code>https://photos.google.com/share/LONG-ID-HERE</code>
+                </div>
+            </div>
+            <!-- END SETUP INSTRUCTIONS -->
+            
+            <!-- GOOGLE PHOTOS ALBUM EMBED -->
+            <div class="album-container">
+                <iframe 
+                    class="album-embed"
+                    src="YOUR_GOOGLE_PHOTOS_ALBUM_URL_HERE"
+                    frameborder="0" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            
+            <!-- Alternative: If iframe doesn't work, use this button approach -->
+            <!-- Uncomment this and comment out the iframe above if needed -->
+            <!--
+            <div class="cta-box">
+                <h3><i class="fas fa-images"></i> View Our Photo Gallery</h3>
+                <p>Check out photos from our troops' adventures, camping trips, service projects, and more!</p>
+                <a href="YOUR_GOOGLE_PHOTOS_ALBUM_URL_HERE" target="_blank" class="btn btn-secondary" style="background: white; color: var(--primary-red);">
+                    <i class="fas fa-external-link-alt"></i> Open Photo Album
+                </a>
+            </div>
+            -->
+            
+            <p style="text-align: center; color: var(--gray); margin-top: 40px;">
+                Have photos to share? <a href="contact.html" style="color: var(--primary-red); font-weight: 600;">Contact us!</a>
+            </p>
         </div>
     </section>
+    
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -83,6 +228,7 @@
             </div>
         </div>
     </footer>
+    
     <script src="js/main.js"></script>
 </body>
 </html>
