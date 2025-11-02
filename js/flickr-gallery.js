@@ -1,24 +1,18 @@
+
 // Trail Life Northern Tier - Flickr Gallery Auto-Loader
-// Automatically displays all public photos from Flickr account
+// Automatically displays all public photos from Flickr account using public feed
 
 const FLICKR_CONFIG = {
-    USER_ID: '203769753@N07', // Your Flickr user ID
-    PER_PAGE: 100, // Number of photos to load
-    API_KEY: 'e36784df8a03fbd9c9e9b94b799a8d62' // Public API key for demo purposes
+    USER_ID: '203769753@N07' // Your Flickr user ID
 };
 
 let allPhotos = [];
 let currentPhotoIndex = 0;
 
-// Build Flickr photo URL
-function getPhotoURL(photo, size = 'z') {
-    // Size options: s=small, m=medium, z=medium 640, b=large, h=large 1600
-    return `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_${size}.jpg`;
-}
-
 // Create photo HTML
 function createPhotoHTML(photo, index) {
-    const thumbURL = getPhotoURL(photo, 'z'); // Medium 640px for display
+    const thumbURL = photo.media.m; // Medium size
+    const largeURL = photo.media.m.replace('_m.jpg', '_b.jpg'); // Large size
     const title = photo.title || 'Untitled';
     
     return `
@@ -33,7 +27,7 @@ function createPhotoHTML(photo, index) {
 function openLightbox(index) {
     currentPhotoIndex = index;
     const photo = allPhotos[index];
-    const largeURL = getPhotoURL(photo, 'b'); // Large size for lightbox
+    const largeURL = photo.media.m.replace('_m.jpg', '_b.jpg'); // Large size
     
     document.getElementById('lightbox-img').src = largeURL;
     document.getElementById('lightbox').classList.add('active');
@@ -75,28 +69,31 @@ document.getElementById('lightbox').addEventListener('click', (e) => {
     }
 });
 
-// Fetch photos from Flickr
+// Fetch photos from Flickr using public feed
 async function loadFlickrPhotos() {
     const loadingEl = document.getElementById('loading');
     const galleryGrid = document.getElementById('gallery-grid');
 
     try {
-        // Use Flickr's public API to get photos
-        const apiURL = `https://www.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=${FLICKR_CONFIG.API_KEY}&user_id=${FLICKR_CONFIG.USER_ID}&per_page=${FLICKR_CONFIG.PER_PAGE}&format=json&nojsoncallback=1`;
+        // Use Flickr's public feed (no API key required!)
+        const feedURL = `https://www.flickr.com/services/feeds/photos_public.gne?id=${FLICKR_CONFIG.USER_ID}&format=json`;
         
-        const response = await fetch(apiURL);
+        const response = await fetch(feedURL);
         
         if (!response.ok) {
             throw new Error('Failed to fetch photos from Flickr');
         }
 
-        const data = await response.json();
+        const text = await response.text();
         
-        if (data.stat !== 'ok') {
-            throw new Error('Flickr API error: ' + (data.message || 'Unknown error'));
+        // Flickr returns JSONP, we need to extract the JSON
+        const jsonMatch = text.match(/jsonFlickrFeed\((.*)\)/);
+        if (!jsonMatch) {
+            throw new Error('Could not parse Flickr feed');
         }
-
-        allPhotos = data.photos.photo;
+        
+        const data = JSON.parse(jsonMatch[1]);
+        allPhotos = data.items;
 
         loadingEl.style.display = 'none';
 
@@ -106,6 +103,7 @@ async function loadFlickrPhotos() {
                     <i class="fas fa-images"></i>
                     <h3>No photos yet</h3>
                     <p>Upload photos to your Flickr account to see them here!</p>
+                    <p style="margin-top: 15px; font-size: 0.9rem;">Make sure your photos are set to <strong>Public</strong>.</p>
                 </div>
             `;
             return;
@@ -125,7 +123,8 @@ async function loadFlickrPhotos() {
                 <i class="fas fa-exclamation-triangle" style="color: var(--primary-red);"></i>
                 <h3>Error Loading Photos</h3>
                 <p>${error.message}</p>
-                <p style="margin-top: 15px;">Make sure your Flickr photos are set to "Public".</p>
+                <p style="margin-top: 15px;">Make sure your Flickr photos are set to <strong>"Public"</strong>.</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">To make photos public: Click photo → Lock icon → Select "Public"</p>
             </div>
         `;
     }
