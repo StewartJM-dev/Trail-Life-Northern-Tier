@@ -1,9 +1,9 @@
-
 // Trail Life Northern Tier - Flickr Gallery Auto-Loader
-// Automatically displays all public photos from Flickr account using public feed
+// Automatically displays all public photos from Flickr album
 
 const FLICKR_CONFIG = {
-    USER_ID: '203769753@N07' // Your Flickr user ID
+    USER_ID: '203769753@N07', // Your Flickr user ID
+    ALBUM_ID: '72177720330059023' // Your "Trail Life Northern Tier" album ID
 };
 
 let allPhotos = [];
@@ -69,14 +69,14 @@ document.getElementById('lightbox').addEventListener('click', (e) => {
     }
 });
 
-// Fetch photos from Flickr using public feed
+// Fetch photos from Flickr album using public feed
 async function loadFlickrPhotos() {
     const loadingEl = document.getElementById('loading');
     const galleryGrid = document.getElementById('gallery-grid');
 
     try {
-        // Use Flickr's public feed (no API key required!)
-        const feedURL = `https://flic.kr/s/aHBqjCzoET`;
+        // Use Flickr's album feed (no API key required!)
+        const feedURL = `https://www.flickr.com/services/feeds/photoset.gne?set=${FLICKR_CONFIG.ALBUM_ID}&nsid=${FLICKR_CONFIG.USER_ID}&format=json`;
         
         const response = await fetch(feedURL);
         
@@ -102,8 +102,8 @@ async function loadFlickrPhotos() {
                 <div class="no-photos">
                     <i class="fas fa-images"></i>
                     <h3>No photos yet</h3>
-                    <p>Upload photos to your Flickr account to see them here!</p>
-                    <p style="margin-top: 15px; font-size: 0.9rem;">Make sure your photos are set to <strong>Public</strong>.</p>
+                    <p>Upload photos to your Flickr album to see them here!</p>
+                    <p style="margin-top: 15px; font-size: 0.9rem;">Make sure your album is set to <strong>Public</strong>.</p>
                 </div>
             `;
             return;
@@ -123,8 +123,8 @@ async function loadFlickrPhotos() {
                 <i class="fas fa-exclamation-triangle" style="color: var(--primary-red);"></i>
                 <h3>Error Loading Photos</h3>
                 <p>${error.message}</p>
-                <p style="margin-top: 15px;">Make sure your Flickr photos are set to <strong>"Public"</strong>.</p>
-                <p style="margin-top: 10px; font-size: 0.9rem;">To make photos public: Click photo → Lock icon → Select "Public"</p>
+                <p style="margin-top: 15px;">Make sure your Flickr album is set to <strong>"Public"</strong>.</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">To make album public: Open album → Settings (gear icon) → Privacy: Public</p>
             </div>
         `;
     }
