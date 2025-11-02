@@ -76,7 +76,7 @@ async function loadFlickrPhotos() {
 
     try {
         // Use Flickr's public feed (no API key required!)
-        const feedURL = `https://www.flickr.com/photos/203769753@N07/albums/72177720330059023`;
+        const feedURL = `https://flic.kr/s/aHBqjCzoET`;
         
         const response = await fetch(feedURL);
         
