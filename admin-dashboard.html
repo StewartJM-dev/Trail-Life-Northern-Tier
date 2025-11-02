@@ -128,6 +128,10 @@
             background: linear-gradient(135deg, #4fa7c5, #005c85);
         }
         
+        .sheet-card-gallery {
+            background: linear-gradient(135deg, #28a745, #155d27);
+        }
+        
         .sheet-card-header i {
             font-size: 4rem;
             color: white;
@@ -386,6 +390,46 @@
                     </a>
                 </div>
             </div>
+
+            <!-- Gallery Sheet Card -->
+            <div class="sheet-card">
+                <div class="sheet-card-header sheet-card-gallery">
+                    <i class="fas fa-images"></i>
+                    <h3>Photo Gallery</h3>
+                    <p>Photos from troops and events</p>
+                </div>
+                <div class="sheet-card-body">
+                    <span class="status-badge status-configured">✓ Configured</span>
+                    <div class="sheet-info">
+                        <h4>Required Columns:</h4>
+                        <div class="sheet-columns">
+                            <span class="column-tag">image_url</span>
+                            <span class="column-tag">caption</span>
+                            <span class="column-tag">published</span>
+                        </div>
+                        <div style="background: #e7f3ff; padding: 15px; border-radius: 8px; margin-top: 15px; font-size: 0.9rem;">
+                            <strong style="color: #004085;"><i class="fas fa-info-circle"></i> How to Upload Photos:</strong>
+                            <ol style="margin: 10px 0 0 20px; color: #004085;">
+                                <li>Go to <a href="https://imgbb.com" target="_blank" style="color: #0056b3;">imgbb.com</a></li>
+                                <li>Upload your photo (drag & drop)</li>
+                                <li>Click <strong>"Embed codes"</strong> icon</li>
+                                <li>Select <strong>"Direct link"</strong> from dropdown</li>
+                                <li>Copy the URL (ends with .jpg or .png)</li>
+                                <li>Paste in Google Sheet image_url column</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <a href="#" onclick="openGallerySheet(); return false;" class="btn btn-primary">
+                        <i class="fas fa-edit"></i> Edit Gallery
+                    </a>
+                    <a href="gallery.html" class="btn btn-secondary">
+                        <i class="fas fa-eye"></i> View Live Page
+                    </a>
+                    <a href="https://imgbb.com" target="_blank" class="btn btn-secondary" style="background: #28a745; color: white;">
+                        <i class="fas fa-upload"></i> Upload to ImgBB
+                    </a>
+                </div>
+            </div>
         </div>
 
         <div class="quick-links">
@@ -424,7 +468,8 @@
         const SHEET_URLS = {
             blog: 'https://docs.google.com/spreadsheets/d/1SsAKY7EbI11X8Um619-q9vruoi0446lXQN_rRNDMo0I/edit?gid=0#gid=0',
             spotlight: 'https://docs.google.com/spreadsheets/d/1CLfY8t675Oa7rHt5ZkghmUZ2Z_XCJdTj0P4ykD-MXmc/edit?gid=0#gid=0',
-            achievements: 'https://docs.google.com/spreadsheets/d/1ONwI6VTBUdkuHydsgTOr0X9Az4yPQz1rTUOoKxHhK_g/edit?gid=0#gid=0'
+            achievements: 'https://docs.google.com/spreadsheets/d/1ONwI6VTBUdkuHydsgTOr0X9Az4yPQz1rTUOoKxHhK_g/edit?gid=0#gid=0',
+            gallery: 'https://docs.google.com/spreadsheets/d/1gw0DEHQRpVWHZwENxxb5L5V_4uMUH6DQGjbrlWgGLb8/edit?gid=0#gid=0'
         };
 
         function openBlogSheet() {
@@ -449,6 +494,10 @@
                 return;
             }
             window.open(SHEET_URLS.achievements, '_blank');
+        }
+
+        function openGallerySheet() {
+            window.open(SHEET_URLS.gallery, '_blank');
         }
 
         function logout() {
