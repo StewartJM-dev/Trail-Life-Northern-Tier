@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,72 +24,80 @@
             margin-bottom: 20px;
         }
         
-        .album-container {
+        .flickr-container {
             background: white;
-            padding: 30px;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             margin-bottom: 40px;
         }
         
-        .album-embed {
+        .flickr-embed {
             width: 100%;
             min-height: 600px;
-            border: none;
-            border-radius: 8px;
         }
         
-        .setup-instructions {
-            background: #fff3cd;
+        .setup-box {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
             border: 2px solid #ffc107;
             border-radius: 10px;
-            padding: 30px;
+            padding: 40px;
             margin-bottom: 40px;
         }
         
-        .setup-instructions h3 {
+        .setup-box h3 {
             color: var(--primary-red);
             margin-bottom: 20px;
+            font-size: 1.8rem;
         }
         
-        .setup-instructions ol {
-            color: var(--gray);
-            line-height: 2;
-            margin-left: 20px;
-        }
-        
-        .setup-instructions ol li {
-            margin-bottom: 10px;
-        }
-        
-        .setup-instructions strong {
-            color: var(--black);
-        }
-        
-        .setup-note {
-            background: var(--light-gray);
-            padding: 20px;
+        .setup-steps {
+            background: white;
+            padding: 30px;
             border-radius: 8px;
             margin-top: 20px;
-            font-size: 0.95rem;
         }
         
-        .cta-box {
-            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
-            color: white;
-            padding: 40px;
-            border-radius: 10px;
-            text-align: center;
+        .setup-steps ol {
+            color: var(--gray);
+            line-height: 2.2;
+            margin-left: 25px;
         }
         
-        .cta-box h3 {
-            color: white;
+        .setup-steps li {
             margin-bottom: 15px;
         }
         
-        .cta-box p {
-            color: rgba(255,255,255,0.95);
-            margin-bottom: 25px;
+        .setup-steps strong {
+            color: var(--black);
+        }
+        
+        .setup-steps code {
+            background: var(--light-gray);
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-family: monospace;
+            color: var(--primary-red);
+        }
+        
+        .pro-tip {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px 20px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+        
+        .pro-tip strong {
+            color: #155724;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px 20px;
+            margin-top: 20px;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -128,33 +135,105 @@
             <div class="gallery-intro">
                 <p>
                     Browse photos from our troops' adventures, service projects, camping trips, 
-                    and special events. Click any photo to view it full size!
+                    and special events. Photos are updated regularly as troops share their experiences!
                 </p>
             </div>
             
-            
-            
-            <!-- GOOGLE PHOTOS ALBUM EMBED -->
-            <div class="album-container">
-                <iframe 
-                    class="album-embed"
-                    src="https://photos.app.goo.gl/QNSxBRx5C2iKz4aP8"
-                    frameborder="0" 
-                    allowfullscreen>
-                </iframe>
+            <!-- SETUP INSTRUCTIONS - Delete this entire section after setup -->
+            <div class="setup-box">
+                <h3><i class="fas fa-cog"></i> Setup Your Flickr Gallery</h3>
+                <p style="color: var(--gray); font-size: 1.1rem; margin-bottom: 20px;">
+                    Follow these steps to connect your Flickr album. Once set up, just add photos to Flickr 
+                    and they'll automatically appear here!
+                </p>
+                
+                <div class="setup-steps">
+                    <ol>
+                        <li>
+                            <strong>Create a Flickr Account</strong><br>
+                            Go to <a href="https://www.flickr.com" target="_blank" style="color: var(--primary-red);">flickr.com</a> 
+                            and sign up (it's free!)
+                        </li>
+                        
+                        <li>
+                            <strong>Create an Album</strong><br>
+                            Click "You" → "Albums" → "Create New Album"<br>
+                            Name it: "Trail Life Northern Tier Gallery"
+                        </li>
+                        
+                        <li>
+                            <strong>Upload Photos</strong><br>
+                            Click "Upload" and drag your photos<br>
+                            Add them to your album<br>
+                            Set to "Public" so they can be viewed
+                        </li>
+                        
+                        <li>
+                            <strong>Get Embed Code</strong><br>
+                            Open your album<br>
+                            Click the <strong>"Share"</strong> button<br>
+                            Click <strong>"Embed"</strong><br>
+                            Choose size: <strong>"Medium 800"</strong> or <strong>"Large 1024"</strong><br>
+                            Copy the HTML embed code
+                        </li>
+                        
+                        <li>
+                            <strong>Add Code to This Page</strong><br>
+                            Open this HTML file in a text editor<br>
+                            Find the line that says: <code>&lt;!-- PASTE YOUR FLICKR EMBED CODE HERE --&gt;</code><br>
+                            Replace that line with your Flickr embed code<br>
+                            Save the file
+                        </li>
+                        
+                        <li>
+                            <strong>Delete This Yellow Box</strong><br>
+                            Remove this entire setup section from the HTML<br>
+                            (Everything from <code>&lt;!-- SETUP INSTRUCTIONS</code> to <code>&lt;!-- END SETUP --&gt;</code>)
+                        </li>
+                        
+                        <li>
+                            <strong>Upload to GitHub</strong><br>
+                            Upload as gallery.html<br>
+                            Done!
+                        </li>
+                    </ol>
+                    
+                    <div class="pro-tip">
+                        <strong><i class="fas fa-lightbulb"></i> Pro Tip:</strong> 
+                        After setup, just add photos to your Flickr album and they automatically appear on your website! 
+                        No need to edit this page again!
+                    </div>
+                    
+                    <div class="warning-box">
+                        <strong><i class="fas fa-exclamation-triangle"></i> Important:</strong> 
+                        Make sure your Flickr album is set to "Public" so visitors can see the photos!
+                    </div>
+                </div>
             </div>
+            <!-- END SETUP INSTRUCTIONS -->
             
-            <!-- Alternative: If iframe doesn't work, use this button approach -->
-            <!-- Uncomment this and comment out the iframe above if needed -->
-            <!--
-            <div class="cta-box">
-                <h3><i class="fas fa-images"></i> View Our Photo Gallery</h3>
-                <p>Check out photos from our troops' adventures, camping trips, service projects, and more!</p>
-                <a href="YOUR_GOOGLE_PHOTOS_ALBUM_URL_HERE" target="_blank" class="btn btn-secondary" style="background: white; color: var(--primary-red);">
-                    <i class="fas fa-external-link-alt"></i> Open Photo Album
+            <!-- FLICKR EMBED - Replace the comment below with your Flickr embed code -->
+            <div class="flickr-container">
+               <a data-flickr-embed="true" href="https://www.flickr.com/photos/203769753@N07" title=""><img src="https://live.staticflickr.com/65535/54895281996_18f53f6d2a_h.jpg" width="1600" height="1200" alt=""/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+                
+                <!-- Example of what Flickr embed code looks like (yours will be different):
+                <a data-flickr-embed="true" data-header="true" data-footer="true" 
+                   href="https://www.flickr.com/photos/YOUR-ID/albums/YOUR-ALBUM-ID" 
+                   title="Trail Life Northern Tier Gallery">
+                    <img src="https://live.staticflickr.com/PHOTO-ID.jpg" 
+                         width="800" height="600" alt="Trail Life Northern Tier Gallery">
                 </a>
+                <script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+                -->
+                
+                <!-- After you paste your code, delete this comment and the example above -->
+                
+                <div style="text-align: center; padding: 60px 20px; color: var(--gray);">
+                    <i class="fas fa-images" style="font-size: 4rem; color: var(--gold); margin-bottom: 20px;"></i>
+                    <h3 style="color: var(--black); margin-bottom: 15px;">Gallery Setup Required</h3>
+                    <p>Follow the instructions above to connect your Flickr album.</p>
+                </div>
             </div>
-            -->
             
             <p style="text-align: center; color: var(--gray); margin-top: 40px;">
                 Have photos to share? <a href="contact.html" style="color: var(--primary-red); font-weight: 600;">Contact us!</a>
