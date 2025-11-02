@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,143 +24,31 @@
             line-height: 1.8;
         }
         
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
+        .flickr-embed-container {
+            background: white;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: all 0.3s;
-            background: white;
+            margin-bottom: 40px;
+            text-align: center;
         }
         
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        
-        .gallery-item img {
+        /* Make the Flickr embed responsive */
+        .flickr-embed-wrapper {
+            position: relative;
             width: 100%;
-            height: 250px;
-            object-fit: cover;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Style the Flickr embed */
+        .flickr-embed-wrapper a {
             display: block;
         }
         
-        .gallery-item-caption {
-            padding: 15px;
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
-        
-        /* Lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.95);
-            z-index: 10000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .lightbox.active {
-            display: flex;
-        }
-        
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 90%;
-            position: relative;
-        }
-        
-        .lightbox-content img {
+        .flickr-embed-wrapper img {
             max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 5px;
-        }
-        
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 2.5rem;
-            cursor: pointer;
-            background: rgba(0,0,0,0.5);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            z-index: 10001;
-        }
-        
-        .lightbox-close:hover {
-            background: var(--primary-red);
-            transform: rotate(90deg);
-        }
-        
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: white;
-            font-size: 3rem;
-            cursor: pointer;
-            background: rgba(0,0,0,0.5);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            z-index: 10001;
-        }
-        
-        .lightbox-nav:hover {
-            background: var(--primary-red);
-        }
-        
-        .lightbox-prev {
-            left: 20px;
-        }
-        
-        .lightbox-next {
-            right: 20px;
-        }
-        
-        #loading {
-            text-align: center;
-            padding: 60px 20px;
-            font-size: 1.2rem;
-            color: var(--gray);
-        }
-        
-        .no-photos {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--gray);
-            grid-column: 1/-1;
-        }
-        
-        .no-photos i {
-            font-size: 4rem;
-            color: var(--gold);
-            margin-bottom: 20px;
+            height: auto;
         }
     </style>
 </head>
@@ -197,16 +86,18 @@
             <div class="gallery-intro">
                 <p>
                     Browse photos from our troops' adventures, service projects, camping trips, 
-                    and special events. Photos are updated regularly as troops share their experiences!
+                    and special events. Click any photo to view it on Flickr where you can see full size!
                 </p>
             </div>
             
-            <div id="loading">
-                <i class="fas fa-spinner fa-spin"></i> Loading photos from Flickr...
-            </div>
-            
-            <div id="gallery-grid" class="gallery-grid">
-                <!-- Photos will load here -->
+            <!-- FLICKR EMBED - Using native Flickr widget -->
+            <div class="flickr-embed-container">
+                <div class="flickr-embed-wrapper">
+                    <a data-flickr-embed="true" data-header="true" data-footer="true" href="https://www.flickr.com/photos/203769753@N07/albums/72177720330059023" title="Trail Life Northern Tier">
+                        <img src="https://live.staticflickr.com/65535/54895281996_ee9989a888_c.jpg" width="800" height="600" alt="Trail Life Northern Tier"/>
+                    </a>
+                    <script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+                </div>
             </div>
             
             <p style="text-align: center; color: var(--gray); margin-top: 40px;">
@@ -214,16 +105,6 @@
             </p>
         </div>
     </section>
-    
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <span class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">&#10094;</span>
-        <span class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">&#10095;</span>
-        <div class="lightbox-content">
-            <img id="lightbox-img" src="" alt="">
-        </div>
-    </div>
     
     <footer class="footer">
         <div class="container">
@@ -268,6 +149,5 @@
     </footer>
     
     <script src="js/main.js"></script>
-    <script src="js/flickr-gallery.js"></script>
 </body>
 </html>
