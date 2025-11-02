@@ -21,83 +21,145 @@
             color: var(--gray);
             font-size: 1.1rem;
             line-height: 1.8;
-            margin-bottom: 20px;
         }
         
-        .flickr-container {
-            background: white;
-            padding: 20px;
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
-        }
-        
-        .flickr-embed {
-            width: 100%;
-            min-height: 600px;
-        }
-        
-        .setup-box {
-            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
-            border: 2px solid #ffc107;
-            border-radius: 10px;
-            padding: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .setup-box h3 {
-            color: var(--primary-red);
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-        
-        .setup-steps {
+            cursor: pointer;
+            transition: all 0.3s;
             background: white;
-            padding: 30px;
-            border-radius: 8px;
-            margin-top: 20px;
         }
         
-        .setup-steps ol {
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-item-caption {
+            padding: 15px;
             color: var(--gray);
-            line-height: 2.2;
-            margin-left: 25px;
+            font-size: 0.95rem;
         }
         
-        .setup-steps li {
-            margin-bottom: 15px;
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
         }
         
-        .setup-steps strong {
-            color: var(--black);
+        .lightbox.active {
+            display: flex;
         }
         
-        .setup-steps code {
-            background: var(--light-gray);
-            padding: 2px 8px;
-            border-radius: 3px;
-            font-family: monospace;
-            color: var(--primary-red);
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
         }
         
-        .pro-tip {
-            background: #d4edda;
-            border-left: 4px solid #28a745;
-            padding: 15px 20px;
-            margin-top: 20px;
-            border-radius: 4px;
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 5px;
         }
         
-        .pro-tip strong {
-            color: #155724;
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 10001;
         }
         
-        .warning-box {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 15px 20px;
-            margin-top: 20px;
-            border-radius: 4px;
+        .lightbox-close:hover {
+            background: var(--primary-red);
+            transform: rotate(90deg);
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 10001;
+        }
+        
+        .lightbox-nav:hover {
+            background: var(--primary-red);
+        }
+        
+        .lightbox-prev {
+            left: 20px;
+        }
+        
+        .lightbox-next {
+            right: 20px;
+        }
+        
+        #loading {
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 1.2rem;
+            color: var(--gray);
+        }
+        
+        .no-photos {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray);
+            grid-column: 1/-1;
+        }
+        
+        .no-photos i {
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -139,27 +201,12 @@
                 </p>
             </div>
             
-            <!-- FLICKR EMBED - Replace the comment below with your Flickr embed code -->
-            <div class="flickr-container">
-               <a data-flickr-embed="true" href="https://www.flickr.com/photos/203769753@N07" title=""><img src="https://live.staticflickr.com/65535/54895281996_18f53f6d2a_h.jpg" width="1600" height="1200" alt=""/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
-                
-                <!-- Example of what Flickr embed code looks like (yours will be different):
-                <a data-flickr-embed="true" data-header="true" data-footer="true" 
-                   href="https://www.flickr.com/photos/YOUR-ID/albums/YOUR-ALBUM-ID" 
-                   title="Trail Life Northern Tier Gallery">
-                    <img src="https://live.staticflickr.com/PHOTO-ID.jpg" 
-                         width="800" height="600" alt="Trail Life Northern Tier Gallery">
-                </a>
-                <script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
-                -->
-                
-                <!-- After you paste your code, delete this comment and the example above -->
-                
-                <div style="text-align: center; padding: 60px 20px; color: var(--gray);">
-                    <i class="fas fa-images" style="font-size: 4rem; color: var(--gold); margin-bottom: 20px;"></i>
-                    <h3 style="color: var(--black); margin-bottom: 15px;">Gallery Setup Required</h3>
-                    <p>Follow the instructions above to connect your Flickr album.</p>
-                </div>
+            <div id="loading">
+                <i class="fas fa-spinner fa-spin"></i> Loading photos from Flickr...
+            </div>
+            
+            <div id="gallery-grid" class="gallery-grid">
+                <!-- Photos will load here -->
             </div>
             
             <p style="text-align: center; color: var(--gray); margin-top: 40px;">
@@ -167,6 +214,16 @@
             </p>
         </div>
     </section>
+    
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <span class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">&#10094;</span>
+        <span class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">&#10095;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+        </div>
+    </div>
     
     <footer class="footer">
         <div class="container">
@@ -211,5 +268,6 @@
     </footer>
     
     <script src="js/main.js"></script>
+    <script src="js/flickr-gallery.js"></script>
 </body>
 </html>
