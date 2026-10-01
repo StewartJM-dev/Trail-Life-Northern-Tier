@@ -1047,3 +1047,35 @@ h3 { font-size: 1.5rem; }
 .note-mt10-sm { margin: 10px 0 0 0; font-size: 0.9rem; }
 .note-warn { margin: 10px 0 0 0; color: #856404; font-size: 0.95rem; }
 .text-warn-lg { color: #856404; font-size: 1.05rem; }
+
+/* Area Team cards (leaders.html) */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: 30px;
+}
+.team-card {
+    background: white;
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.team-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.team-avatar-red { background: var(--primary-red); }
+.team-avatar-gold { background: var(--gold); }
+.team-avatar i { font-size: 2.5rem; color: white; }
+.team-name { color: var(--primary-red); margin-bottom: 10px; font-size: 1.5rem; }
+.team-role { color: var(--gray); font-weight: 600; }
+
+@media (max-width: 600px) {
+    .team-card { padding: 22px; }
+}
