@@ -1,10 +1,7 @@
-/* Troop websites own their event content; Northern Tier imports selected adventures.
-   Exposed as window.renderTroopEvents so a page that injects its
-   [data-troop-events] hosts dynamically (see js/troops-cms.js) can call this
-   again once those hosts actually exist in the DOM. */
+/* Upcoming adventures grouped by troop on the Events page. */
 async function renderTroopEvents() {
-    const hosts = [...document.querySelectorAll('[data-troop-events]')];
-    if (!hosts.length) return;
+    const sections = document.getElementById('troop-event-sections');
+    if (!sections) return;
     const make = (tag, text, cls) => {
         const element = document.createElement(tag);
         if (text) element.textContent = text;
@@ -17,11 +14,16 @@ async function renderTroopEvents() {
         const response = await fetch('data/troop-events.json', {cache: 'no-store'});
         if (!response.ok) throw new Error('Unable to load troop events');
         const snapshot = await response.json();
-        for (const host of hosts) {
-            const troop = snapshot.troops.find(t => t.id === host.dataset.troopEvents);
-            if (!troop) throw new Error('Troop feed unavailable');
+        sections.replaceChildren();
+        for (const troop of snapshot.troops) {
+            const host = make('div', null, 'troop-events');
+            sections.append(host);
             const heading = make('h2', 'Upcoming Events — ' + troop.name);
             const grid = make('div', null, 'troop-events-grid');
+            grid.id = 'events-' + troop.id;
+            grid.tabIndex = 0;
+            grid.setAttribute('role', 'region');
+            grid.setAttribute('aria-label', troop.name + ' upcoming events');
             const events = troop.events.filter(e => e.endDate >= today);
             for (const event of events) {
                 const card = make('article', null, 'troop-event-card');
@@ -42,21 +44,39 @@ async function renderTroopEvents() {
                 const details = make('a', 'Event details →'); details.href = url.href; body.append(details);
                 card.append(body); grid.append(card);
             }
-            host.replaceChildren(heading);
+            const header = make('div', null, 'troop-events-header');
+            header.append(heading);
+            const controls = make('div', null, 'troop-events-controls');
+            const previous = make('button', '←');
+            const next = make('button', '→');
+            previous.type = next.type = 'button';
+            previous.setAttribute('aria-label', 'Previous events for ' + troop.name);
+            next.setAttribute('aria-label', 'Next events for ' + troop.name);
+            previous.setAttribute('aria-controls', grid.id);
+            next.setAttribute('aria-controls', grid.id);
+            const update = () => {
+                previous.disabled = grid.scrollLeft <= 1;
+                next.disabled = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 2;
+            };
+            const move = direction => {
+                const card = grid.querySelector('article');
+                const step = card ? card.getBoundingClientRect().width + 24 : grid.clientWidth;
+                grid.scrollBy({left: direction * step, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+            };
+            previous.addEventListener('click', () => move(-1));
+            next.addEventListener('click', () => move(1));
+            grid.addEventListener('scroll', update, {passive: true});
+            controls.append(previous, next);
+            if (events.length > 1) header.append(controls);
+            host.append(header);
             host.append(events.length ? grid : make('p', 'No upcoming events are listed at this time.'));
             const source = make('a', 'From ' + troop.name + ' • Visit troop website'); source.href = troop.website; source.className = 'troop-event-source'; host.append(source);
+            requestAnimationFrame(update);
+            const observer = new ResizeObserver(update); observer.observe(grid);
         }
     } catch (error) {
-        for (const host of hosts) {
-            const message = host.querySelector('p');
-            if (message) message.textContent = 'Upcoming events are temporarily unavailable. Visit the troop website for the latest details.';
-        }
+        sections.replaceChildren(make('p', 'Troop events are temporarily unavailable. Please visit the troop websites for the latest details.'));
     }
 }
 
-window.renderTroopEvents = renderTroopEvents;
-
-// Safety net for any [data-troop-events] host that's already in the static
-// HTML by the time this script runs. A host injected later (dynamically
-// rendered troop cards) calls window.renderTroopEvents() itself instead.
 document.addEventListener('DOMContentLoaded', renderTroopEvents);

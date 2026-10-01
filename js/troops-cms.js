@@ -28,19 +28,12 @@ function createTroopHTML(troop) {
         ? `<a href="${troop.website}" target="_blank" class="btn btn-primary">Visit Website</a>`
         : '';
 
-    // Troops with an "id" have a registered events feed (see data/troop-feeds.json);
-    // js/troop-events.js fills this placeholder in once the cards below exist.
-    const eventsPlaceholder = troop.id
-        ? `<div id="troop-events-${troop.id}" class="troop-events" data-troop-events="${troop.id}" aria-live="polite"><h2>Upcoming Events — Troop ${troop.troop_number}</h2><p>Loading upcoming events…</p></div>`
-        : '';
-
     return `
         <div class="troop-card">
             <h3>Troop ${troop.troop_number}</h3>
             ${meta}
             ${troop.description ? `<p class="troop-description">${troop.description}</p>` : ''}
             ${website}
-            ${eventsPlaceholder}
         </div>
     `;
 }
@@ -70,9 +63,6 @@ async function loadTroops() {
 
         listContainer.innerHTML = troops.map(createTroopHTML).join('');
 
-        // The event placeholders above were just inserted, so (re)run the
-        // troop-events loader now that there's something for it to find.
-        if (window.renderTroopEvents) window.renderTroopEvents();
 
     } catch (error) {
         console.error('Error loading troops:', error);

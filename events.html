@@ -8,7 +8,7 @@
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" href="images/TL_ClassicLogo_1_RGB.png">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=20261001-scroll">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -111,6 +111,9 @@
         <p>Adventures, training, and gatherings across the Northern Tier</p>
     </section>
 
+    <section class="content-section" aria-label="Upcoming troop events">
+        <div class="container" id="troop-event-sections" aria-live="polite"><p>Loading troop events…</p></div>
+    </section>
     <section class="content-section">
         <div class="container">
             
@@ -182,6 +185,7 @@
     </footer>
     
     <script src="js/main.js"></script>
+    <script src="js/troop-events.js?v=20261001-scroll"></script>
     <script src="js/calendar.js?v=20261001-2"></script>
 </body>
 </html>
