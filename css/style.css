@@ -1089,3 +1089,9 @@ h3 { font-size: 1.5rem; }
 .footer::before { content: ''; display: block; position: absolute; left: 0; right: 0; top: -78px; height: 80px; background: url('../images/graphics/mountain-footer.svg') center bottom / 1440px 80px repeat-x; pointer-events: none; }
 @media (max-width: 600px) { .quick-link-card .adventure-icon { width: 92px; height: 92px; } .page-adventure-icon { width: 68px; height: 68px; } }
 @media (prefers-reduced-motion: reduce) { .quick-link-card .adventure-icon { transition: none; } .quick-link-card:hover .adventure-icon { transform: none; } }
+
+#upcoming-events-list.regional-event-rail { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 4px 0 18px; }
+.regional-event-rail > .event-card { flex: 0 0 min(620px, 86%); scroll-snap-align: start; min-width: 0; }
+.regional-event-rail > .calendar-message { flex: 1 0 100%; }
+.regional-event-rail:focus-visible { outline: 3px solid var(--primary-red); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { #upcoming-events-list.regional-event-rail { scroll-behavior: auto; } }

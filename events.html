@@ -8,7 +8,7 @@
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" href="images/TL_ClassicLogo_1_RGB.png">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=20261001-graphics">
+    <link rel="stylesheet" href="css/style.css?v=20261001-regional">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -135,14 +135,20 @@
 
             <!-- Upcoming Events Section -->
             <div>
-                <h2 class="section-title">Upcoming Events</h2>
+                <div class="troop-events-header">
+                    <h2 class="section-title">Upcoming Regional Events</h2>
+                    <div class="troop-events-controls">
+                        <button id="regional-events-prev" type="button" aria-label="Previous regional events" aria-controls="upcoming-events-list" disabled>←</button>
+                        <button id="regional-events-next" type="button" aria-label="Next regional events" aria-controls="upcoming-events-list" disabled>→</button>
+                    </div>
+                </div>
                 <p style="text-align: center; margin-bottom: 40px; color: var(--gray);">
                     <i class="fas fa-sync-alt" style="color: var(--primary-red); margin-right: 8px;"></i>
-                    Events will automatically update from calendar feeds
+                    Area and regional events in the next 90 days. Browse the full calendar above for all dates and calendars.
                 </p>
                 
                 <!-- This container will be populated by calendar.js -->
-                <div id="upcoming-events-list" class="events-grid">
+                <div id="upcoming-events-list" class="events-grid regional-event-rail" tabindex="0" role="region" aria-label="Upcoming regional events">
                     <!-- JavaScript will insert events here -->
                     <p style="text-align: center; color: var(--gray); padding: 2rem;">Loading events...</p>
                 </div>
@@ -187,6 +193,6 @@
     
     <script src="js/main.js"></script>
     <script src="js/troop-events.js?v=20261001-scroll"></script>
-    <script src="js/calendar.js?v=20261001-2"></script>
+    <script src="js/calendar.js?v=20261001-regional"></script>
 </body>
 </html>

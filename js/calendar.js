@@ -57,12 +57,35 @@
         if (!container) return;
         container.replaceChildren(...(events.length ? events.map(eventCard) : [node('p', empty, 'calendar-message')]));
     }
+    function updateRegionalControls() {
+        const rail = byId('upcoming-events-list');
+        if (!rail || !byId('regional-events-prev')) return;
+        byId('regional-events-prev').disabled = rail.scrollLeft <= 1;
+        byId('regional-events-next').disabled = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 2;
+    }
+    function setupRegionalRail() {
+        const rail = byId('upcoming-events-list');
+        if (!rail || !byId('regional-events-prev')) return;
+        for (const [id, direction] of [['regional-events-prev', -1], ['regional-events-next', 1]]) {
+            byId(id).addEventListener('click', () => {
+                const card = rail.querySelector('article');
+                const step = card ? card.getBoundingClientRect().width + 24 : rail.clientWidth;
+                rail.scrollBy({left: direction * step, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+            });
+        }
+        rail.addEventListener('scroll', updateRegionalControls, {passive: true});
+        const observer = new ResizeObserver(updateRegionalControls); observer.observe(rail);
+    }
     function filtered() {
         return snapshot.events.filter(event => selected.has(event.source));
     }
     function render() {
         const events = filtered();
-        fillList('upcoming-events-list', events.filter(upcoming), 'No upcoming events in the selected calendars.');
+        const cutoff = new Date(Date.now() + 90 * 86400000);
+        const regional = events.filter(event => ['area', 'region'].includes(event.source) && upcoming(event) && dateValue(event) <= cutoff)
+            .sort((a, b) => dateValue(a) - dateValue(b)).slice(0, 6);
+        fillList('upcoming-events-list', regional, 'No area or regional events in the next 90 days for the selected calendars. Browse the full calendar for later dates.');
+        updateRegionalControls();
         if (!byId('calendar')) return;
         const year = month.getUTCFullYear(), index = month.getUTCMonth();
         byId('calendar-month').textContent = month.toLocaleDateString('en-US', {timeZone: 'UTC', month: 'long', year: 'numeric'});
@@ -146,6 +169,7 @@
             }
             const cutoff = new Date(Date.now() + 30 * 86400000);
             fillList('home-events-list', snapshot.events.filter(event => upcoming(event) && dateValue(event) <= cutoff).slice(0, 3), 'No events in the next 30 days. See the Events page for later dates.');
+            setupRegionalRail();
             render();
         } catch (error) {
             console.error(error);
