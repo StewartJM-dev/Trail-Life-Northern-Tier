@@ -118,21 +118,6 @@
     <section class="content-section">
         <div class="container">
             
-            <div class="calendar-container">
-                <h2 class="section-title">Regional Calendar</h2>
-                <p id="calendar-status" role="status">Loading calendar…</p>
-                <fieldset class="calendar-legend"><legend>Show calendars</legend><div id="calendar-filters"></div></fieldset>
-                <div class="calendar-toolbar">
-                    <button id="calendar-prev" type="button" aria-label="Previous month">← Previous</button>
-                    <h3 id="calendar-month" aria-live="polite"></h3>
-                    <button id="calendar-next" type="button" aria-label="Next month">Next →</button>
-                    <button id="calendar-today" type="button">Today</button>
-                </div>
-                <div class="calendar-scroll"><div id="calendar">Loading events…</div></div>
-                <p>Choose an event for details. Events below are also available as a list.</p>
-                <dialog id="event-dialog"><div id="event-dialog-body"></div><button id="event-dialog-close" type="button">Close</button></dialog>
-            </div>
-
             <!-- Upcoming Events Section -->
             <div>
                 <div class="troop-events-header">
@@ -144,7 +129,7 @@
                 </div>
                 <p style="text-align: center; margin-bottom: 40px; color: var(--gray);">
                     <i class="fas fa-sync-alt" style="color: var(--primary-red); margin-right: 8px;"></i>
-                    Upcoming events from the calendars selected above. Scroll left or right to browse later dates.
+                    Upcoming events from the calendar feeds. Scroll left or right to browse later dates; filters are in the full calendar below.
                 </p>
                 
                 <!-- This container will be populated by calendar.js -->
@@ -153,6 +138,22 @@
                     <p style="text-align: center; color: var(--gray); padding: 2rem;">Loading events...</p>
                 </div>
             </div>
+
+            <div class="calendar-container" id="full-calendar">
+                <h2 class="section-title">Regional Calendar</h2>
+                <p id="calendar-status" role="status">Loading calendar…</p>
+                <fieldset class="calendar-legend"><legend>Show calendars</legend><div id="calendar-filters"></div></fieldset>
+                <div class="calendar-toolbar">
+                    <button id="calendar-prev" type="button" aria-label="Previous month">← Previous</button>
+                    <h3 id="calendar-month" aria-live="polite"></h3>
+                    <button id="calendar-next" type="button" aria-label="Next month">Next →</button>
+                    <button id="calendar-today" type="button">Today</button>
+                </div>
+                <div class="calendar-scroll"><div id="calendar">Loading events…</div></div>
+                <p>Choose an event for details. Use the calendar filters to update the regional event cards above.</p>
+                <dialog id="event-dialog"><div id="event-dialog-body"></div><button id="event-dialog-close" type="button">Close</button></dialog>
+            </div>
+
 
         </div>
     </section>
