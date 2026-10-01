@@ -81,10 +81,8 @@
     }
     function render() {
         const events = filtered();
-        const cutoff = new Date(Date.now() + 90 * 86400000);
-        const regional = events.filter(event => ['area', 'region'].includes(event.source) && upcoming(event) && dateValue(event) <= cutoff)
-            .sort((a, b) => dateValue(a) - dateValue(b)).slice(0, 6);
-        fillList('upcoming-events-list', regional, 'No area or regional events in the next 90 days for the selected calendars. Browse the full calendar for later dates.');
+        const upcomingEvents = events.filter(upcoming).sort((a, b) => dateValue(a) - dateValue(b));
+        fillList('upcoming-events-list', upcomingEvents, 'No upcoming events in the selected calendars.');
         updateRegionalControls();
         if (!byId('calendar')) return;
         const year = month.getUTCFullYear(), index = month.getUTCMonth();
