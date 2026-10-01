@@ -58,6 +58,24 @@
         .source-regional { background: var(--primary-red); color: white; }
         .source-pa1997 { background: var(--gold); color: white; }
         .source-ny2911 { background: var(--light-blue); color: white; }
+        #calendar-filters { display: flex; flex-wrap: wrap; gap: 16px; }
+        .calendar-filter { display: flex; gap: 8px; align-items: center; cursor: pointer; }
+        .calendar-toolbar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 20px 0; }
+        .calendar-toolbar h3 { flex: 1; text-align: center; }
+        .calendar-toolbar button, dialog button { padding: 10px 14px; cursor: pointer; }
+        .calendar-scroll { overflow-x: auto; }
+        .calendar-grid { width: 100%; min-width: 650px; border-collapse: collapse; table-layout: fixed; }
+        .calendar-grid th, .calendar-grid td { border: 1px solid #ddd; padding: 8px; vertical-align: top; }
+        .calendar-grid td { height: 100px; }
+        .calendar-today { background: #fff4de; }
+        .calendar-day { font-weight: bold; margin-bottom: 6px; }
+        .calendar-event { display: block; width: 100%; text-align: left; border: 0; border-left: 5px solid; padding: 6px; margin: 4px 0; background: #f5f5f5; cursor: pointer; overflow-wrap: anywhere; }
+        .event-description { white-space: pre-wrap; overflow-wrap: anywhere; }
+        dialog { max-width: 600px; width: calc(100% - 32px); max-height: 80vh; overflow: auto; margin: auto; border: 0; padding: 24px; border-radius: 10px; }
+        dialog::backdrop { background: rgba(0,0,0,.5); }
+        .event-source { color: white; }
+        .calendar-message { grid-column: 1 / -1; padding: 2rem; text-align: center; }
+        @media (max-width: 600px) { .calendar-container { padding: 12px; } .calendar-toolbar h3 { order: -1; flex-basis: 100%; } }
     </style>
 </head>
 <body>
@@ -92,45 +110,19 @@
     <section class="content-section">
         <div class="container">
             
-            <!-- Full Google Calendar Embed -->
-            <div class="calendar-container" style="margin-bottom: 60px;">
+            <div class="calendar-container">
                 <h2 class="section-title">Regional Calendar</h2>
-                <p style="text-align: center; margin-bottom: 30px; color: var(--gray);">
-                    <i class="fas fa-calendar-alt" style="color: var(--primary-red); margin-right: 10px;"></i>
-                    View all Northern Tier events in calendar format
-                </p>
-                
-                <!-- Embedded Google Calendar -->
-                <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-                    <iframe 
-                        src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FNew_York&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&mode=MONTH&src=4rmk9e2v6c5ngo39n7g9i679b737h7gm%40import.calendar.google.com&src=vd66q5sembl1l479m829q8mgnqgu2sm8%40import.calendar.google.com&src=ul0fcc6vnih5c2sicq2l1j6trtkc5vjj%40import.calendar.google.com&src=luhdkcig271vbof0khlesai309va3bpu%40import.calendar.google.com&color=%23876237&color=%23ba262d&color=%231e5a8e&color=%232e7d32" 
-                        style="border: 0; border-radius: 8px; width: 100%;" 
-                        width="100%" 
-                        height="600" 
-                        frameborder="0" 
-                        scrolling="no">
-                    </iframe>
+                <p id="calendar-status" role="status">Loading calendar…</p>
+                <fieldset class="calendar-legend"><legend>Show calendars</legend><div id="calendar-filters"></div></fieldset>
+                <div class="calendar-toolbar">
+                    <button id="calendar-prev" type="button" aria-label="Previous month">← Previous</button>
+                    <h3 id="calendar-month" aria-live="polite"></h3>
+                    <button id="calendar-next" type="button" aria-label="Next month">Next →</button>
+                    <button id="calendar-today" type="button">Today</button>
                 </div>
-                
-                <!-- Calendar Legend -->
-                <div class="calendar-legend">
-                    <div class="legend-item">
-                        <div class="legend-color" style="background: #876237;"></div>
-                        <span>Troop Events</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background: #ba262d;"></div>
-                        <span>Northern Tier Area Events</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background: #1e5a8e;"></div>
-                        <span>Northern Tier Events</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background: #2e7d32;"></div>
-                        <span>Trail Life USA National Events</span>
-                    </div>
-                </div>
+                <div class="calendar-scroll"><div id="calendar">Loading events…</div></div>
+                <p>Choose an event for details. Events below are also available as a list.</p>
+                <dialog id="event-dialog"><div id="event-dialog-body"></div><button id="event-dialog-close" type="button">Close</button></dialog>
             </div>
 
             <!-- Upcoming Events Section -->

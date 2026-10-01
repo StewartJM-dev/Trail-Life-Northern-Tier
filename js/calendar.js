@@ -1,289 +1,149 @@
-// Trail Life Northern Tier - Calendar Integration
-// This file handles pulling events from multiple calendar feeds
-
-// ========================================
-// Calendar Feed Configuration
-// ========================================
-const CALENDAR_FEEDS = {
-    // Troop Events via Google Calendar
-    troopEvents: {
-        name: 'Troop Events',
-        url: 'https://calendar.google.com/calendar/ical/4rmk9e2v6c5ngo39n7g9i679b737h7gm%40import.calendar.google.com/public/basic.ics',
-        color: '#876237' // Gold
-    },
-    
-    // Northern Tier Area Events via Google Calendar
-    regional: {
-        name: 'Northern Tier Area Events',
-        url: 'https://calendar.google.com/calendar/ical/vd66q5sembl1l479m829q8mgnqgu2sm8%40import.calendar.google.com/public/basic.ics',
-        color: '#ba262d' // Primary red
+// Events come from a validated snapshot refreshed by GitHub Actions.
+(() => {
+    const ZONE = 'America/New_York';
+    let snapshot, month, selected = new Set();
+    const byId = id => document.getElementById(id);
+    const todayKey = () => new Intl.DateTimeFormat('en-CA', {timeZone: ZONE, year: 'numeric', month: '2-digit', day: '2-digit'}).format(new Date());
+    const dayKey = event => event.allDay ? event.start : new Intl.DateTimeFormat('en-CA', {timeZone: ZONE, year: 'numeric', month: '2-digit', day: '2-digit'}).format(new Date(event.start));
+    function node(tag, text, className) {
+        const element = document.createElement(tag);
+        if (text !== undefined) element.textContent = text;
+        if (className) element.className = className;
+        return element;
     }
-    
-    // Add more troop calendars here as needed
-};
-
-// ========================================
-// Calendar Integration Functions
-// ========================================
-
-/**
- * Fetch and parse iCal feed using CORS proxy
- * Note: Using AllOrigins as CORS proxy to bypass restrictions
- * @param {string} url - iCal feed URL
- * @returns {Promise<Array>} Array of parsed events
- */
-async function fetchCalendarFeed(url) {
-    try {
-        // Use AllOrigins CORS proxy to fetch the calendar data
-        const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
-        
-        const response = await fetch(proxyUrl);
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const icalData = await response.text();
-        console.log('Successfully fetched calendar data from:', url);
-        return parseICalData(icalData);
-    } catch (error) {
-        console.error('Error fetching calendar feed:', error);
-        console.log('URL attempted:', url);
-        return [];
+    function dateValue(event) {
+        return new Date(event.allDay ? `${event.start}T12:00:00-04:00` : event.start);
     }
-}
-
-/**
- * Parse iCal data into event objects
- * @param {string} icalData - Raw iCal data
- * @returns {Array} Parsed events
- */
-function parseICalData(icalData) {
-    const events = [];
-    const lines = icalData.split(/\r?\n/);
-    let currentEvent = null;
-    let currentField = '';
-    let currentValue = '';
-    
-    for (let i = 0; i < lines.length; i++) {
-        let line = lines[i].trim();
-        
-        // Handle line continuations (lines starting with space or tab)
-        if (line.startsWith(' ') || line.startsWith('\t')) {
-            currentValue += line.trim();
-            continue;
+    function upcoming(event) {
+        return event.allDay ? event.end > todayKey() : new Date(event.end) > new Date();
+    }
+    function timeLabel(event) {
+        if (event.allDay) return 'All day';
+        const format = new Intl.DateTimeFormat('en-US', {timeZone: ZONE, hour: 'numeric', minute: '2-digit', timeZoneName: 'short'});
+        return `${format.format(new Date(event.start))} – ${format.format(new Date(event.end))}`;
+    }
+    function eventCard(event) {
+        const card = node('article', undefined, 'event-card');
+        const date = dateValue(event);
+        const stamp = node('div', undefined, 'event-date');
+        stamp.append(node('span', date.toLocaleDateString('en-US', {timeZone: ZONE, month: 'short'}).toUpperCase(), 'event-month'),
+            node('span', date.toLocaleDateString('en-US', {timeZone: ZONE, day: 'numeric'}), 'event-day'));
+        const info = node('div', undefined, 'event-info');
+        info.append(node('h3', event.title), node('p', timeLabel(event)));
+        if (event.location) info.append(node('p', event.location));
+        if (event.description) {
+            const details = node('details');
+            details.append(node('summary', 'Event details'), node('p', event.description, 'event-description'));
+            info.append(details);
         }
-        
-        // Save previous field if we have one
-        if (currentField && currentEvent) {
-            if (currentField === 'SUMMARY') {
-                currentEvent.title = currentValue;
-            } else if (currentField.startsWith('DTSTART')) {
-                currentEvent.date = parseICalDate(currentValue);
-            } else if (currentField === 'DESCRIPTION') {
-                currentEvent.description = currentValue.replace(/\\n/g, ' ').replace(/\\,/g, ',');
-            } else if (currentField === 'LOCATION') {
-                currentEvent.location = currentValue.replace(/\\,/g, ',');
+        const source = node('span', event.sourceName, 'event-source');
+        source.style.backgroundColor = event.color;
+        info.append(source);
+        card.append(stamp, info);
+        return card;
+    }
+    function fillList(id, events, empty) {
+        const container = byId(id);
+        if (!container) return;
+        container.replaceChildren(...(events.length ? events.map(eventCard) : [node('p', empty, 'calendar-message')]));
+    }
+    function filtered() {
+        return snapshot.events.filter(event => selected.has(event.source));
+    }
+    function render() {
+        const events = filtered();
+        fillList('upcoming-events-list', events.filter(upcoming), 'No upcoming events in the selected calendars.');
+        if (!byId('calendar')) return;
+        const year = month.getUTCFullYear(), index = month.getUTCMonth();
+        byId('calendar-month').textContent = month.toLocaleDateString('en-US', {timeZone: 'UTC', month: 'long', year: 'numeric'});
+        const table = node('table', undefined, 'calendar-grid');
+        table.setAttribute('aria-label', byId('calendar-month').textContent);
+        const head = node('thead'), headings = node('tr');
+        for (const day of ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']) {
+            const th = node('th', day); th.scope = 'col'; headings.append(th);
+        }
+        head.append(headings); table.append(head);
+        const body = node('tbody');
+        const first = new Date(Date.UTC(year, index, 1)).getUTCDay();
+        const total = new Date(Date.UTC(year, index + 1, 0)).getUTCDate();
+        let row;
+        for (let cell = 0; cell < Math.ceil((first + total) / 7) * 7; cell++) {
+            if (cell % 7 === 0) { row = node('tr'); body.append(row); }
+            const td = node('td'); row.append(td);
+            const day = cell - first + 1;
+            if (day < 1 || day > total) continue;
+            const key = `${year}-${String(index + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            td.append(node('div', String(day), 'calendar-day'));
+            if (key === todayKey()) td.classList.add('calendar-today');
+            for (const event of events.filter(event => {
+                if (event.allDay) return event.start <= key && event.end > key;
+                const last = dayKey({...event, start: new Date(new Date(event.end).getTime() - 1).toISOString()});
+                return dayKey(event) <= key && last >= key;
+            })) {
+                const button = node('button', event.title, 'calendar-event');
+                button.type = 'button'; button.style.borderLeftColor = event.color;
+                button.setAttribute('aria-label', `${event.title}, ${key}, ${timeLabel(event)}`);
+                button.addEventListener('click', () => showDetails(event));
+                td.append(button);
             }
         }
-        
-        // Process current line
-        if (line === 'BEGIN:VEVENT') {
-            currentEvent = {};
-        } else if (line === 'END:VEVENT') {
-            if (currentEvent && currentEvent.title && currentEvent.date) {
-                events.push(currentEvent);
+        table.append(body); byId('calendar').replaceChildren(table);
+    }
+    function showDetails(event) {
+        const dialog = byId('event-dialog');
+        const body = byId('event-dialog-body');
+        body.replaceChildren(node('h2', event.title), node('p', dateValue(event).toLocaleDateString('en-US', {timeZone: ZONE, dateStyle: 'full'})), node('p', timeLabel(event)));
+        if (event.location) body.append(node('p', event.location));
+        if (event.description) body.append(node('p', event.description, 'event-description'));
+        body.append(node('p', event.sourceName));
+        dialog.showModal();
+    }
+    async function load() {
+        if (!byId('home-events-list') && !byId('upcoming-events-list')) return;
+        try {
+            const response = await fetch('data/events.json', {cache: 'no-store'});
+            if (!response.ok) throw new Error(`Calendar HTTP ${response.status}`);
+            snapshot = await response.json();
+            if (!Array.isArray(snapshot.events) || !Array.isArray(snapshot.sources)) throw new Error('Invalid calendar snapshot');
+            selected = new Set(snapshot.sources.map(source => source.id));
+            const today = todayKey();
+            month = new Date(`${today.slice(0, 7)}-01T00:00:00Z`);
+            const status = byId('calendar-status');
+            if (status) {
+                const updated = new Date(snapshot.generatedAt);
+                const old = Date.now() - updated.getTime() > 24 * 60 * 60 * 1000;
+                status.textContent = `${old ? 'Calendar refresh is delayed. Last update: ' : 'Updated: '}${updated.toLocaleString('en-US', {timeZone: ZONE})} Eastern. All event times are Eastern.`;
             }
-            currentEvent = null;
-        } else if (line.includes(':')) {
-            const colonIndex = line.indexOf(':');
-            currentField = line.substring(0, colonIndex).split(';')[0];
-            currentValue = line.substring(colonIndex + 1);
+            if (byId('calendar-filters')) {
+                for (const source of snapshot.sources) {
+                    const label = node('label', undefined, 'calendar-filter');
+                    const input = node('input'); input.type = 'checkbox'; input.checked = true;
+                    input.addEventListener('change', () => {
+                        input.checked ? selected.add(source.id) : selected.delete(source.id); render();
+                    });
+                    const swatch = node('span', undefined, 'legend-color'); swatch.style.backgroundColor = source.color;
+                    label.append(input, swatch, node('span', source.name)); byId('calendar-filters').append(label);
+                }
+                for (const [id, offset] of [['calendar-prev', -1], ['calendar-next', 1]]) {
+                    byId(id).addEventListener('click', () => {
+                        const next = new Date(Date.UTC(month.getUTCFullYear(), month.getUTCMonth() + offset, 1));
+                        if (next.toISOString().slice(0, 10) < snapshot.windowStart || next.toISOString().slice(0, 10) > snapshot.windowEnd) return;
+                        month = next; render();
+                    });
+                }
+                byId('calendar-today').addEventListener('click', () => { month = new Date(`${todayKey().slice(0, 7)}-01T00:00:00Z`); render(); });
+                byId('event-dialog-close').addEventListener('click', () => byId('event-dialog').close());
+            }
+            const cutoff = new Date(Date.now() + 30 * 86400000);
+            fillList('home-events-list', snapshot.events.filter(event => upcoming(event) && dateValue(event) <= cutoff).slice(0, 3), 'No events in the next 30 days. See the Events page for later dates.');
+            render();
+        } catch (error) {
+            console.error(error);
+            for (const id of ['home-events-list', 'upcoming-events-list', 'calendar']) {
+                const container = byId(id);
+                if (container) container.replaceChildren(node('p', 'The calendar is temporarily unavailable. Please try again later.', 'calendar-message'));
+            }
         }
     }
-    
-    console.log(`Parsed ${events.length} events from calendar`);
-    return events;
-}
-
-/**
- * Parse iCal date format to JavaScript Date
- * Handles both date-only (YYYYMMDD) and datetime (YYYYMMDDTHHmmssZ) formats
- * @param {string} icalDate - Date in iCal format
- * @returns {Date} JavaScript Date object
- */
-function parseICalDate(icalDate) {
-    // Remove any extra characters and get just the date part
-    const dateStr = icalDate.replace(/[;:]/g, '').split('T')[0];
-    
-    if (dateStr.length >= 8) {
-        const year = dateStr.substring(0, 4);
-        const month = dateStr.substring(4, 6) - 1; // JS months are 0-indexed
-        const day = dateStr.substring(6, 8);
-        return new Date(year, month, day);
-    }
-    
-    // Fallback to current date if parsing fails
-    return new Date();
-}
-
-/**
- * Load all calendar feeds and combine events
- * @returns {Promise<Array>} Combined events from all feeds
- */
-async function loadAllCalendars() {
-    const allEvents = [];
-    
-    for (const [key, feed] of Object.entries(CALENDAR_FEEDS)) {
-        if (feed.url) {
-            const events = await fetchCalendarFeed(feed.url);
-            events.forEach(event => {
-                event.source = feed.name;
-                event.color = feed.color;
-            });
-            allEvents.push(...events);
-        }
-    }
-    
-    // Sort events by date
-    allEvents.sort((a, b) => a.date - b.date);
-    
-    return allEvents;
-}
-
-/**
- * Display upcoming events
- * @param {Array} events - Array of event objects
- * @param {number} limit - Number of events to display
- */
-function displayUpcomingEvents(events, limit = 6) {
-    const container = document.getElementById('upcoming-events-list');
-    if (!container) return;
-    
-    const upcomingEvents = events
-        .filter(event => event.date >= new Date())
-        .slice(0, limit);
-    
-    if (upcomingEvents.length === 0) {
-        container.innerHTML = '<p style="text-align: center; color: var(--gray);">No upcoming events. Check back soon!</p>';
-        return;
-    }
-    
-    container.innerHTML = upcomingEvents.map(event => `
-        <div class="event-card">
-            <div class="event-date">
-                <span class="event-month">${getMonthAbbr(event.date)}</span>
-                <span class="event-day">${event.date.getDate()}</span>
-            </div>
-            <div class="event-info">
-                <h3>${event.title || 'Event'}</h3>
-                ${event.location ? `<p><i class="fas fa-map-marker-alt"></i> ${event.location}</p>` : ''}
-                ${event.description ? `<p class="event-description">${event.description}</p>` : ''}
-                <span class="event-source" style="background: ${event.color};">${event.source}</span>
-            </div>
-        </div>
-    `).join('');
-}
-
-/**
- * Get month abbreviation
- * @param {Date} date - Date object
- * @returns {string} Three-letter month abbreviation
- */
-function getMonthAbbr(date) {
-    const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-    return months[date.getMonth()];
-}
-
-/**
- * Initialize calendar display
- * For full calendar view, integrate with a calendar library like FullCalendar.js
- */
-function initializeCalendar(events) {
-    const calendarDiv = document.getElementById('calendar');
-    if (!calendarDiv) return;
-    
-    // This is a placeholder for full calendar implementation
-    // Recommended: Use FullCalendar.js or similar library
-    // For now, we'll just display a message
-    console.log('Calendar events loaded:', events);
-    
-    // You can integrate with FullCalendar.js like this:
-    /*
-    const calendar = new FullCalendar.Calendar(calendarDiv, {
-        initialView: 'dayGridMonth',
-        events: events.map(event => ({
-            title: event.title,
-            start: event.date,
-            description: event.description,
-            location: event.location,
-            backgroundColor: event.color
-        }))
-    });
-    calendar.render();
-    */
-}
-
-/**
- * Display home page events (next 30 days only, limit 3)
- */
-function displayHomePageEvents(events) {
-    const container = document.getElementById('home-events-list');
-    if (!container) return;
-    
-    const now = new Date();
-    const oneMonthLater = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
-    
-    const homeEvents = events
-        .filter(event => event.date >= now && event.date <= oneMonthLater)
-        .slice(0, 3);
-    
-    if (homeEvents.length === 0) {
-        container.innerHTML = '<p style="text-align: center; color: var(--gray); padding: 2rem;">No events in the next 30 days. <a href="events.html" style="color: var(--primary-red);">View all events</a></p>';
-        return;
-    }
-    
-    container.innerHTML = homeEvents.map(event => `
-        <div class="event-card">
-            <div class="event-date">
-                <span class="event-month">${getMonthAbbr(event.date)}</span>
-                <span class="event-day">${event.date.getDate()}</span>
-            </div>
-            <div class="event-info">
-                <h3>${event.title || 'Event'}</h3>
-                ${event.location ? `<p><i class="fas fa-map-marker-alt"></i> ${event.location}</p>` : ''}
-                ${event.description ? `<p class="event-description">${event.description}</p>` : ''}
-            </div>
-        </div>
-    `).join('');
-}
-
-// ========================================
-// Initialize on Page Load
-// ========================================
-document.addEventListener('DOMContentLoaded', async () => {
-    // Load calendar feeds
-    const events = await loadAllCalendars();
-    
-    // Check if we're on the events page
-    if (document.getElementById('calendar')) {
-        // Events page: show all upcoming events and full calendar
-        displayUpcomingEvents(events);
-        initializeCalendar(events);
-    }
-    
-    // Check if we're on the home page
-    if (document.getElementById('home-events-list')) {
-        // Home page: show only next 30 days, limit to 3 events
-        displayHomePageEvents(events);
-    }
-});
-
-// ========================================
-// Export for use in other scripts
-// ========================================
-window.CalendarIntegration = {
-    loadAllCalendars,
-    displayUpcomingEvents,
-    CALENDAR_FEEDS
-};
+    document.addEventListener('DOMContentLoaded', load);
+})();
