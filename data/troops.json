@@ -1,0 +1,27 @@
+[
+  {
+    "id": "pa1997",
+    "troop_number": "PA-1997",
+    "location": "Sweet Valley, PA",
+    "sponsor": "Living Word Baptist Church",
+    "chartered": "July 2024",
+    "meetings": "Every Tuesday at 6:00 PM",
+    "description": "Christ-centered outdoor adventure program featuring camping, hiking, archery, rifle shooting, rope work, and biblical character development. Located near Ricketts Glen State Park!",
+    "website": "https://trooppa1997.com/"
+  },
+  {
+    "troop_number": "NY-2911",
+    "location": "Henrietta, NY",
+    "sponsor": "Harvest Bible Fellowship",
+    "address": "1125 Calkins Road, Henrietta NY, 14623",
+    "meetings": "Mondays at 6:30 PM (Sep-May main program, Navigators & Adventurers year-round)",
+    "description": "Comprehensive program for boys ages 5-17 including archery, knot tying, woods tools, firebuilding, cooking, hiking, orienteering, wilderness survival, canoeing, and more. Programs divided by age groups from Foxes (5-6) through Adventurers (14-17).",
+    "website": "https://ny2911.org/tl2911-page/"
+  },
+  {
+    "troop_number": "PA-4031",
+    "location": "Noxen, PA",
+    "meetings": "Every other Thursday, 6:30-8:30 PM",
+    "description": "Faith-based outdoor adventure program building boys into godly men through character development, outdoor skills, and leadership training in the heart of Pennsylvania."
+  }
+]

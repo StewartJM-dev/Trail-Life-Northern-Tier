@@ -1,5 +1,8 @@
-/* Troop websites own their event content; Northern Tier imports selected adventures. */
-(async () => {
+/* Troop websites own their event content; Northern Tier imports selected adventures.
+   Exposed as window.renderTroopEvents so a page that injects its
+   [data-troop-events] hosts dynamically (see js/troops-cms.js) can call this
+   again once those hosts actually exist in the DOM. */
+async function renderTroopEvents() {
     const hosts = [...document.querySelectorAll('[data-troop-events]')];
     if (!hosts.length) return;
     const make = (tag, text, cls) => {
@@ -49,4 +52,11 @@
             if (message) message.textContent = 'Upcoming events are temporarily unavailable. Visit the troop website for the latest details.';
         }
     }
-})();
+}
+
+window.renderTroopEvents = renderTroopEvents;
+
+// Safety net for any [data-troop-events] host that's already in the static
+// HTML by the time this script runs. A host injected later (dynamically
+// rendered troop cards) calls window.renderTroopEvents() itself instead.
+document.addEventListener('DOMContentLoaded', renderTroopEvents);
