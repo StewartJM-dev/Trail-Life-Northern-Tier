@@ -3,6 +3,8 @@
     "id": "pa1997",
     "troop_number": "PA-1997",
     "location": "Sweet Valley, PA",
+    "lat": 41.2823,
+    "lng": -76.1447,
     "sponsor": "Living Word Baptist Church",
     "chartered": "July 2024",
     "meetings": "Every Tuesday at 6:00 PM",
@@ -12,6 +14,8 @@
   {
     "troop_number": "NY-2911",
     "location": "Henrietta, NY",
+    "lat": 43.0594,
+    "lng": -77.6147,
     "sponsor": "Harvest Bible Fellowship",
     "address": "1125 Calkins Road, Henrietta NY, 14623",
     "meetings": "Mondays at 6:30 PM (Sep-May main program, Navigators & Adventurers year-round)",
@@ -21,6 +25,8 @@
   {
     "troop_number": "PA-4031",
     "location": "Noxen, PA",
+    "lat": 41.4167,
+    "lng": -76.0831,
     "meetings": "Every other Thursday, 6:30-8:30 PM",
     "description": "Faith-based outdoor adventure program building boys into godly men through character development, outdoor skills, and leadership training in the heart of Pennsylvania."
   }

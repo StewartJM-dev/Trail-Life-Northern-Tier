@@ -1117,3 +1117,25 @@ details.vendor-card[open] .vendor-summary .resource-chevron { transform: rotate(
 .regional-event-rail > .calendar-message { flex: 1 0 100%; }
 .regional-event-rail:focus-visible { outline: 3px solid var(--primary-red); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { #upcoming-events-list.regional-event-rail { scroll-behavior: auto; } }
+
+/* Troop location map (troops.html) */
+#troop-map {
+    height: 400px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+    z-index: 1;
+}
+.troop-map-marker {
+    color: var(--primary-red);
+    font-size: 1.8rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+.leaflet-popup-content strong { color: var(--primary-red); }
+.leaflet-popup-content a { color: var(--gold); font-weight: 600; }
+
+@media (max-width: 600px) {
+    #troop-map {
+        height: 280px;
+    }
+}
