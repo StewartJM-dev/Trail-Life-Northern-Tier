@@ -127,6 +127,26 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        @media (max-width: 600px) {
+            .resource-category {
+                padding: 25px 20px;
+            }
+
+            .resource-category i {
+                font-size: 2.8rem;
+            }
+
+            .resource-list {
+                padding: 20px;
+            }
+
+            .resource-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -182,7 +202,7 @@
             <!-- Partner Resources -->
             <div class="resource-list" id="partner-resources">
                 <h2 class="section-title"><i class="fas fa-handshake"></i> Partner Resources</h2>
-                <p style="text-align: center; color: var(--gray); margin-bottom: 40px; font-size: 1.1rem;">
+                <p class="text-gray-center-mb40-lg">
                     Valuable resources from Trail Life USA partners and recommended organizations
                 </p>
                 
@@ -290,14 +310,14 @@
             <!-- Program Ideas Database -->
             <div class="resource-list" id="program-ideas">
                 <h2 class="section-title"><i class="fas fa-lightbulb"></i> Program Ideas Database</h2>
-                <p style="text-align: center; color: var(--gray); margin-bottom: 40px; font-size: 1.1rem;">
+                <p class="text-gray-center-mb40-lg">
                     Downloadable guides for exciting troop activities and projects
                 </p>
                 
                 <!-- Pinewood Derby Guide -->
                 <div class="resource-item">
                     <div class="resource-info">
-                        <h4><i class="fas fa-car" style="color: var(--primary-red); margin-right: 10px;"></i>Pinewood Derby Guide</h4>
+                        <h4><i class="fas fa-car text-red-mr10"></i>Pinewood Derby Guide</h4>
                         <p><strong>Complete guide with official rules, building tips, speed secrets, and racing guidelines.</strong> Includes dimension rules, weight strategies, step-by-step construction instructions, friction reduction techniques, aerodynamics, sportsmanship values, and race day checklist.</p>
                         <div class="info-box">
                             <p class="info-box-text"><strong>Topics covered:</strong> Car specifications • Weight placement • Wheel/axle prep • Friction reduction • Speed secrets • Sportsmanship</p>
@@ -313,11 +333,11 @@
                 <!-- Raingutter Regatta Guide -->
                 <div class="resource-item">
                     <div class="resource-info">
-                        <h4><i class="fas fa-ship" style="color: var(--primary-red); margin-right: 10px;"></i>Raingutter Regatta Rules</h4>
+                        <h4><i class="fas fa-ship text-red-mr10"></i>Raingutter Regatta Rules</h4>
                         <p><strong>Official rules and guidelines for hosting a Raingutter Regatta sailboat race.</strong> Father-son project building miniature sailboats powered by lung power! Includes boat specifications, waterproofing tips, mast installation, sail attachment, racing rules, and sportsmanship guidance.</p>
                         <div class="info-box">
                             <p class="info-box-text"><strong>Topics covered:</strong> Boat specifications • Waterproofing • Hull shaping • Racing competition rules • Awards categories</p>
-                            <p style="margin: 10px 0 0 0; font-size: 0.9rem;"><i class="fas fa-shopping-cart" style="color: var(--gold);"></i> <strong>Equipment:</strong> <a href="https://www.amazon.com/dp/B0FH15ZQ3F" target="_blank" class="text-primary-red">Inflatable Raingutter Track on Amazon</a></p>
+                            <p class="note-mt10-sm"><i class="fas fa-shopping-cart text-gold"></i> <strong>Equipment:</strong> <a href="https://www.amazon.com/dp/B0FH15ZQ3F" target="_blank" class="text-primary-red">Inflatable Raingutter Track on Amazon</a></p>
                         </div>
                     </div>
                     <div class="resource-actions">
@@ -330,11 +350,11 @@
                 <!-- Rope Making Guide -->
                 <div class="resource-item">
                     <div class="resource-info">
-                        <h4><i class="fas fa-tools" style="color: var(--primary-red); margin-right: 10px;"></i>Rope Making Machine Guide</h4>
+                        <h4><i class="fas fa-tools text-red-mr10"></i>Rope Making Machine Guide</h4>
                         <p><strong>Build your own rope making machine and master an ancient craft!</strong> Complete guide to constructing a simple rope-making machine from basic materials and creating functional rope. Combines woodworking, mechanical engineering, and traditional skills. Perfect troop project!</p>
                         <div class="info-box">
                             <p class="info-box-text"><strong>Topics covered:</strong> Machine construction • Materials list • Two-stage rope process • Operating techniques • Safety guidelines • Project ideas</p>
-                            <p style="margin: 10px 0 0 0; font-size: 0.9rem;"><i class="fab fa-youtube" style="color: #FF0000;"></i> <strong>Video Tutorials:</strong></p>
+                            <p class="note-mt10-sm"><i class="fab fa-youtube" style="color: #FF0000;"></i> <strong>Video Tutorials:</strong></p>
                             <ul style="margin: 5px 0 0 20px; font-size: 0.9rem; color: var(--primary-red);">
                                 <li><a href="https://www.youtube.com/watch?v=ddenqErLL0Q" target="_blank" class="text-primary-red">Simple Hand-Crank Design</a></li>
                                 <li><a href="https://www.youtube.com/watch?v=uEvM6ue3L7E" target="_blank" class="text-primary-red">Building and Operation</a></li>
@@ -352,7 +372,7 @@
                 <!-- GaGa Ball Guide -->
                 <div class="resource-item">
                     <div class="resource-info">
-                        <h4><i class="fas fa-futbol" style="color: var(--primary-red); margin-right: 10px;"></i>GaGa Ball Guide</h4>
+                        <h4><i class="fas fa-futbol text-red-mr10"></i>GaGa Ball Guide</h4>
                         <p><strong>Rules and setup guide for GaGa Ball - the fast-paced, high-energy game perfect for Trail Life!</strong> Easy to learn, fun for all ages, requires minimal equipment. Great for meetings, camps, and events. Includes pit construction options, safety guidelines, and tournament formats.</p>
                         <div class="info-box">
                             <p class="info-box-text"><strong>Topics covered:</strong> Game rules • Pit construction • Safety guidelines • Age variations • Tournament formats</p>
@@ -391,16 +411,16 @@
                     <h3 style="color: white; margin-bottom: 25px; text-align: center;"><i class="fas fa-lightbulb"></i> Fundraising Best Practices</h3>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
                         <div>
-                            <h4 style="color: var(--gold); margin-bottom: 10px;">✓ Plan Your Program First</h4>
-                            <p style="font-size: 0.95rem; line-height: 1.7;">Hold an annual planning session with parents, leaders, and boys. Create a full calendar of activities, then budget for it.</p>
+                            <h4 class="text-gold-mb10">✓ Plan Your Program First</h4>
+                            <p class="text-sm-lh17">Hold an annual planning session with parents, leaders, and boys. Create a full calendar of activities, then budget for it.</p>
                         </div>
                         <div>
-                            <h4 style="color: var(--gold); margin-bottom: 10px;">✓ One Major Fundraiser</h4>
-                            <p style="font-size: 0.95rem; line-height: 1.7;">Choose ONE fundraiser that covers most/all annual costs. Work together as a team rather than nickle-and-diming families.</p>
+                            <h4 class="text-gold-mb10">✓ One Major Fundraiser</h4>
+                            <p class="text-sm-lh17">Choose ONE fundraiser that covers most/all annual costs. Work together as a team rather than nickle-and-diming families.</p>
                         </div>
                         <div>
-                            <h4 style="color: var(--gold); margin-bottom: 10px;">✓ 4-5 Days, Not Every Weekend</h4>
-                            <p style="font-size: 0.95rem; line-height: 1.7;">Dedicate a few focused weeks once per year instead of constant car washes and bake sales.</p>
+                            <h4 class="text-gold-mb10">✓ 4-5 Days, Not Every Weekend</h4>
+                            <p class="text-sm-lh17">Dedicate a few focused weeks once per year instead of constant car washes and bake sales.</p>
                         </div>
                     </div>
                 </div>
@@ -417,20 +437,20 @@
                     <div class="fundraising-grid">
                         <!-- Country Meats -->
                         <div class="vendor-card">
-                            <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                                <i class="fas fa-drumstick-bite" style="font-size: 3rem; color: var(--gold); margin-right: 20px;"></i>
+                            <div class="flex-center-mb20">
+                                <i class="fas fa-drumstick-bite icon-gold-lg"></i>
                                 <div>
-                                    <h4 style="color: var(--primary-red); margin-bottom: 5px;">Country Meats</h4>
-                                    <p style="color: var(--gray); font-size: 0.9rem; margin: 0;">Traditional Fundraising Made Simple</p>
+                                    <h4 class="text-red-mb5">Country Meats</h4>
+                                    <p class="text-gray-sm-m0">Traditional Fundraising Made Simple</p>
                                 </div>
                             </div>
                             
-                            <p style="color: var(--gray); line-height: 1.8; margin-bottom: 20px;">
+                            <p class="text-gray-lh18-mb20">
                                 Country Meats helps you raise the money you need for any occasion, event, or goal. With our dedicated Customer Service team and years of experience, we make fundraising easy and effective.
                             </p>
                             
                             <div class="panel-spaced">
-                                <h5 style="color: var(--primary-red); margin-bottom: 15px; font-size: 1.1rem;">How It Works:</h5>
+                                <h5 class="text-red-mb15-lg">How It Works:</h5>
                                 <ol style="color: var(--dark-gray); line-height: 2; margin-left: 20px;">
                                     <li>Place your order</li>
                                     <li>Prepare your group for delivery</li>
@@ -440,7 +460,7 @@
                             </div>
                             
                             <div style="margin-bottom: 25px;">
-                                <h5 style="color: var(--gold); margin-bottom: 15px; font-size: 1.1rem;">Why Country Meats?</h5>
+                                <h5 class="text-gold-mb15-lg">Why Country Meats?</h5>
                                 
                                 <div class="mb-15">
                                     <strong class="text-primary-red">💪 Healthy Products</strong>
@@ -463,8 +483,8 @@
                                 </div>
                                 
                                 <div class="callout-gold">
-                                    <strong style="color: #856404; font-size: 1.05rem;">💰 50% Profit Margin!</strong>
-                                    <p style="margin: 10px 0 0 0; color: #856404; font-size: 0.95rem;">Pay just $0.75 per stick, sell for $1.50 each. Your customers get a healthy snack at an affordable price while your group puts $0.75 toward your cause!</p>
+                                    <strong class="text-warn-lg">💰 50% Profit Margin!</strong>
+                                    <p class="note-warn">Pay just $0.75 per stick, sell for $1.50 each. Your customers get a healthy snack at an affordable price while your group puts $0.75 toward your cause!</p>
                                 </div>
                             </div>
                             
@@ -475,21 +495,21 @@
 
                         <!-- HybridLight -->
                         <div class="vendor-card">
-                            <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                                <i class="fas fa-lightbulb" style="font-size: 3rem; color: var(--gold); margin-right: 20px;"></i>
+                            <div class="flex-center-mb20">
+                                <i class="fas fa-lightbulb icon-gold-lg"></i>
                                 <div>
-                                    <h4 style="color: var(--primary-red); margin-bottom: 5px;">HybridLight</h4>
-                                    <p style="color: var(--gray); font-size: 0.9rem; margin: 0;">Reach Your Fundraising Goals in No Time</p>
+                                    <h4 class="text-red-mb5">HybridLight</h4>
+                                    <p class="text-gray-sm-m0">Reach Your Fundraising Goals in No Time</p>
                                 </div>
                             </div>
                             
-                            <p style="color: var(--gray); line-height: 1.8; margin-bottom: 20px;">
+                            <p class="text-gray-lh18-mb20">
                                 We've helped schools, churches, and social clubs all across the USA exceed their fundraising goals. Whatever your organization's goals, reach them quickly and easily by selling HybridLight® products—durable, innovative, and guaranteed for life.
                             </p>
                             
                             <div class="panel-spaced">
-                                <h5 style="color: var(--primary-red); margin-bottom: 15px; font-size: 1.1rem;">Revolutionary Technology:</h5>
-                                <ul style="color: var(--dark-gray); line-height: 2; margin-left: 20px; margin-bottom: 0;">
+                                <h5 class="text-red-mb15-lg">Revolutionary Technology:</h5>
+                                <ul class="text-darkgray-list-nomb">
                                     <li><strong>Charge Your Devices:</strong> Built-in USB port for mobile device charging</li>
                                     <li><strong>Rapid Charging:</strong> Micro USB port for quick recharging</li>
                                     <li><strong>Solar Powered:</strong> Built-in solar panel keeps lights charged</li>
@@ -498,8 +518,8 @@
                                 </ul>
                             </div>
                             
-                            <div style="margin-bottom: 20px;">
-                                <h5 style="color: var(--gold); margin-bottom: 15px; font-size: 1.1rem;">Why HybridLight?</h5>
+                            <div class="mb-20">
+                                <h5 class="text-gold-mb15-lg">Why HybridLight?</h5>
                                 
                                 <div class="mb-15">
                                     <strong class="text-primary-red">🎁 Earn Cash & Prizes</strong>
@@ -524,21 +544,21 @@
 
                         <!-- Giving Bean -->
                         <div class="vendor-card">
-                            <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                                <i class="fas fa-coffee" style="font-size: 3rem; color: var(--gold); margin-right: 20px;"></i>
+                            <div class="flex-center-mb20">
+                                <i class="fas fa-coffee icon-gold-lg"></i>
                                 <div>
-                                    <h4 style="color: var(--primary-red); margin-bottom: 5px;">Giving Bean</h4>
-                                    <p style="color: var(--gray); font-size: 0.9rem; margin: 0;">Coffee, Tea & Gourmet Cocoa Fundraising</p>
+                                    <h4 class="text-red-mb5">Giving Bean</h4>
+                                    <p class="text-gray-sm-m0">Coffee, Tea & Gourmet Cocoa Fundraising</p>
                                 </div>
                             </div>
                             
-                            <p style="color: var(--gray); line-height: 1.8; margin-bottom: 20px;">
+                            <p class="text-gray-lh18-mb20">
                                 Like many scouting organizations, Trail Life USA troops need to raise funds for outdoor adventures, building character, and leadership development. Giving Bean has extensive experience with Trail Life USA fundraisers and can help your troop reach its fundraising goals!
                             </p>
                             
                             <div class="panel-spaced">
-                                <h5 style="color: var(--primary-red); margin-bottom: 15px; font-size: 1.1rem;">What Makes Giving Bean Different:</h5>
-                                <ul style="color: var(--dark-gray); line-height: 2; margin-left: 20px; margin-bottom: 0;">
+                                <h5 class="text-red-mb15-lg">What Makes Giving Bean Different:</h5>
+                                <ul class="text-darkgray-list-nomb">
                                     <li><strong>No Startup Costs:</strong> Zero upfront investment required</li>
                                     <li><strong>40% Profit:</strong> From order form sales, always</li>
                                     <li><strong>25% Webstore Profit:</strong> Online orders year-round</li>
@@ -547,8 +567,8 @@
                                 </ul>
                             </div>
                             
-                            <div style="margin-bottom: 20px;">
-                                <h5 style="color: var(--gold); margin-bottom: 15px; font-size: 1.1rem;">Why Troops Love Giving Bean:</h5>
+                            <div class="mb-20">
+                                <h5 class="text-gold-mb15-lg">Why Troops Love Giving Bean:</h5>
                                 
                                 <div class="mb-15">
                                     <strong class="text-primary-red">☕ Premium Products</strong>
@@ -571,8 +591,8 @@
                                 </div>
                                 
                                 <div class="callout-gold">
-                                    <strong style="color: #856404; font-size: 1.05rem;">💡 Pro Tip</strong>
-                                    <p style="margin: 10px 0 0 0; color: #856404; font-size: 0.95rem;">Assign a specific number of products to each Troop member to sell. This helps ensure participation and makes it easy to attain your fundraising goal!</p>
+                                    <strong class="text-warn-lg">💡 Pro Tip</strong>
+                                    <p class="note-warn">Assign a specific number of products to each Troop member to sell. This helps ensure participation and makes it easy to attain your fundraising goal!</p>
                                 </div>
                             </div>
                             
@@ -598,8 +618,8 @@
                     
                     <div style="display: grid; gap: 20px;">
                         <div class="panel">
-                            <h4 style="color: var(--black); margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--gold);"></i> Required Approvals</h4>
-                            <ul style="color: var(--gray); line-height: 2; margin-left: 20px;">
+                            <h4 class="text-black-mb10"><i class="fas fa-check-circle text-gold"></i> Required Approvals</h4>
+                            <ul class="text-gray-list">
                                 <li>All fundraisers must be approved by your Chartering Organization</li>
                                 <li>Must align with Trail Life USA's motto "Walk Worthy!", Mission, and Trailmen Oath</li>
                                 <li>Use of Trail Life USA logo requires approval from Home Office (email Branding@TrailLifeUSA.com at least 3 weeks in advance)</li>
@@ -607,8 +627,8 @@
                         </div>
 
                         <div class="panel">
-                            <h4 style="color: var(--black); margin-bottom: 10px;"><i class="fas fa-list-ul" style="color: var(--gold);"></i> Key Guidelines</h4>
-                            <ul style="color: var(--gray); line-height: 2; margin-left: 20px;">
+                            <h4 class="text-black-mb10"><i class="fas fa-list-ul text-gold"></i> Key Guidelines</h4>
+                            <ul class="text-gray-list">
                                 <li><strong>Maximum 3 fundraisers per year</strong> per troop</li>
                                 <li><strong>Voluntary participation</strong> - All families must be informed; participation is optional</li>
                                 <li><strong>Two-deep leadership</strong> required at all fundraising activities</li>
@@ -619,8 +639,8 @@
                         </div>
 
                         <div class="panel">
-                            <h4 style="color: var(--black); margin-bottom: 10px;"><i class="fas fa-ban text-primary-red"></i> Prohibited Activities</h4>
-                            <ul style="color: var(--gray); line-height: 2; margin-left: 20px;">
+                            <h4 class="text-black-mb10"><i class="fas fa-ban text-primary-red"></i> Prohibited Activities</h4>
+                            <ul class="text-gray-list">
                                 <li>Games of chance, lotteries, or bingo (unless specifically donated and compliant with local laws)</li>
                                 <li>Activities that could be construed as gambling</li>
                                 <li>Raffle ticket sales (only if consistent with Charter Organization's faith and compliant with all laws)</li>
@@ -630,7 +650,7 @@
 
                     <div style="margin-top: 30px; padding: 20px; background: linear-gradient(135deg, var(--gold), var(--dark-brown)); border-radius: 8px; color: white; text-align: center;">
                         <h4 style="color: white; margin-bottom: 15px;"><i class="fas fa-info-circle"></i> Need to Submit a Fundraiser?</h4>
-                        <p style="margin-bottom: 20px;">Download the TLUSA License Application from Trail Life USA's website</p>
+                        <p class="mb-20">Download the TLUSA License Application from Trail Life USA's website</p>
                         <p style="margin: 0; font-size: 0.95rem;">Include: Troop number, contact info, duration, product description, costs, and sale price</p>
                         <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.9;">Email to: <strong>Branding@TrailLifeUSA.com</strong></p>
                     </div>
@@ -643,20 +663,20 @@
                     </h3>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
                         <div>
-                            <h4 style="color: var(--gold); margin-bottom: 10px;">📋 Plan Together</h4>
-                            <p style="color: var(--gray); line-height: 1.7;">Involve parents in annual planning so they understand and support the need for fundraising.</p>
+                            <h4 class="text-gold-mb10">📋 Plan Together</h4>
+                            <p class="text-gray-lh17">Involve parents in annual planning so they understand and support the need for fundraising.</p>
                         </div>
                         <div>
-                            <h4 style="color: var(--gold); margin-bottom: 10px;">💰 Show the Budget</h4>
-                            <p style="color: var(--gray); line-height: 1.7;">Help families see the full cost of the program you're planning. Transparency builds buy-in.</p>
+                            <h4 class="text-gold-mb10">💰 Show the Budget</h4>
+                            <p class="text-gray-lh17">Help families see the full cost of the program you're planning. Transparency builds buy-in.</p>
                         </div>
                         <div>
-                            <h4 style="color: var(--gold); margin-bottom: 10px;">🤝 Work as a Team</h4>
-                            <p style="color: var(--gray); line-height: 1.7;">Everyone contributes to ONE major fundraiser vs. individual families bearing the burden.</p>
+                            <h4 class="text-gold-mb10">🤝 Work as a Team</h4>
+                            <p class="text-gray-lh17">Everyone contributes to ONE major fundraiser vs. individual families bearing the burden.</p>
                         </div>
                         <div>
-                            <h4 style="color: var(--gold); margin-bottom: 10px;">⏰ Focus & Finish</h4>
-                            <p style="color: var(--gray); line-height: 1.7;">Dedicate 4-5 days over a few weeks. Get it done, then enjoy your fully-funded year!</p>
+                            <h4 class="text-gold-mb10">⏰ Focus & Finish</h4>
+                            <p class="text-gray-lh17">Dedicate 4-5 days over a few weeks. Get it done, then enjoy your fully-funded year!</p>
                         </div>
                     </div>
                 </div>

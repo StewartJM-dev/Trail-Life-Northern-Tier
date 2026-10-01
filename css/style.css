@@ -807,6 +807,62 @@ h3 { font-size: 1.5rem; }
     .event-date {
         margin: 0 auto;
     }
+
+    /* Sections throughout the site use generous desktop padding and large
+       heading sizes that add up to very tall pages on a phone screen.
+       Scale them down here instead of in each page's own styles. */
+    .quick-links,
+    .featured-blog,
+    .upcoming-events,
+    .achievement-highlights,
+    .content-section {
+        padding: 45px 0;
+    }
+
+    .cta-section {
+        padding: 55px 0;
+    }
+
+    .footer {
+        padding: 40px 0 20px;
+    }
+
+    .quick-link-card,
+    .achievement-card {
+        padding: 25px 20px;
+    }
+
+    .event-card {
+        padding: 20px;
+    }
+
+    .vendor-card {
+        padding: 22px;
+    }
+
+    .troop-card {
+        padding: 25px;
+    }
+
+    .page-header {
+        padding: 55px 0 35px;
+    }
+
+    .page-header h1 {
+        font-size: 2.1rem;
+    }
+
+    .page-header p {
+        font-size: 1.05rem;
+    }
+
+    .cta-content h2 {
+        font-size: 1.6rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
 }
 
 /* ========================================
@@ -968,3 +1024,26 @@ h3 { font-size: 1.5rem; }
 .troop-events-controls button:focus-visible, .troop-events-grid:focus-visible { outline: 3px solid var(--primary-red); outline-offset: 3px; }
 #troop-event-sections > .troop-events:first-child { margin-top: 0; }
 @media (prefers-reduced-motion: reduce) { .troop-events-grid { scroll-behavior: auto; } }
+
+/* Repeated text/spacing patterns extracted from resources.html's remaining
+   inline styles (exact declaration matches, zero visual change). */
+.text-gold { color: var(--gold); }
+.text-gold-mb10 { color: var(--gold); margin-bottom: 10px; }
+.text-gold-mb15-lg { color: var(--gold); margin-bottom: 15px; font-size: 1.1rem; }
+.text-red-mr10 { color: var(--primary-red); margin-right: 10px; }
+.text-red-mb5 { color: var(--primary-red); margin-bottom: 5px; }
+.text-red-mb15-lg { color: var(--primary-red); margin-bottom: 15px; font-size: 1.1rem; }
+.text-black-mb10 { color: var(--black); margin-bottom: 10px; }
+.text-gray-lh17 { color: var(--gray); line-height: 1.7; }
+.text-gray-list { color: var(--gray); line-height: 2; margin-left: 20px; }
+.text-gray-lh18-mb20 { color: var(--gray); line-height: 1.8; margin-bottom: 20px; }
+.text-gray-sm-m0 { color: var(--gray); font-size: 0.9rem; margin: 0; }
+.text-gray-center-mb40-lg { text-align: center; color: var(--gray); margin-bottom: 40px; font-size: 1.1rem; }
+.text-darkgray-list-nomb { color: var(--dark-gray); line-height: 2; margin-left: 20px; margin-bottom: 0; }
+.text-sm-lh17 { font-size: 0.95rem; line-height: 1.7; }
+.icon-gold-lg { font-size: 3rem; color: var(--gold); margin-right: 20px; }
+.flex-center-mb20 { display: flex; align-items: center; margin-bottom: 20px; }
+.mb-20 { margin-bottom: 20px; }
+.note-mt10-sm { margin: 10px 0 0 0; font-size: 0.9rem; }
+.note-warn { margin: 10px 0 0 0; color: #856404; font-size: 0.95rem; }
+.text-warn-lg { color: #856404; font-size: 1.05rem; }
