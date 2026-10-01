@@ -28,6 +28,7 @@ jobs:
       - run: pip install -r scripts/calendar-requirements.txt
       - run: python -m unittest discover -s tests
       - run: python scripts/sync_calendar.py
+      - run: python scripts/sync_troop_events.py
       - uses: actions/configure-pages@v5
       - name: Prepare public files
         run: |

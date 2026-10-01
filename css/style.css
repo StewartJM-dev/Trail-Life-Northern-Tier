@@ -244,12 +244,10 @@ h3 { font-size: 1.5rem; }
     height: 90vh;
     min-height: 600px;
     background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
-    background-image: 
-        linear-gradient(rgba(186, 38, 45, 0.7), rgba(108, 22, 43, 0.8)),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><path fill="%23876237" opacity="0.1" d="M0,400 Q300,200 600,400 T1200,400 L1200,800 L0,800 Z"/></svg>');
+    background-image: linear-gradient(rgba(70, 12, 23, 0.25), rgba(70, 12, 23, 0.48)), url('../images/northern-tier-adventure.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -918,3 +916,17 @@ h3 { font-size: 1.5rem; }
     padding: 40px;
     color: var(--gray);
 }
+
+/* Shared troop adventures retain the site's existing colors and card style. */
+.troop-events { margin-top: 36px; border-top: 2px solid var(--gold); padding-top: 28px; }
+.troop-events h2 { color: var(--primary-red); font-size: clamp(1.3rem, 3vw, 1.8rem); margin-bottom: 24px; }
+.troop-events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 24px; }
+.troop-event-card { border: 1px solid #eee; border-radius: 10px; overflow: hidden; background: var(--white); box-shadow: 0 5px 20px rgba(0,0,0,.06); }
+.troop-event-card img { width: 100%; height: 320px; object-fit: contain; background: #f5f3ef; display: block; }
+.troop-event-body { padding: 22px; }
+.troop-event-body h3 { color: var(--primary-red); margin: 10px 0; }
+.troop-event-date { color: var(--gold); font-weight: 800; }
+.troop-event-location { color: var(--gray); margin: 12px 0 18px; }
+.troop-event-badge { background: var(--gold); color: white; border-radius: 4px; padding: 3px 8px; font-size: .85rem; }
+.troop-event-body a, .troop-event-source { color: var(--primary-red); font-weight: 600; }
+.troop-event-source { display: inline-block; margin-top: 22px; }

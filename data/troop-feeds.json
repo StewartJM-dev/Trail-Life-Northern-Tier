@@ -1,0 +1,10 @@
+{
+  "troops": [
+    {
+      "id": "pa1997",
+      "name": "Troop PA-1997",
+      "website": "https://trooppa1997.com/",
+      "feedUrl": "https://trooppa1997.com/events.json"
+    }
+  ]
+}

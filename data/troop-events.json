@@ -1,0 +1,37 @@
+{
+  "troops": [
+    {
+      "id": "pa1997",
+      "name": "Troop PA-1997",
+      "website": "https://trooppa1997.com/",
+      "feedUrl": "https://trooppa1997.com/events.json",
+      "events": [
+        {
+          "id": "srs681m832m482sq5jc35eqaj4",
+          "title": "PA-1997 Rocket Launch Hit the Trail",
+          "date": "2026-10-03",
+          "endDate": "2026-10-03",
+          "startTime": "00:00",
+          "endTime": "23:59",
+          "tentative": true,
+          "location": "Living Word Baptist Church, 40 Hess Lane, Sweet Valley, PA 18656",
+          "description": "Tentative date: Saturday, October 3, 2026. Joint Woodlands Trail, Navigators and Adventurers rocket launch day at Living Word Baptist Church. Woodlands: Science & Technology Hit the Trail. Navigators/Adventurers: Model Rocketry Badge application. Time and rain plan TBD.",
+          "posterUrl": "https://drive.google.com/thumbnail?id=1Y3AJOEvl6kbBOzjgQHQJUOAMohfFM358&sz=w1000"
+        },
+        {
+          "id": "17f9m42t4vi8c4isa32u2tca5g",
+          "title": "Klondike",
+          "date": "2027-01-29",
+          "endDate": "2027-01-31",
+          "startTime": "00:00",
+          "endTime": "23:59",
+          "tentative": false,
+          "location": "Sylvan Hills",
+          "description": "Approved troop participation at Sylvan Hills, January 29\u201331, 2027. Sports & Fitness Hit the Trail. Navigators and Adventurers will prepare Ropework, sled rigging, equipment and patrol assignments. Registration information is coming this fall. Cost, transportation and camping details TBD. Contact: tltrooppa1997@gmail.com.",
+          "posterUrl": "https://drive.google.com/thumbnail?id=1d4t-UHVrY45uTASZRug_sgkGuStxK-xp&sz=w1000"
+        }
+      ],
+      "syncedAt": "2026-10-01T03:26:17.099443+00:00"
+    }
+  ]
+}
