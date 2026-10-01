@@ -244,9 +244,9 @@ h3 { font-size: 1.5rem; }
     height: 90vh;
     min-height: 600px;
     background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
-    background-image: linear-gradient(rgba(70, 12, 23, 0.25), rgba(70, 12, 23, 0.48)), url('../images/northern-tier-adventure.jpg');
+    background-image: linear-gradient(rgba(12, 20, 26, 0.28), rgba(12, 20, 26, 0.58)), url('../images/northern-tier-patriotic.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: left center;
     background-attachment: scroll;
     display: flex;
     align-items: center;
