@@ -31,5 +31,14 @@
     "address": "3604 State Rte 29 S, Noxen, PA 18636",
     "meetings": "Every other Thursday, 6:30-8:30 PM",
     "description": "Faith-based outdoor adventure program building boys into godly men through character development, outdoor skills, and leadership training in the heart of Pennsylvania."
+  },
+  {
+    "troop_number": "PA-0490",
+    "location": "Danville, PA",
+    "lat": 40.9612,
+    "lng": -76.6128,
+    "sponsor": "Danville God's Missionary Church",
+    "address": "510 East Front St, Danville, PA 17821",
+    "description": "Faith-based outdoor adventure program for boys, chartered through Danville God's Missionary Church and serving families in Montour County."
   }
 ]

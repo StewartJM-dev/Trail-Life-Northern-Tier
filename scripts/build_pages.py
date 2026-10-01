@@ -50,7 +50,6 @@ FOOTER_CONNECT_LINKS = [
     ("Area Team", "leaders.html"),
     ("Contact Us", "contact.html"),
     ("Trail Life USA", "https://www.traillifeusa.com"),
-    ("TL Connect", "https://www.traillifeconnect.com"),
 ]
 
 TEMPLATED_PAGES = [href for _, href in NAV_ITEMS]
