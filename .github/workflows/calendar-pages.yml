@@ -36,6 +36,10 @@ jobs:
           mkdir _site
           cp *.html manifest.json service-worker.js _site/
           cp -r css js images downloads data _site/
+          # admin-login.html and admin-dashboard.html are internal tools only
+          # (hardcoded credentials, direct links to the content Google Sheets)
+          # and must never be published to the public site.
+          rm -f _site/admin-login.html _site/admin-dashboard.html
       - name: Stamp canonical nav/footer into the build
         run: python scripts/build_pages.py --write --root _site
       - uses: actions/upload-pages-artifact@v3
