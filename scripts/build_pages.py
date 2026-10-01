@@ -40,7 +40,7 @@ NAV_ITEMS = [
 ]
 
 FOOTER_QUICK_LINKS = [
-    ("Regional Blog", "blog.html"),
+    ("Area Blog", "blog.html"),
     ("Resources", "resources.html"),
     ("Events", "events.html"),
     ("Our Troops", "troops.html"),
