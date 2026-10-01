@@ -21,7 +21,7 @@ function createSpotlightHTML(spotlight) {
     ).join('') : '';
 
     return `
-        <div class="spotlight-content">
+        <div class="spotlight-content reveal">
             <h2>${formatMonthYear(spotlight.date)}: ${spotlight.troop_number} - ${spotlight.location}</h2>
             <p>${spotlight.description}</p>
             
@@ -71,6 +71,7 @@ async function loadSpotlight() {
         }
 
         contentContainer.innerHTML = createSpotlightHTML(spotlights[0]);
+        if (window.observeReveal) window.observeReveal(contentContainer);
 
     } catch (error) {
         console.error('Error loading spotlight:', error);

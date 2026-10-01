@@ -11,7 +11,7 @@ function createAchievementHTML(achievement, index) {
     const iconColor = index % 2 === 0 ? 'var(--gold)' : 'white';
     const icon = achievement.icon || 'fa-trophy';
     return `
-        <div class="achievement-card ${cardClass}">
+        <div class="achievement-card ${cardClass} reveal">
             <i class="fas ${icon}" style="color: ${iconColor};"></i>
             <h3>${achievement.title}</h3>
             <p><strong>${achievement.troop}</strong></p>
@@ -32,6 +32,7 @@ async function loadAchievements() {
             return;
         }
         gridContainer.innerHTML = achievements.map((achievement, index) => createAchievementHTML(achievement, index)).join('');
+        if (window.observeReveal) window.observeReveal(gridContainer);
     } catch (error) {
         console.error('Error loading achievements:', error);
         loadingEl.style.display = 'none';

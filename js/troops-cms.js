@@ -29,7 +29,7 @@ function createTroopHTML(troop) {
         : '';
 
     return `
-        <div class="troop-card">
+        <div class="troop-card reveal">
             <h3>Troop ${troop.troop_number}</h3>
             ${meta}
             ${troop.description ? `<p class="troop-description">${troop.description}</p>` : ''}
@@ -62,6 +62,7 @@ async function loadTroops() {
         }
 
         listContainer.innerHTML = troops.map(createTroopHTML).join('');
+        if (window.observeReveal) window.observeReveal(listContainer);
 
 
     } catch (error) {

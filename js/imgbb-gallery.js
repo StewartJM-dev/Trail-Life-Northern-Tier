@@ -14,7 +14,7 @@ function createPhotoHTML(photo, index) {
     const caption = photo.caption || '';
     
     return `
-        <div class="gallery-item" onclick="openLightbox(${index})">
+        <div class="gallery-item reveal" onclick="openLightbox(${index})">
             <img src="${photo.image_url}" alt="${caption}" loading="lazy">
             ${caption ? `<div class="gallery-item-caption">${caption}</div>` : ''}
         </div>
@@ -96,9 +96,10 @@ async function loadGallery() {
         }
 
         // Display all photos in grid
-        galleryGrid.innerHTML = allPhotos.map((photo, index) => 
+        galleryGrid.innerHTML = allPhotos.map((photo, index) =>
             createPhotoHTML(photo, index)
         ).join('');
+        if (window.observeReveal) window.observeReveal(galleryGrid);
 
     } catch (error) {
         console.error('Error loading gallery:', error);

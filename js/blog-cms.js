@@ -29,7 +29,7 @@ function createPostHTML(post) {
     const imageUrl = post.image || 'images/placeholder-blog.jpg';
 
     return `
-        <article class="blog-card">
+        <article class="blog-card reveal">
             <div class="blog-card-image">
                 <img src="${imageUrl}" alt="${post.title}" onerror="this.src='images/placeholder-blog.jpg'">
             </div>
@@ -64,6 +64,7 @@ async function loadBlogPosts() {
         }
 
         postsContainer.innerHTML = posts.map(createPostHTML).join('');
+        if (window.observeReveal) window.observeReveal(postsContainer);
 
     } catch (error) {
         console.error('Error loading blog posts:', error);

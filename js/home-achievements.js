@@ -12,7 +12,7 @@ function createHomeAchievementHTML(achievement) {
     const icon = achievement.icon || 'fa-trophy';
     
     return `
-        <div class="achievement-card">
+        <div class="achievement-card reveal">
             <div class="achievement-icon">
                 <i class="fas ${icon}"></i>
             </div>
@@ -47,6 +47,7 @@ async function loadHomeAchievements() {
 
         // Display the achievements
         container.innerHTML = recentAchievements.map(createHomeAchievementHTML).join('');
+        if (window.observeReveal) window.observeReveal(container);
 
     } catch (error) {
         console.error('Error loading home achievements:', error);
