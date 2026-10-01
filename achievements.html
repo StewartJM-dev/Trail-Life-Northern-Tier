@@ -11,47 +11,17 @@
     <link rel="stylesheet" href="css/style.css?v=20261001-graphics">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Merit-badge card look (colors, icon badge, stitched border) now
+           lives in css/style.css, shared with the homepage's achievement
+           preview cards. Only this page's grid/loading/error styling
+           stays local. */
         .achievements-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-        .achievement-card {
-            color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(186,38,45,0.3);
-            text-align: center;
-        }
-        .achievement-card-red {
-            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
-        }
-        .achievement-card-gold {
-            background: linear-gradient(135deg, var(--gold), var(--dark-brown));
-        }
-        .achievement-card i {
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
-        .achievement-card h3 {
-            color: white;
-            margin-bottom: 15px;
-        }
-        .achievement-card p {
-            margin-bottom: 10px;
-        }
         #loading { text-align: center; padding: 40px; font-size: 1.2rem; color: var(--gray); }
         #error { background-color: #fee; border: 1px solid #fcc; color: #c33; padding: 20px; border-radius: 4px; margin: 20px 0; display: none; }
-
-        @media (max-width: 600px) {
-            .achievement-card {
-                padding: 25px 20px;
-            }
-
-            .achievement-card i {
-                font-size: 2.8rem;
-            }
-        }
     </style>
 </head>
 <body>
