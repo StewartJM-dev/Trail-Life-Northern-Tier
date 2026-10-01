@@ -19,6 +19,7 @@
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('in-view');
+                        entry.target.classList.remove('reveal-pending');
                         observer.unobserve(entry.target);
                     }
                 });
@@ -36,7 +37,12 @@
             return;
         }
         const obs = getObserver();
-        targets.forEach((el) => obs.observe(el));
+        // Content is visible by default. Only hide an element after its
+        // observer is running, so a missing script cannot hide the cards.
+        targets.forEach((el) => {
+            obs.observe(el);
+            el.classList.add('reveal-pending');
+        });
     }
 
     window.observeReveal = observeReveal;

@@ -8,11 +8,10 @@ const ACHIEVEMENTS_CONFIG = {
 
 function createAchievementHTML(achievement, index) {
     const cardClass = index % 2 === 0 ? 'achievement-card-red' : 'achievement-card-gold';
-    const iconColor = index % 2 === 0 ? 'var(--gold)' : 'white';
     const icon = achievement.icon || 'fa-trophy';
     return `
         <div class="achievement-card ${cardClass} reveal">
-            <i class="fas ${icon}" style="color: ${iconColor};"></i>
+            <i class="fas ${icon}" aria-hidden="true"></i>
             <h3>${achievement.title}</h3>
             <p><strong>${achievement.troop}</strong></p>
             <p>${achievement.description}</p>
