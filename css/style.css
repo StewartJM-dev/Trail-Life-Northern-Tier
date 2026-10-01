@@ -930,3 +930,6 @@ h3 { font-size: 1.5rem; }
 .troop-event-badge { background: var(--gold); color: white; border-radius: 4px; padding: 3px 8px; font-size: .85rem; }
 .troop-event-body a, .troop-event-source { color: var(--primary-red); font-weight: 600; }
 .troop-event-source { display: inline-block; margin-top: 22px; }
+
+.hero .hero-title { color: var(--white); text-shadow: 0 3px 18px rgba(0,0,0,.45); }
+.hero .hero-subtitle { text-shadow: 0 2px 10px rgba(0,0,0,.7); }
