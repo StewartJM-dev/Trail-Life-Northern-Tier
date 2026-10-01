@@ -19,6 +19,54 @@
           "posterUrl": "https://drive.google.com/thumbnail?id=1Y3AJOEvl6kbBOzjgQHQJUOAMohfFM358&sz=w1000"
         },
         {
+          "id": "tvh5s8jm570s2fhradi0lev3ng",
+          "title": "Ultimate Manhunt",
+          "date": "2026-10-30",
+          "endDate": "2026-10-30",
+          "startTime": "18:00",
+          "endTime": "21:30",
+          "tentative": false,
+          "location": "Living Word Baptist Church, Sweet Valley, PA",
+          "description": "A nighttime tracking-and-navigation challenge where Trailmen race to find hidden Lost Patrols, recover their patrol markers, and make it back to Command before time runs out. ULTIMATE MANHUNT \u2014 Find the Lost Patrol No tricks. Just adventure. A Better Halloween Alternative. Friday, October 30, 2026 \u2022 6:00\u20139:30 p.m. Living Word Baptist Church, Sweet Valley, PA Trail Life Troop PA-1997\u2019s October outdoor-skills capstone. Finder patrols use maps, tracking signs, observation, teamwork, and limited guesses to locate hidden Navigator/Adventurer Lost Patrol sites and recover patrol markers. Lost Patrols remain concealed in assigned quadrants and compete to protect as many markers as possible. Planned features: maps, tracking, radios, camouflage, glow-stick quadrant boundaries, campfire base camp, prizes, hot dogs, trail mix, hot apple cider, and Dutch-oven apple crisp. Awards include Ultimate Search Patrol, Ultimate Lost Patrol, Ghost of the Woods, and Night Hunter. Contact: tltrooppa1997@gmail.com Hit the Trail",
+          "posterUrl": "https://drive.google.com/thumbnail?id=1plY-j__tQ8Hb4KAgzksSdLvqUdhnzDjd&sz=w1000"
+        },
+        {
+          "id": "53c5chs79blkher2ufmlu0h0gs",
+          "title": "Veterans Breakfast",
+          "date": "2026-11-14",
+          "endDate": "2026-11-14",
+          "startTime": "00:00",
+          "endTime": "23:59",
+          "tentative": false,
+          "location": "Living Word Baptist Church, Sweet Valley, PA",
+          "description": "Troop reports at 7:30 a.m.; breakfast begins at 9:00 a.m. Invite veterans and their families from Living Word Baptist Church and Stillwater Christian Church and through Facebook. RSVP deadline: November 7. Follow up with Brandon, DSA for the Klondike host troop, and invite their troop. RSVP/contact: tltrooppa1997@gmail.com. Final dismissal time TBD. Hit the Trail",
+          "posterUrl": "https://drive.google.com/thumbnail?id=1kqBkhTlW2yXsjj-_jCV0mnp8QPOj1EnW&sz=w1000"
+        },
+        {
+          "id": "fep0dra080t8pmb9rv835cjlc0",
+          "title": "Operation Christmas Child Packing",
+          "date": "2026-11-21",
+          "endDate": "2026-11-21",
+          "startTime": "09:00",
+          "endTime": "12:00",
+          "tentative": false,
+          "location": "Stillwater Christian Church",
+          "description": "Operation Christmas Child packing event, led by Steph. Approved time: 9:00 a.m.\u201312:00 p.m. Hit the Trail",
+          "posterUrl": "https://drive.google.com/thumbnail?id=1zKFC6hiHwTZePykhcJYzDyg-Ke_SCMXi&sz=w1000"
+        },
+        {
+          "id": "nfqpm3tnk9t6ptihs39uc8oakg",
+          "title": "Iron Trail Chef & Christmas Party",
+          "date": "2026-12-05",
+          "endDate": "2026-12-05",
+          "startTime": "17:00",
+          "endTime": "19:30",
+          "tentative": false,
+          "location": "Living Word Baptist Church, Sweet Valley, PA",
+          "description": "Approved date and time: Saturday, December 5, 5:00\u20137:30 p.m. Iron Trail Chef cooking event and troop Christmas party. Recruit a limited number of judges from both churches and through Facebook. Judge limit, food budget and final patrol format TBD. Judge inquiries/contact: tltrooppa1997@gmail.com. Hit the Trail",
+          "posterUrl": "https://drive.google.com/thumbnail?id=19F2udncvoVjZ8a3Ipph8ib9vq1f7WA9J&sz=w1000"
+        },
+        {
           "id": "17f9m42t4vi8c4isa32u2tca5g",
           "title": "Klondike",
           "date": "2027-01-29",
@@ -31,7 +79,7 @@
           "posterUrl": "https://drive.google.com/thumbnail?id=1d4t-UHVrY45uTASZRug_sgkGuStxK-xp&sz=w1000"
         }
       ],
-      "syncedAt": "2026-10-01T03:26:17.099443+00:00"
+      "syncedAt": "2026-10-01T04:49:50.303084+00:00"
     }
   ]
 }
