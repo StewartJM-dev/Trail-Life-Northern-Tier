@@ -836,8 +836,11 @@ h3 { font-size: 1.5rem; }
         padding: 20px;
     }
 
-    .vendor-card {
-        padding: 22px;
+    .vendor-summary {
+        padding: 22px 22px 12px;
+    }
+    .vendor-body {
+        padding: 0 22px 22px;
     }
 
     .troop-card {
@@ -956,10 +959,21 @@ h3 { font-size: 1.5rem; }
 .vendor-card {
     background: white;
     border-radius: 10px;
-    padding: 35px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     border-top: 4px solid var(--gold);
 }
+.vendor-summary {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    list-style: none;
+    padding: 35px 35px 20px;
+}
+.vendor-summary::-webkit-details-marker { display: none; }
+.vendor-summary > div { flex: 1; }
+.vendor-body { padding: 0 35px 35px; }
+details.vendor-card[open] .vendor-summary .resource-chevron { transform: rotate(90deg); }
 .vendor-feature-text {
     margin: 5px 0 0 0;
     color: var(--gray);
