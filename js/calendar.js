@@ -18,9 +18,19 @@
         return event.allDay ? event.end > todayKey() : new Date(event.end) > new Date();
     }
     function timeLabel(event) {
-        if (event.allDay) return 'All day';
+        if (event.allDay) {
+            const last = new Date(`${event.end}T12:00:00Z`);
+            last.setUTCDate(last.getUTCDate() - 1);
+            const finalDay = last.toISOString().slice(0, 10);
+            return finalDay > event.start ? `All day, ${event.start} – ${finalDay}` : 'All day';
+        }
         const format = new Intl.DateTimeFormat('en-US', {timeZone: ZONE, hour: 'numeric', minute: '2-digit', timeZoneName: 'short'});
-        return `${format.format(new Date(event.start))} – ${format.format(new Date(event.end))}`;
+        const begin = new Date(event.start), end = new Date(event.end);
+        const dates = new Intl.DateTimeFormat('en-US', {timeZone: ZONE, month: 'short', day: 'numeric', year: 'numeric'});
+        if (dates.format(begin) !== dates.format(end)) {
+            return `${dates.format(begin)}, ${format.format(begin)} – ${dates.format(end)}, ${format.format(end)}`;
+        }
+        return `${format.format(begin)} – ${format.format(end)}`;
     }
     function eventCard(event) {
         const card = node('article', undefined, 'event-card');
@@ -29,7 +39,7 @@
         stamp.append(node('span', date.toLocaleDateString('en-US', {timeZone: ZONE, month: 'short'}).toUpperCase(), 'event-month'),
             node('span', date.toLocaleDateString('en-US', {timeZone: ZONE, day: 'numeric'}), 'event-day'));
         const info = node('div', undefined, 'event-info');
-        info.append(node('h3', event.title), node('p', timeLabel(event)));
+        info.append(node('h3', event.title), node('p', date.toLocaleDateString('en-US', {timeZone: ZONE, dateStyle: 'medium'})), node('p', timeLabel(event)));
         if (event.location) info.append(node('p', event.location));
         if (event.description) {
             const details = node('details');
