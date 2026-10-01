@@ -1,5 +1,6 @@
 // Trail Life Northern Tier - Gallery powered by Google Sheets + ImgBB
 // Super simple - just 2 columns: image_url, published
+// CSV fetching/parsing lives in js/sheet-cms.js (loaded before this file).
 
 const GALLERY_CONFIG = {
     SHEET_URL: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTd_X6dSEGVXlheOHOroGqZzK6bT6Y_v2RpkU30JPXdnRN9mz5q-7KN66WvTynC-bUbHbecsmOwDB3I/pub?output=csv'
@@ -7,45 +8,6 @@ const GALLERY_CONFIG = {
 
 let allPhotos = [];
 let currentPhotoIndex = 0;
-
-// Parse CSV data
-function parseCSV(text) {
-    const lines = text.split('\n');
-    const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
-    const photos = [];
-
-    for (let i = 1; i < lines.length; i++) {
-        if (!lines[i].trim()) continue;
-        
-        const values = [];
-        let currentValue = '';
-        let insideQuotes = false;
-        
-        for (let char of lines[i]) {
-            if (char === '"') {
-                insideQuotes = !insideQuotes;
-            } else if (char === ',' && !insideQuotes) {
-                values.push(currentValue.trim().replace(/^"|"$/g, ''));
-                currentValue = '';
-            } else {
-                currentValue += char;
-            }
-        }
-        values.push(currentValue.trim().replace(/^"|"$/g, ''));
-
-        const photo = {};
-        headers.forEach((header, index) => {
-            photo[header] = values[index] || '';
-        });
-
-        // Only include published photos with valid image URLs
-        if (photo.published && photo.published.toLowerCase() === 'true' && photo.image_url) {
-            photos.push(photo);
-        }
-    }
-
-    return photos;
-}
 
 // Create photo HTML
 function createPhotoHTML(photo, index) {
@@ -111,26 +73,13 @@ async function loadGallery() {
     const galleryGrid = document.getElementById('gallery-grid');
 
     try {
-        if (GALLERY_CONFIG.SHEET_URL === 'YOUR_GOOGLE_SHEETS_CSV_URL_HERE') {
-            throw new Error('Please configure your Google Sheets URL in js/imgbb-gallery.js');
-        }
-
-        const response = await fetch(GALLERY_CONFIG.SHEET_URL);
-        
-        if (!response.ok) {
-            throw new Error('Failed to fetch gallery from Google Sheets');
-        }
-
-        const csvText = await response.text();
-        allPhotos = parseCSV(csvText);
+        allPhotos = await SheetCMS.fetchPublishedRows(GALLERY_CONFIG.SHEET_URL, {
+            extraFilter: photo => !!photo.image_url
+        });
 
         // Sort by date if date column exists, otherwise keep sheet order
         if (allPhotos.length > 0 && allPhotos[0].date) {
-            allPhotos.sort((a, b) => {
-                const dateA = new Date(a.date);
-                const dateB = new Date(b.date);
-                return dateB - dateA;
-            });
+            allPhotos = SheetCMS.sortByDateDesc(allPhotos);
         }
 
         loadingEl.style.display = 'none';

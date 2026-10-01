@@ -1,47 +1,12 @@
 // Trail Life Northern Tier - Home Page Achievements Loader
-// Loads 3 most recent achievements from Google Sheets for the home page
+// Loads 3 most recent achievements from Google Sheets for the home page.
+// This reads the SAME sheet as js/achievements-cms.js (the full achievements
+// page) — CSV fetching/parsing lives in js/sheet-cms.js (loaded before this file).
 
 const HOME_ACHIEVEMENTS_CONFIG = {
     SHEET_URL: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQmcY1pgrnq-Ifikl-GnBXFkb1fvaozXjgplGxkp4AE2RTPEVibtoX9A9jAvIP6dYqyAW4QGoMoc3Zb/pub?output=csv',
     MAX_ACHIEVEMENTS: 3 // Show only 3 on home page
 };
-
-function parseCSV(text) {
-    const lines = text.split('\n');
-    const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
-    const achievements = [];
-    
-    for (let i = 1; i < lines.length; i++) {
-        if (!lines[i].trim()) continue;
-        
-        const values = [];
-        let currentValue = '';
-        let insideQuotes = false;
-        
-        for (let char of lines[i]) {
-            if (char === '"') {
-                insideQuotes = !insideQuotes;
-            } else if (char === ',' && !insideQuotes) {
-                values.push(currentValue.trim().replace(/^"|"$/g, ''));
-                currentValue = '';
-            } else {
-                currentValue += char;
-            }
-        }
-        values.push(currentValue.trim().replace(/^"|"$/g, ''));
-
-        const achievement = {};
-        headers.forEach((header, index) => {
-            achievement[header] = values[index] || '';
-        });
-
-        if (achievement.published && achievement.published.toLowerCase() === 'true') {
-            achievements.push(achievement);
-        }
-    }
-    
-    return achievements;
-}
 
 function createHomeAchievementHTML(achievement) {
     const icon = achievement.icon || 'fa-trophy';
@@ -64,17 +29,7 @@ async function loadHomeAchievements() {
     if (!container) return;
     
     try {
-        const response = await fetch(HOME_ACHIEVEMENTS_CONFIG.SHEET_URL);
-        
-        if (!response.ok) {
-            throw new Error('Failed to fetch achievements');
-        }
-
-        const csvText = await response.text();
-        const achievements = parseCSV(csvText);
-
-        // Sort by date (newest first) and take only the first 3
-        achievements.sort((a, b) => new Date(b.date) - new Date(a.date));
+        const achievements = SheetCMS.sortByDateDesc(await SheetCMS.fetchPublishedRows(HOME_ACHIEVEMENTS_CONFIG.SHEET_URL));
         const recentAchievements = achievements.slice(0, HOME_ACHIEVEMENTS_CONFIG.MAX_ACHIEVEMENTS);
 
         if (recentAchievements.length === 0) {

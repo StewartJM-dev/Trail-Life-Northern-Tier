@@ -1,45 +1,9 @@
 // Trail Life Northern Tier - Spotlight CMS powered by Google Sheets
+// CSV fetching/parsing lives in js/sheet-cms.js (loaded before this file).
 
 const SPOTLIGHT_CONFIG = {
     SHEET_URL: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQbKOUft13Bb3ZWOy_HUBazuAeLBDVsEImeI2zRIcs3isGb0et72lkJwYXrJWXE6gWW5_1Bn3US8WHd/pub?output=csv'
 };
-
-function parseCSV(text) {
-    const lines = text.split('\n');
-    const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
-    const spotlights = [];
-
-    for (let i = 1; i < lines.length; i++) {
-        if (!lines[i].trim()) continue;
-        
-        const values = [];
-        let currentValue = '';
-        let insideQuotes = false;
-        
-        for (let char of lines[i]) {
-            if (char === '"') {
-                insideQuotes = !insideQuotes;
-            } else if (char === ',' && !insideQuotes) {
-                values.push(currentValue.trim().replace(/^"|"$/g, ''));
-                currentValue = '';
-            } else {
-                currentValue += char;
-            }
-        }
-        values.push(currentValue.trim().replace(/^"|"$/g, ''));
-
-        const spotlight = {};
-        headers.forEach((header, index) => {
-            spotlight[header] = values[index] || '';
-        });
-
-        if (spotlight.published && spotlight.published.toLowerCase() === 'true') {
-            spotlights.push(spotlight);
-        }
-    }
-
-    return spotlights;
-}
 
 function formatMonthYear(dateString) {
     if (!dateString) return '';
@@ -97,24 +61,7 @@ async function loadSpotlight() {
     const contentContainer = document.getElementById('spotlight-content');
 
     try {
-        if (SPOTLIGHT_CONFIG.SHEET_URL === 'YOUR_GOOGLE_SHEETS_CSV_URL_HERE') {
-            throw new Error('Please configure your Google Sheets URL in js/spotlight-cms.js');
-        }
-
-        const response = await fetch(SPOTLIGHT_CONFIG.SHEET_URL);
-        
-        if (!response.ok) {
-            throw new Error('Failed to fetch spotlight from Google Sheets');
-        }
-
-        const csvText = await response.text();
-        const spotlights = parseCSV(csvText);
-
-        spotlights.sort((a, b) => {
-            const dateA = new Date(a.date);
-            const dateB = new Date(b.date);
-            return dateB - dateA;
-        });
+        const spotlights = SheetCMS.sortByDateDesc(await SheetCMS.fetchPublishedRows(SPOTLIGHT_CONFIG.SHEET_URL));
 
         loadingEl.style.display = 'none';
 
