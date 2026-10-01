@@ -1227,17 +1227,19 @@ details.vendor-card[open] .vendor-summary .resource-chevron { transform: rotate(
 }
 
 /* Scroll-in reveal (see js/reveal.js) */
+.reveal {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
 .reveal.reveal-pending {
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .reveal.in-view {
     opacity: 1;
     transform: translateY(0);
 }
 @media (prefers-reduced-motion: reduce) {
-    .reveal.reveal-pending {
+    .reveal {
         opacity: 1;
         transform: none;
         transition: none;
