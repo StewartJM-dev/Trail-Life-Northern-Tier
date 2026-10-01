@@ -9,24 +9,11 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "images/TL_ClassicLogo_1_RGB.png",
-      "sizes": "192x192",
+      "src": "images/trail-life-block-logo.png",
+      "sizes": "1024x964",
       "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "images/TL_ClassicLogo_1_RGB.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ],
-  "categories": ["education", "lifestyle", "social"],
-  "screenshots": [
-    {
-      "src": "images/TL_ClassicLogo_1_RGB.png",
-      "sizes": "540x720",
-      "type": "image/png"
-    }
-  ]
+  "categories": ["education", "lifestyle", "social"]
 }

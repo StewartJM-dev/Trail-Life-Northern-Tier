@@ -67,7 +67,7 @@ def render_nav(current_page):
     return f'''    <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="images/TL_ClassicLogo_1_RGB.png" alt="Trail Life USA Logo">
+                <img src="images/trail-life-block-logo.png" alt="Trail Life USA Logo">
                 <span class="nav-title">Northern Tier</span>
             </div>
             <button class="nav-toggle" aria-label="Toggle navigation">
@@ -100,7 +100,7 @@ def render_footer(current_page):
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <img src="images/TL_ClassicLogo_1_RGB.png" alt="Trail Life USA" class="footer-logo">
+                    <img src="images/trail-life-block-logo.png" alt="Trail Life USA" class="footer-logo">
                     <p>Trail Life USA Northern Tier</p>
                     <p class="footer-tagline">Adventure > Character > Leadership</p>
                 </div>
