@@ -168,6 +168,24 @@
             .podcast-video { padding: 20px 18px; }
         }
 
+        .video-embed {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            margin: 14px 0 6px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-embed iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
         .podcast-guest {
             margin-top: 35px;
             padding-top: 25px;
@@ -633,7 +651,10 @@
                 </div>
                 <div class="podcast-video">
                     <h3><i class="fab fa-youtube"></i> Trail Life USA on YouTube</h3>
-                    <p>Trail Life USA&rsquo;s official channel, with program videos and stories from troops across the country.</p>
+                    <p>Trail Life USA&rsquo;s official channel. The player below always shows their newest videos; use the list icon in its corner to browse more.</p>
+                    <div class="video-embed">
+                        <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=UUhtKkVQFO61Z0h4BWTi8Xpw" title="Latest videos from Trail Life USA" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
                     <p class="podcast-links">
                         <a href="https://www.youtube.com/@TrailLifeUSA" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> Visit the channel</a>
                     </p>
@@ -641,6 +662,9 @@
                 <div class="podcast-video">
                     <h3><i class="fas fa-child"></i> Camping Stick Kids Podcast</h3>
                     <p>For younger Trailmen: stories, skits, jokes, and silly songs that inspire kids to love God, obey His Word, and explore the world He created. From Camping Stick Kids, the ministry behind the Worthy Life Award.</p>
+                    <div class="video-embed">
+                        <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=UU2W9e4J7DKX77q673PFh92A" title="Latest Camping Stick Kids videos" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
                     <p class="podcast-links">
                         <a href="https://castbox.fm/channel/CAMPING-STICK-KIDS-PODCAST-id6050784" target="_blank" rel="noopener"><i class="fas fa-podcast"></i> Listen on Castbox</a>
                         <a href="https://www.youtube.com/channel/UC2W9e4J7DKX77q673PFh92A" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> YouTube</a>
@@ -650,6 +674,9 @@
                 <div class="podcast-video">
                     <h3><i class="fas fa-video"></i> Trail Hacks with the Wild Brothers</h3>
                     <p>A Trail Life USA video series of quick, five-minute outdoor-skills lessons: backcountry essentials, shelter building, fire-starting, fishing, campfire cooking, canoeing, and fitting a backpack. Taught by the Wild brothers, who grew up as missionary kids among the Wano people in the jungles of Indonesia. Great to watch with your Trailmen before a campout.</p>
+                    <div class="video-embed">
+                        <iframe src="https://www.youtube-nocookie.com/embed/eXfSIJYJUhM" title="Trail Hacks: Trail Life USA with the Wild Brothers" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
                     <p class="podcast-links">
                         <a href="https://www.traillifeusa.com/trailhacks-waypost" target="_blank" rel="noopener"><i class="fas fa-compass"></i> Trail Life page</a>
                         <a href="https://www.angel.com/watch/trail-hacks" target="_blank" rel="noopener"><i class="fas fa-play-circle"></i> Watch on Angel</a>
