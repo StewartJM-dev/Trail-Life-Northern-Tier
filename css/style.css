@@ -1,5 +1,4 @@
-/* ========================================
-   Trail Life Northeast Region - Main Styles
+/* =================================   Trail Life Northeast Region - Main Styles
    ======================================== */
 
 /* CSS Variables - Official Trail Life Brand Colors */
@@ -146,8 +145,7 @@ h3 { font-size: 1.5rem; }
     text-align: center;
 }
 
-/* ========================================
-   Navigation Bar
+/* =================================   Navigation Bar
    ======================================== */
 .navbar {
     background: var(--white);
@@ -227,7 +225,7 @@ h3 { font-size: 1.5rem; }
     color: var(--primary-red);
 }
 
-@media (min-width: 1200px) and (max-width: 1439px) {
+@media (min-width: 1200px) and (max-width: 1599px) {
     .nav-menu { gap: 18px; }
     .nav-menu a { font-size: 0.85rem; letter-spacing: 0.3px; }
 }
@@ -249,8 +247,7 @@ h3 { font-size: 1.5rem; }
     transition: all 0.3s ease;
 }
 
-/* ========================================
-   Hero Section
+/* =================================   Hero Section
    ======================================== */
 .hero {
     position: relative;
@@ -353,8 +350,7 @@ h3 { font-size: 1.5rem; }
     }
 }
 
-/* ========================================
-   Quick Links Section
+/* =================================   Quick Links Section
    ======================================== */
 .quick-links {
     padding: 80px 0;
@@ -405,8 +401,7 @@ h3 { font-size: 1.5rem; }
     font-size: 1rem;
 }
 
-/* ========================================
-   Featured Blog Section
+/* =================================   Featured Blog Section
    ======================================== */
 .featured-blog {
     padding: 80px 0;
@@ -461,8 +456,7 @@ h3 { font-size: 1.5rem; }
     margin-bottom: 25px;
 }
 
-/* ========================================
-   Upcoming Events Section
+/* =================================   Upcoming Events Section
    ======================================== */
 .upcoming-events {
     padding: 80px 0;
@@ -535,8 +529,7 @@ h3 { font-size: 1.5rem; }
     font-size: 0.95rem;
 }
 
-/* ========================================
-   Achievement Highlights
+/* =================================   Achievement Highlights
    ======================================== */
 .achievement-highlights {
     padding: 80px 0;
@@ -654,8 +647,7 @@ h3 { font-size: 1.5rem; }
     color: var(--gold);
 }
 
-/* ========================================
-   Call to Action Section
+/* =================================   Call to Action Section
    ======================================== */
 .cta-section {
     padding: 100px 0;
@@ -694,8 +686,7 @@ h3 { font-size: 1.5rem; }
     border-color: var(--primary-red);
 }
 
-/* ========================================
-   Footer
+/* =================================   Footer
    ======================================== */
 .footer {
     background: var(--black);
@@ -784,8 +775,7 @@ h3 { font-size: 1.5rem; }
     margin: 5px 0;
 }
 
-/* ========================================
-   Responsive Design
+/* =================================   Responsive Design
    ======================================== */
 /* The full 11-item menu needs ~1,200px beside the logo; below that,
    switch to the toggle (hamburger) menu instead of letting it run off
@@ -980,8 +970,7 @@ h3 { font-size: 1.5rem; }
     }
 }
 
-/* ========================================
-   Page-Specific Styles
+/* =================================   Page-Specific Styles
    ======================================== */
 
 /* Page Header */
@@ -1317,7 +1306,7 @@ details.vendor-card[open] .vendor-summary .resource-chevron { transform: rotate(
 .troop-showcase-art img { width: min(250px, 100%); height: 260px; object-fit: contain; }
 .troop-showcase-copy { padding: clamp(28px, 4vw, 55px); align-self: center; }
 .troop-showcase-eyebrow { display: block; margin-bottom: 12px; color: var(--gold); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; }
-.troop-showcase-copy h2 { color: var(--primary-red); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; margin-bottom: 18px; }
+.troop-showcase-copy h2, .troop-showcase-copy h3 { color: var(--primary-red); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; margin-bottom: 18px; }
 .troop-showcase-copy p { margin-bottom: 24px; color: var(--gray); line-height: 1.7; }
 @media (max-width: 600px) {
     .hero--rotating { min-height: 680px; background-color: #17232b; }
@@ -1378,3 +1367,56 @@ details.vendor-card[open] .vendor-summary .resource-chevron { transform: rotate(
     .page-scripture cite { font-size: 0.75rem; }
     .hero .page-scripture { margin: -1rem auto 1.6rem; }
 }
+/* A shorter welcome lets the scenery lead, especially on phones. */
+.hero-eyebrow { display: block; color: white; font-weight: 700; text-transform: uppercase; letter-spacing: .18em; margin-bottom: 12px; }
+.hero--rotating .hero-text { max-width: 620px; margin-left: auto; margin-right: auto; }
+.troop-story-photo { position: relative; padding: 0; background: #17232b; }
+.troop-story-photo img { width: 100%; height: 100%; min-height: 340px; object-fit: cover; }
+.story-image-note { position: absolute; bottom: 12px; left: 14px; color: white; font-size: 11px; padding: 4px 8px; background: rgba(0,0,0,.65); border-radius: 4px; }
+.region-section { padding: 70px 0; background: #f6f3ee; }
+.region-heading { text-align: center; max-width: 750px; margin: 0 auto 32px; }
+.region-heading .section-title { margin-bottom: 14px; }
+.region-heading p { color: var(--gray); }
+.region-grid { min-width: 0; display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px; align-items: stretch; }
+.region-grid #region-map { height: 520px; margin: 0; border-radius: 18px; border: 1px solid #ded7ce; z-index: 0; background: #e9ede5; }
+.region-map-fallback { padding: 32px; }
+.region-directory { min-width: 0; padding: 28px; background: white; border-radius: 18px; border: 1px solid #eadedb; }
+.region-directory h3 { color: var(--primary-red); font-size: 1.5rem; margin-bottom: 14px; }
+#region-troops { list-style: none; margin: 0 0 24px; padding: 0; }
+#region-troops li { border-bottom: 1px solid #eee7df; }
+.region-troop { display: flex; justify-content: space-between; gap: 16px; width: 100%; padding: 11px 0; border: 0; background: transparent; text-align: left; font: inherit; color: #383838; cursor: pointer; }
+.region-troop strong { color: var(--primary-red); }
+.region-troop span { font-size: .85rem; }
+.region-troop:hover, .region-troop:focus-visible { background: #f8f1ed; }
+.region-directory .btn { font-size: .85rem; }
+.region-add-link { display: block; margin-top: 18px; color: var(--primary-red); font-weight: 600; }
+@media (max-width: 900px) { .region-grid { grid-template-columns: 1fr; } .region-grid #region-map { height: 380px; } }
+@media (max-width: 600px) {
+    .hero--rotating { display: block; height: auto; min-height: 0; padding: clamp(230px, 67vw, 360px) 0 115px; }
+    .hero--rotating .hero-title { font-size: clamp(2.5rem, 11vw, 3.5rem); margin-bottom: 12px; }
+    .hero--rotating .hero-eyebrow { font-size: .75rem; margin-bottom: 8px; }
+    .hero--rotating .hero-subtitle { font-size: 1rem; margin-bottom: 16px; }
+    .hero--rotating .hero-text { font-size: 1rem; line-height: 1.5; margin-bottom: 22px; }
+    .hero--rotating .hero-scroll { display: none; }
+    .hero--rotating .hero-scene-controls { bottom: 34px; }
+    .troop-story-photo { padding: 0; min-height: 240px; }
+    .troop-story-photo img { height: 250px; min-height: 0; }
+    .troop-showcase-section { padding: 42px 0 12px; }
+    .region-section { padding: 42px 0; }
+    .region-directory { min-width: 0; padding: 22px; }
+}
+
+.region-map-panel { position: relative; min-width: 0; }
+.region-map-toolbar { display: flex; gap: 8px; margin-top: 12px; }
+.region-map-toolbar[hidden] { display: none; }
+.region-map-toolbar button { padding: 10px 16px; border: 1px solid #d9cec2; background: white; border-radius: 24px; color: var(--primary-red); font: inherit; font-weight: 600; cursor: pointer; }
+.region-map-pin { width: 34px; height: 34px; border: 3px solid white; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: var(--primary-red); box-shadow: 0 3px 10px #0005; cursor: pointer; }
+.region-map-pin::after { content: ''; position: absolute; width: 9px; height: 9px; border-radius: 50%; background: white; top: 9px; left: 9px; }
+.region-map-pin:focus-visible { outline: 3px solid #c18c42; outline-offset: 4px; }
+.region-map-popup h3 { color: var(--primary-red); margin: 0 0 6px; font-size: 1.2rem; }
+.region-map-popup p { margin: 0 0 10px; }
+.region-map-popup a { color: var(--primary-red); font-weight: 700; }
+
+.welcome-scripture { padding: 28px 20px; text-align: center; background: #f6f3ee; }
+.welcome-scripture blockquote { max-width: 780px; margin: auto; color: var(--dark-brown); font-family: Georgia, serif; font-style: italic; line-height: 1.6; }
+.welcome-scripture cite { display: block; margin-top: 8px; font: 700 .75rem var(--font-family); letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }

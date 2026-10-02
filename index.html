@@ -25,13 +25,15 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/trail-life-block-logo.png">
     
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.7.1/dist/maplibre-gl.css">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css?v=20261002-goldverse">
+    <link rel="stylesheet" href="css/style.css?v=20261002-region">
     
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -75,13 +77,10 @@
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title">Trail Life Northern Tier</h1>
+            <span class="hero-eyebrow">Trail Life USA</span>
+            <h1 class="hero-title">Northern Tier</h1>
             <p class="hero-subtitle">Adventure > Character > Leadership</p>
-            <p class="hero-text">Our Mission is to guide generations of courageous young men to honor God, lead with integrity, serve others, and experience outdoor adventure.</p>
-            <blockquote class="page-scripture">
-                <p>“Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest.”</p>
-                <cite>Joshua 1:9 (KJV)</cite>
-            </blockquote>
+            <p class="hero-text">Connecting troops through faith, service, and outdoor adventure.</p>
             <div class="hero-buttons">
                 <a href="troops.html" class="btn btn-primary">Find a Troop</a>
             </div>
@@ -95,6 +94,54 @@
         <p class="hero-imagery-note">Illustrative scenery · AI-generated</p>
         <div class="hero-scroll">
             <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <section class="welcome-scripture" aria-label="Scripture encouragement">
+        <blockquote>
+                <p>“Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest.”</p>
+                <cite>Joshua 1:9 (KJV)</cite>
+            </blockquote>
+    </section>
+
+    <!-- Invitation for troops across the region -->
+    <section class="troop-showcase-section" aria-labelledby="featured-story-heading">
+        <div class="container">
+            <h2 class="section-title" id="featured-story-heading">Featured Troop Story</h2>
+            <div class="troop-showcase-card">
+                <div class="troop-showcase-art troop-story-photo">
+                    <img src="images/hero/evening-camp.webp" srcset="images/hero/evening-camp-mobile.webp 768w, images/hero/evening-camp.webp 1600w" sizes="(max-width: 600px) 100vw, 45vw" width="1600" height="900" alt="Illustrative lakeside campsite with a glowing lantern at dusk" loading="lazy">
+                    <span class="story-image-note">Illustrative scenery · AI-generated</span>
+                </div>
+                <div class="troop-showcase-copy">
+                    <span class="troop-showcase-eyebrow">Adventure. Service. Growth.</span>
+                    <h3>Your troop could be here</h3>
+                    <p>A first campout. A service project that mattered. A Trailman discovering he can lead. Help us tell the next Northern Tier story.</p>
+                    <a href="contact.html" class="btn btn-primary">Share your troop’s story</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="region-section" aria-labelledby="region-heading">
+        <div class="container">
+            <div class="region-heading">
+                <span class="troop-showcase-eyebrow">One region. Many troops. Shared adventure.</span>
+                <h2 class="section-title" id="region-heading">Find your place on the trail</h2>
+                <p>Meet the troops across Pennsylvania and New York. Explore the terrain and select a troop to get closer.</p>
+            </div>
+            <div class="region-grid">
+                <div class="region-map-panel">
+                <div id="region-map" aria-label="3D terrain map of Northern Tier troop locations"><p class="region-map-fallback">Explore our troop locations in the directory below.</p></div>
+                <div class="region-map-toolbar" hidden><button type="button" id="region-reset">Show all troops</button><button type="button" id="region-view" aria-pressed="true">3D terrain</button></div>
+                </div>
+                <div class="region-directory">
+                    <h3>Across the Northern Tier</h3>
+                    <ul id="region-troops"><li><a href="troops.html">Explore the troop directory</a></li></ul>
+                    <a href="troops.html" class="btn btn-primary">Troop details &amp; meeting times</a>
+                    <a href="contact.html" class="region-add-link">Add your troop to the map →</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -140,23 +187,6 @@
                     <h3>Photo Gallery</h3>
                     <p>Snapshots from the trail across the Area</p>
                 </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Invitation for troops across the region -->
-    <section class="troop-showcase-section" aria-label="Troop showcase invitation">
-        <div class="container">
-            <div class="troop-showcase-card">
-                <div class="troop-showcase-art" aria-hidden="true">
-                    <img src="images/headers/spotlight-lantern.webp" width="640" height="640" alt="" loading="lazy">
-                </div>
-                <div class="troop-showcase-copy">
-                    <span class="troop-showcase-eyebrow">Stories from across the Northern Tier</span>
-                    <h2>Your troop could be here</h2>
-                    <p>Every troop has a story. Share your adventures, service projects, and achievements with the Northern Tier.</p>
-                    <a href="contact.html" class="btn btn-primary">Share your troop’s story</a>
-                </div>
             </div>
         </div>
     </section>
@@ -253,5 +283,6 @@
     <script src="js/sheet-cms.js"></script>
     <script src="js/home-achievements.js"></script>
     <script src="js/home-blog.js"></script>
+    <script src="js/region-map.js?v=20261002"></script>
 </body>
 </html>
