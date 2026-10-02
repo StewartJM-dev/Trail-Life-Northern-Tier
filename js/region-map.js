@@ -41,6 +41,11 @@
         if (hasWebsite) { link.target = '_blank'; link.rel = 'noopener'; }
         link.textContent = 'Troop details →';
         card.append(title, location);
+        if (troop.address) {
+            const address = document.createElement('p');
+            address.textContent = troop.address;
+            card.append(address);
+        }
         if (troop.sponsor) {
             const sponsor = document.createElement('p');
             sponsor.textContent = troop.sponsor;
@@ -61,7 +66,7 @@
         streetView.style.marginLeft = '20px';
         card.append(streetView);
         const note = document.createElement('p');
-        note.textContent = 'Map pins show approximate troop locations. Street View opens nearby imagery where available; confirm the meeting address with the troop.';
+        note.textContent = 'Street View opens nearby imagery where available. Confirm meeting details with the troop before visiting.';
         card.append(note);
         return card;
     }

@@ -2,8 +2,8 @@
   {
     "troop_number": "NY-2911",
     "location": "Henrietta, NY",
-    "lat": 43.0594,
-    "lng": -77.6147,
+    "lat": 43.0679958,
+    "lng": -77.595027,
     "sponsor": "Harvest Bible Fellowship",
     "address": "1125 Calkins Road, Henrietta NY, 14623",
     "meetings": "Mondays at 6:30 PM (Sep-May main program, Navigators & Adventurers year-round)",
@@ -13,8 +13,8 @@
   {
     "troop_number": "PA-0490",
     "location": "Danville, PA",
-    "lat": 40.9612,
-    "lng": -76.6128,
+    "lat": 40.95709,
+    "lng": -76.613852,
     "sponsor": "Danville God's Missionary Church",
     "address": "510 East Front St, Danville, PA 17821",
     "description": "Faith-based outdoor adventure program for boys, chartered through Danville God's Missionary Church and serving families in Montour County."
@@ -22,10 +22,10 @@
   {
     "troop_number": "PA-1201",
     "location": "PA Furnace, PA",
-    "lat": 40.7698,
-    "lng": -78.0387,
+    "lat": 40.71307,
+    "lng": -77.98816,
     "sponsor": "Nittany Bible Church",
-    "address": "461 Diebler Rd, PA Furnace, PA 16865",
+    "address": "461 Deibler Road, PA Furnace, PA 16865",
     "meetings": "Thursday evenings, September through May (except the first Thursday of each month)",
     "description": "Faith-based outdoor adventure program for boys, chartered through Nittany Bible Church and serving families in Centre County.",
     "website": "https://nittanybible.com/trail-life-pa1201"
@@ -34,9 +34,10 @@
     "id": "pa1997",
     "troop_number": "PA-1997",
     "location": "Sweet Valley, PA",
-    "lat": 41.2823,
-    "lng": -76.1447,
+    "lat": 41.305532,
+    "lng": -76.2526869,
     "sponsor": "Living Word Baptist Church",
+    "address": "40 Hess Lane, Sweet Valley, PA 18656",
     "chartered": "July 2024",
     "meetings": "Every Tuesday at 6:00 PM",
     "description": "Christ-centered outdoor adventure program featuring camping, hiking, archery, rifle shooting, rope work, and biblical character development. Located near Ricketts Glen State Park!",
@@ -45,8 +46,8 @@
   {
     "troop_number": "PA-2204",
     "location": "Linden, PA",
-    "lat": 41.2679,
-    "lng": -77.1311,
+    "lat": 41.2578003,
+    "lng": -77.1669612,
     "sponsor": "Lycoming Christian Church",
     "address": "20 Chapel Hill Road, Linden, PA 17744",
     "description": "Faith-based outdoor adventure program for boys, chartered through Lycoming Christian Church and serving families in Lycoming County."
@@ -54,8 +55,8 @@
   {
     "troop_number": "PA-2810",
     "location": "Bellefonte, PA",
-    "lat": 40.9148,
-    "lng": -77.7822,
+    "lat": 40.91518,
+    "lng": -77.684899,
     "sponsor": "Zion Community Church",
     "address": "3261 Zion Rd, Bellefonte, PA 16823",
     "meetings": "Generally the 2nd and 4th Sundays of the month, 5:00–7:00 PM",
@@ -65,8 +66,8 @@
   {
     "troop_number": "PA-4031",
     "location": "Noxen, PA",
-    "lat": 41.4167,
-    "lng": -76.0831,
+    "lat": 41.4208872,
+    "lng": -76.0571304,
     "sponsor": "Noxen Bible Baptist Church",
     "address": "3604 State Rte 29 S, Noxen, PA 18636",
     "meetings": "Every other Thursday, 6:30-8:30 PM",
