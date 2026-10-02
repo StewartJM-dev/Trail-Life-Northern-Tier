@@ -332,3 +332,9 @@ backToTopButton.addEventListener('mouseleave', () => {
 console.log('%c Trail Life Northern Tier ', 'background: #ba262d; color: white; font-size: 20px; padding: 10px;');
 console.log('%c Adventure • Character • Leadership ', 'background: #876237; color: white; font-size: 14px; padding: 5px;');
 console.log('Website built for connecting troops across the Northern Tier.');
+
+// Keep the footer copyright year current (the page source says 2025 as a
+// fallback for anyone with JavaScript turned off).
+document.querySelectorAll('.footer-year').forEach(el => {
+    el.textContent = new Date().getFullYear();
+});

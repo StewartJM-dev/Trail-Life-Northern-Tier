@@ -74,14 +74,14 @@
     <section class="featured-blog">
         <div class="container">
             <h2 class="section-title">Latest from the Trail</h2>
-            <div class="blog-featured">
+            <div class="blog-featured" id="home-latest-post">
                 <div class="blog-featured-image">
-                    <img src="images/graphics/from-the-trail.svg" alt="Illustrated mountain trail, pine trees, and compass" width="900" height="650" loading="lazy">
+                    <img class="home-post-image" src="images/graphics/from-the-trail.svg" alt="Illustrated mountain trail, pine trees, and compass" width="900" height="650" loading="lazy">
                 </div>
                 <div class="blog-featured-content">
-                    <span class="blog-date"><i class="far fa-calendar"></i> October 20, 2025</span>
-                    <h3>Welcome to the Trail Life Northern Tier Website!</h3>
-                    <p>We're excited to launch our new regional hub where troops across the Northern Tier can connect, share resources, and stay informed about upcoming events and opportunities. This platform will serve as your go-to resource for everything happening in our region...</p>
+                    <span class="blog-date"><i class="far fa-calendar"></i> <span class="home-post-date-text">October 20, 2025</span></span>
+                    <h3 class="home-post-title">Welcome to the Trail Life Northern Tier Website!</h3>
+                    <p class="home-post-summary">We're excited to launch our new regional hub where troops across the Northern Tier can connect, share resources, and stay informed about upcoming events and opportunities. This platform will serve as your go-to resource for everything happening in our region...</p>
                     <a href="blog.html" class="btn btn-primary">Read More</a>
                 </div>
             </div>
@@ -194,7 +194,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Trail Life USA Northern Tier. All rights reserved.</p>
+                <p>&copy; <span class="footer-year">2025</span> Trail Life USA Northern Tier. All rights reserved.</p>
                 <p>Trail Life USA is a registered trademark.</p>
             </div>
         </div>
@@ -206,5 +206,6 @@
     <script src="js/reveal.js?v=20261001-polish"></script>
     <script src="js/sheet-cms.js"></script>
     <script src="js/home-achievements.js"></script>
+    <script src="js/home-blog.js"></script>
 </body>
 </html>

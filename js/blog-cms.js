@@ -10,7 +10,10 @@ const BLOG_CONFIG = {
 // Format date
 function formatDate(dateString) {
     if (!dateString) return '';
-    const date = new Date(dateString);
+    // "2026-09-15" would otherwise be read as midnight UTC, which is the
+    // evening before in Eastern time; read it as a local calendar date.
+    const iso = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(dateString).trim());
+    const date = iso ? new Date(+iso[1], iso[2] - 1, +iso[3]) : new Date(dateString);
     if (isNaN(date.getTime())) return dateString; // Return original if invalid
     return date.toLocaleDateString('en-US', { 
         year: 'numeric', 
