@@ -52,14 +52,25 @@
             card.append(meetings);
         }
         card.append(link);
+        const streetView = document.createElement('a');
+        const viewpoint = new URLSearchParams({ api: '1', map_action: 'pano', viewpoint: troop.lat + ',' + troop.lng });
+        streetView.href = 'https://www.google.com/maps/@?' + viewpoint.toString();
+        streetView.target = '_blank';
+        streetView.rel = 'noopener noreferrer';
+        streetView.textContent = 'Google Street View ↗';
+        streetView.style.marginLeft = '20px';
+        card.append(streetView);
+        const note = document.createElement('p');
+        note.textContent = 'Map pins show approximate troop locations. Street View opens nearby imagery where available; confirm the meeting address with the troop.';
+        card.append(note);
         return card;
     }
 
     function select(troop) {
         if (!map) return;
         if (popup) popup.remove();
-        map.flyTo({ center: [troop.lng, troop.lat], zoom: 11, pitch: terrain ? 58 : 0,
-            bearing: terrain ? -15 : 0, padding: { top: 180, bottom: 0, left: 20, right: 20 }, duration: reduced.matches ? 0 : 1400 });
+        map.flyTo({ center: [troop.lng, troop.lat], zoom: 16.5, pitch: terrain ? 55 : 0,
+            bearing: terrain ? -15 : 0, padding: { top: 70, bottom: 20, left: 20, right: 20 }, duration: reduced.matches ? 0 : 1800 });
         selection.replaceChildren();
         const close = document.createElement('button');
         close.type = 'button';
