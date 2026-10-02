@@ -1485,3 +1485,22 @@ details.vendor-card[open] .vendor-summary .resource-chevron { transform: rotate(
 /* Pointer from the troops page to the New to Trail Life guide */
 .troops-new-family { text-align: center; color: var(--gray); margin: -10px 0 24px; }
 .troops-new-family a { color: var(--primary-red); font-weight: 700; }
+
+/* Quiet movement for the header objects and warm light for Spotlight. */
+.page-header-art, .page-header-art-frame { transition: transform .45s ease; }
+.page-header-art-frame { position: relative; z-index: 1; width: min(320px, 80vw); margin: 0 auto 20px; }
+.page-header-art-frame .page-header-art { width: 100%; margin: 0; }
+.page-header-art-frame--lantern::before, .page-header-art-frame--lantern::after { content: ''; position: absolute; pointer-events: none; border-radius: 50%; }
+.page-header-art-frame--lantern::before { inset: 12% 10% 18%; z-index: 0; background: radial-gradient(ellipse, rgba(255, 174, 66, .2), transparent 70%); filter: blur(16px); }
+.page-header-art-frame--lantern::after { inset: 29% 31% 37%; z-index: 2; background: radial-gradient(ellipse, rgba(255, 225, 145, .65), rgba(255, 165, 55, .3) 45%, transparent 75%); filter: blur(9px); mix-blend-mode: screen; opacity: .4; animation: lantern-warmth 4.8s ease-in-out infinite; }
+@keyframes lantern-warmth { 0%, 100% { opacity: .3; transform: scale(.97); } 50% { opacity: .6; transform: scale(1.06); } }
+@media (hover: hover) and (pointer: fine) {
+    .page-header:hover .page-header-art, .page-header:hover .page-header-art-frame { transform: translateY(-6px) scale(1.015); }
+    .page-header:hover .page-header-art-frame .page-header-art { transform: none; }
+}
+@media (max-width: 600px) { .page-header-art-frame { width: min(260px, 80vw); margin-bottom: 16px; } }
+@media (prefers-reduced-motion: reduce) {
+    .page-header-art, .page-header-art-frame { transition: none; }
+    .page-header:hover .page-header-art, .page-header:hover .page-header-art-frame { transform: none; }
+    .page-header-art-frame--lantern::after { animation: none; transform: none; opacity: .4; }
+}
