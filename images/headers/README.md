@@ -15,17 +15,19 @@ navigation, event feeds, and CMS scripts are preserved.
 | Troops | `troops-compass.webp` |
 | Resources | `resources-map.webp` |
 | Spotlight | `spotlight-lantern.webp` |
-| About | `trail-life-national-flag.jpg` |
+| About | `trail-life-flag-photo.jpg` |
 
-## Official flag
+## Flag photograph
 
-Source page: https://shop.traillifeusa.com/product/trail-life-usa-national-flag/
-Source file: https://shop.traillifeusa.com/wp-content/uploads/New-FLag-2.jpg
-Downloaded on 2026-10-02. The JPEG is used byte-for-byte unchanged. It was not
-passed through image generation, recolored, redrawn, cropped, or recompressed.
-CSS trims the surrounding white product-photo margin for display; the flag
-artwork itself remains fully visible.
-The supplied flag mockup is a concept reference only, not official artwork.
+The About header uses the user's supplied `9BCF6B7F-D78A-4C55-A7F2-F01D65B1C69A.jpeg`
+concept image, copied unchanged as `trail-life-flag-photo.jpg` at the user's
+request. CSS displays its upper photographic flag area, above the baked-in
+heading. The page title remains white HTML. No image generation or repainting
+was applied to the supplied flag image. The previous official flat flag file
+remains available but is no longer displayed.
+
+All page headers use deep red shading and diagonal bands inspired by the
+supplied concepts; the older wave overlay is removed.
 
 ## Object assets
 
