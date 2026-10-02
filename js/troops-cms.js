@@ -61,6 +61,12 @@ async function loadTroops() {
             return;
         }
 
+        // List troops by troop number (PA-0490, PA-1201, ... NY-2911, ...),
+        // ignoring the state prefix, so new troops land in order no matter
+        // where they're added in troops.json.
+        const troopNumber = t => parseInt(String(t.troop_number).replace(/\D/g, ''), 10) || 0;
+        troops.sort((a, b) => troopNumber(a) - troopNumber(b));
+
         listContainer.innerHTML = troops.map(createTroopHTML).join('');
         if (window.observeReveal) window.observeReveal(listContainer);
 

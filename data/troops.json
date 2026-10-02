@@ -1,5 +1,24 @@
 [
   {
+    "troop_number": "PA-0490",
+    "location": "Danville, PA",
+    "lat": 40.9612,
+    "lng": -76.6128,
+    "sponsor": "Danville God's Missionary Church",
+    "address": "510 East Front St, Danville, PA 17821",
+    "description": "Faith-based outdoor adventure program for boys, chartered through Danville God's Missionary Church and serving families in Montour County."
+  },
+  {
+    "troop_number": "PA-1201",
+    "location": "PA Furnace, PA",
+    "lat": 40.7698,
+    "lng": -78.0387,
+    "sponsor": "Nittany Bible Church",
+    "address": "461 Diebler Rd, PA Furnace, PA 16865",
+    "description": "Faith-based outdoor adventure program for boys, chartered through Nittany Bible Church and serving families in Centre County.",
+    "website": "https://nittanybible.com/trail-life-pa1201"
+  },
+  {
     "id": "pa1997",
     "troop_number": "PA-1997",
     "location": "Sweet Valley, PA",
@@ -10,6 +29,25 @@
     "meetings": "Every Tuesday at 6:00 PM",
     "description": "Christ-centered outdoor adventure program featuring camping, hiking, archery, rifle shooting, rope work, and biblical character development. Located near Ricketts Glen State Park!",
     "website": "https://trooppa1997.com/"
+  },
+  {
+    "troop_number": "PA-2204",
+    "location": "Linden, PA",
+    "lat": 41.2679,
+    "lng": -77.1311,
+    "sponsor": "Lycoming Christian Church",
+    "address": "20 Chapel Hill Road, Linden, PA 17744",
+    "description": "Faith-based outdoor adventure program for boys, chartered through Lycoming Christian Church and serving families in Lycoming County."
+  },
+  {
+    "troop_number": "PA-2810",
+    "location": "Bellefonte, PA",
+    "lat": 40.9148,
+    "lng": -77.7822,
+    "sponsor": "Zion Community Church",
+    "address": "3261 Zion Rd, Bellefonte, PA 16823",
+    "description": "Faith-based outdoor adventure program for boys, chartered through Zion Community Church and serving families in Centre County.",
+    "website": "https://www.tlpa2810.org/"
   },
   {
     "troop_number": "NY-2911",
@@ -31,43 +69,5 @@
     "address": "3604 State Rte 29 S, Noxen, PA 18636",
     "meetings": "Every other Thursday, 6:30-8:30 PM",
     "description": "Faith-based outdoor adventure program building boys into godly men through character development, outdoor skills, and leadership training in the heart of Pennsylvania."
-  },
-  {
-    "troop_number": "PA-0490",
-    "location": "Danville, PA",
-    "lat": 40.9612,
-    "lng": -76.6128,
-    "sponsor": "Danville God's Missionary Church",
-    "address": "510 East Front St, Danville, PA 17821",
-    "description": "Faith-based outdoor adventure program for boys, chartered through Danville God's Missionary Church and serving families in Montour County."
-  },
-  {
-    "troop_number": "PA-2204",
-    "location": "Linden, PA",
-    "lat": 41.2679,
-    "lng": -77.1311,
-    "sponsor": "Lycoming Christian Church",
-    "address": "20 Chapel Hill Road, Linden, PA 17744",
-    "description": "Faith-based outdoor adventure program for boys, chartered through Lycoming Christian Church and serving families in Lycoming County."
-  },
-  {
-    "troop_number": "PA-1201",
-    "location": "PA Furnace, PA",
-    "lat": 40.7698,
-    "lng": -78.0387,
-    "sponsor": "Nittany Bible Church",
-    "address": "461 Diebler Rd, PA Furnace, PA 16865",
-    "description": "Faith-based outdoor adventure program for boys, chartered through Nittany Bible Church and serving families in Centre County.",
-    "website": "https://nittanybible.com/trail-life-pa1201"
-  },
-  {
-    "troop_number": "PA-2810",
-    "location": "Bellefonte, PA",
-    "lat": 40.9148,
-    "lng": -77.7822,
-    "sponsor": "Zion Community Church",
-    "address": "3261 Zion Rd, Bellefonte, PA 16823",
-    "description": "Faith-based outdoor adventure program for boys, chartered through Zion Community Church and serving families in Centre County.",
-    "website": "https://www.tlpa2810.org/"
   }
 ]
