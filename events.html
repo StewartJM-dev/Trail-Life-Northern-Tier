@@ -144,12 +144,8 @@
         <p>Adventures, training, and gatherings across the Northern Tier</p>
     </section>
 
-    <section class="content-section" aria-label="Upcoming troop events">
-        <div class="container" id="troop-event-sections" aria-live="polite"><p>Loading troop events…</p></div>
-    </section>
-    <section class="content-section">
+    <section class="content-section" aria-label="Upcoming regional events">
         <div class="container">
-            
             <!-- Upcoming Events Section -->
             <div>
                 <div class="troop-events-header">
@@ -170,8 +166,14 @@
                     <p style="text-align: center; color: var(--gray); padding: 2rem;">Loading events...</p>
                 </div>
             </div>
-
-            <div class="calendar-container" id="full-calendar" style="margin-top: 60px;">
+        </div>
+    </section>
+    <section class="content-section" aria-label="Upcoming troop events">
+        <div class="container" id="troop-event-sections" aria-live="polite"><p>Loading troop events…</p></div>
+    </section>
+    <section class="content-section" aria-label="Regional calendar">
+        <div class="container">
+            <div class="calendar-container" id="full-calendar">
                 <h2 class="section-title">Regional Calendar</h2>
                 <p id="calendar-status" role="status">Loading calendar…</p>
                 <fieldset class="calendar-legend"><legend>Show calendars</legend><div id="calendar-filters"></div></fieldset>
@@ -185,8 +187,6 @@
                 <p>Tap an event for its full title and details. Use the calendar filters to update the regional event cards above.</p>
                 <dialog id="event-dialog"><div id="event-dialog-body"></div><button id="event-dialog-close" type="button">Close</button></dialog>
             </div>
-
-
         </div>
     </section>
 
