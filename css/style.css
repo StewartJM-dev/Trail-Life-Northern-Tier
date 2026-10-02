@@ -1504,3 +1504,47 @@ details.vendor-card[open] .vendor-summary .resource-chevron { transform: rotate(
     .page-header:hover .page-header-art, .page-header:hover .page-header-art-frame { transform: none; }
     .page-header-art-frame--lantern::after { animation: none; transform: none; opacity: .4; }
 }
+
+/* Home page banner pointing new families to new-to-trail-life.html */
+.new-family-banner {
+    background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+    color: var(--white);
+    padding: 34px 0;
+}
+.new-family-inner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+.new-family-icon {
+    flex: none;
+    font-size: 2.8rem;
+    color: #f6efe2;
+}
+.new-family-text { flex: 1; }
+.new-family-banner h2 {
+    color: var(--white);
+    font-size: 2rem;
+    margin: 0 0 4px;
+}
+.new-family-banner p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 1.1rem;
+}
+.new-family-btn {
+    flex: none;
+    background: var(--white);
+    color: var(--primary-red);
+    font-weight: 700;
+}
+.new-family-btn:hover { background: #f6efe2; color: var(--dark-red); }
+.new-family-btn i { margin-left: 8px; }
+@media (max-width: 700px) {
+    .new-family-banner { padding: 28px 0; }
+    .new-family-inner { flex-direction: column; text-align: center; gap: 14px; }
+    .new-family-icon { font-size: 2.2rem; }
+    .new-family-banner h2 { font-size: 1.6rem; }
+    .new-family-banner p { font-size: 1rem; }
+    .new-family-btn { width: 100%; }
+}
