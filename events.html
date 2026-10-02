@@ -64,7 +64,7 @@
         .calendar-toolbar h3 { flex: 1; text-align: center; }
         .calendar-toolbar button, dialog button { padding: 10px 14px; cursor: pointer; }
         .calendar-scroll { overflow-x: auto; }
-        .calendar-grid { width: 100%; min-width: 650px; border-collapse: collapse; table-layout: fixed; }
+        .calendar-grid { width: 100%; min-width: 0; border-collapse: collapse; table-layout: fixed; }
         .calendar-grid th, .calendar-grid td { border: 1px solid #ddd; padding: 8px; vertical-align: top; }
         .calendar-grid td { height: 100px; }
         .calendar-today { background: #fff4de; }
@@ -75,7 +75,27 @@
         dialog::backdrop { background: rgba(0,0,0,.5); }
         .event-source { color: white; }
         .calendar-message { grid-column: 1 / -1; padding: 2rem; text-align: center; }
-        @media (max-width: 600px) { .calendar-container { padding: 12px; } .calendar-toolbar h3 { order: -1; flex-basis: 100%; } }
+        @media (max-width: 600px) {
+            .calendar-container { padding: 8px; }
+            .calendar-toolbar { gap: 8px; }
+            .calendar-toolbar h3 { order: -1; flex-basis: 100%; }
+            .calendar-toolbar button { min-height: 44px; padding: 10px 12px; color: var(--black); }
+            .calendar-grid th { padding: 8px 1px; font-size: 12px; }
+            .calendar-grid td { padding: 3px; height: 94px; }
+            .calendar-day { font-size: 13px; }
+            .calendar-event {
+                min-height: 44px;
+                padding: 4px 2px;
+                border-left-width: 3px;
+                color: var(--black);
+                font-size: 11px;
+                line-height: 1.3;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
+            }
+        }
     </style>
 </head>
 <body>
@@ -150,7 +170,7 @@
                     <button id="calendar-today" type="button">Today</button>
                 </div>
                 <div class="calendar-scroll"><div id="calendar">Loading events…</div></div>
-                <p>Choose an event for details. Use the calendar filters to update the regional event cards above.</p>
+                <p>Tap an event for its full title and details. Use the calendar filters to update the regional event cards above.</p>
                 <dialog id="event-dialog"><div id="event-dialog-body"></div><button id="event-dialog-close" type="button">Close</button></dialog>
             </div>
 
