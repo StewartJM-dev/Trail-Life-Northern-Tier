@@ -33,12 +33,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css?v=20261002-plaque">
+    <link rel="stylesheet" href="css/style.css?v=20261002-quiet">
     
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="home-page">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -107,17 +107,16 @@
     <!-- Invitation for troops across the region -->
     <section class="troop-showcase-section" aria-labelledby="featured-story-heading">
         <div class="container">
-            <h2 class="section-title" id="featured-story-heading">Featured Troop Story</h2>
             <div class="troop-showcase-card">
                 <div class="troop-showcase-art troop-story-photo">
                     <img src="images/hero/evening-camp.webp" srcset="images/hero/evening-camp-mobile.webp 768w, images/hero/evening-camp.webp 1600w" sizes="(max-width: 600px) 100vw, 45vw" width="1600" height="900" alt="Illustrative lakeside campsite with a glowing lantern at dusk" loading="lazy">
                     <span class="story-image-note">Illustrative scenery · AI-generated</span>
                 </div>
                 <div class="troop-showcase-copy">
-                    <span class="troop-showcase-eyebrow">Adventure. Service. Growth.</span>
-                    <h3>Your troop could be here</h3>
+                    <span class="troop-showcase-eyebrow" id="featured-story-heading">Featured Troop Story</span>
+                    <h2>Your troop could be here</h2>
                     <p>A first campout. A service project that mattered. A Trailman discovering he can lead. Help us tell the next Northern Tier story.</p>
-                    <a href="contact.html" class="btn btn-primary">Share your troop’s story</a>
+                    <a href="contact.html" class="home-text-link">Share your troop’s story →</a>
                 </div>
             </div>
         </div>
@@ -135,7 +134,7 @@
                     <span class="blog-date"><i class="far fa-calendar"></i> <span class="home-post-date-text">October 20, 2025</span></span>
                     <h3 class="home-post-title">Welcome to the Trail Life Northern Tier Website!</h3>
                     <p class="home-post-summary">We're excited to launch our new regional hub where troops across the Northern Tier can connect, share resources, and stay informed about upcoming events and opportunities. This platform will serve as your go-to resource for everything happening in our region...</p>
-                    <a href="blog.html" class="btn btn-primary">Read More</a>
+                    <a href="blog.html" class="home-text-link">Read the latest →</a>
                 </div>
             </div>
         </div>
@@ -156,37 +155,8 @@
                 <div class="region-directory">
                     <h3>Across the Northern Tier</h3>
                     <ul id="region-troops"><li><a href="troops.html">Explore the troop directory</a></li></ul>
-                    <a href="troops.html" class="btn btn-primary">Troop details &amp; meeting times</a>
-                    <a href="contact.html" class="region-add-link">Add your troop to the map →</a>
+                    <a href="troops.html" class="home-text-link">Troop details &amp; meeting times →</a>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quick Links Section -->
-    <section class="quick-links">
-        <div class="container">
-            <div class="quick-links-grid">
-                <a href="resources.html" class="quick-link-card reveal">
-                    <img class="adventure-icon" src="images/graphics/map.svg" alt="" aria-hidden="true">
-                    <h3>Resources</h3>
-                    <p>Training materials, forms, and leader guides</p>
-                </a>
-                <a href="about.html" class="quick-link-card reveal">
-                    <img class="adventure-icon" src="images/graphics/tent.svg" alt="" aria-hidden="true">
-                    <h3>About Trail Life</h3>
-                    <p>Our mission, oath, and values</p>
-                </a>
-                <a href="spotlight.html" class="quick-link-card reveal">
-                    <img class="adventure-icon" src="images/graphics/lantern.svg" alt="" aria-hidden="true">
-                    <h3>Troop Spotlight</h3>
-                    <p>Featured troops doing amazing things</p>
-                </a>
-                <a href="gallery.html" class="quick-link-card reveal">
-                    <img class="adventure-icon" src="images/graphics/camera.svg" alt="" aria-hidden="true">
-                    <h3>Photo Gallery</h3>
-                    <p>Snapshots from the trail across the Area</p>
-                </a>
             </div>
         </div>
     </section>
@@ -203,40 +173,7 @@
                 <p style="text-align: center; color: var(--gray); padding: 2rem;">Loading events...</p>
             </div>
             <div class="text-center">
-                <a href="events.html" class="btn btn-secondary">View All Events</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Achievement Highlights -->
-    <section class="achievement-highlights">
-        <div class="container">
-            <h2 class="section-title">Recent Achievements</h2>
-            <div id="home-achievements" class="achievements-carousel">
-                <!-- Achievements will load from Google Sheets -->
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-spinner fa-spin"></i>
-                    </div>
-                    <h3>Loading...</h3>
-                    <p>Loading recent achievements...</p>
-                </div>
-            </div>
-            <div class="text-center">
-                <a href="achievements.html" class="btn btn-secondary">View All Achievements</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Join the Adventure?</h2>
-                <p>Don't see a troop near you? Start one in your community.</p>
-                <div class="cta-buttons">
-                    <a href="https://www.traillifeusa.com/start-a-troop/" target="_blank" class="btn btn-primary">Start a Troop</a>
-                </div>
+                <a href="events.html" class="home-text-link">View the regional calendar →</a>
             </div>
         </div>
     </section>
@@ -281,7 +218,6 @@
     <script src="js/hero-scenes.js?v=20261002-fast"></script>
     <script src="js/reveal.js?v=20261001-polish"></script>
     <script src="js/sheet-cms.js"></script>
-    <script src="js/home-achievements.js"></script>
     <script src="js/home-blog.js"></script>
     <script src="js/region-map.js?v=20261002"></script>
 </body>

@@ -1423,3 +1423,32 @@ details.vendor-card[open] .vendor-summary .resource-chevron { transform: rotate(
 .welcome-scripture { padding: 28px 20px; text-align: center; background: #f6f3ee; }
 .welcome-scripture blockquote { max-width: 780px; margin: auto; color: var(--dark-brown); font-family: Georgia, serif; font-style: italic; line-height: 1.6; }
 .welcome-scripture cite { display: block; margin-top: 8px; font: 700 .75rem var(--font-family); letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+
+/* Homepage: fewer competing cards and one clear action per section. */
+.home-text-link { display: inline-block; padding: 10px 0; color: var(--primary-red); font-weight: 700; text-decoration: underline; text-underline-offset: 5px; }
+.home-text-link:hover { color: var(--dark-red); }
+.home-text-link:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+.home-page .troop-showcase-section { padding: 60px 0 28px; }
+.home-page .troop-showcase-card { margin-bottom: 0; box-shadow: none; }
+.home-page .featured-blog { background: white; background-image: none; padding: 28px 0 60px; }
+.home-page .featured-blog .section-title { text-align: left; font-size: 1rem; color: var(--gold); padding: 0; margin-bottom: 16px; }
+.home-page .featured-blog .section-title::after { display: none; }
+.home-page .blog-featured { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 26px; box-shadow: none; border-radius: 0; border-top: 1px solid #e8e1d8; padding-top: 24px; align-items: center; background: white; }
+.home-page .blog-featured-image { height: 145px; border-radius: 10px; overflow: hidden; }
+.home-page .blog-featured-image img { width: 100%; height: 100%; object-fit: cover; }
+.home-page .blog-featured-content { padding: 0; }
+.home-page .home-post-title { font-size: 1.5rem; margin: 7px 0 10px; }
+.home-page .home-post-summary { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 4px; }
+.home-page .region-section { padding: 60px 0; }
+.home-page .upcoming-events { padding: 60px 0; background: white; }
+.home-page .upcoming-events > .container > .text-center { margin-top: 24px; }
+@media (max-width: 600px) {
+    .home-page .troop-showcase-section { padding: 40px 0 24px; }
+    .home-page .featured-blog { padding: 12px 0 40px; }
+    .home-page .blog-featured { grid-template-columns: 80px minmax(0, 1fr); gap: 16px; align-items: start; }
+    .home-page .blog-featured-image { height: 90px; }
+    .home-page .home-post-title { font-size: 1.15rem; line-height: 1.35; }
+    .home-page .home-post-summary { font-size: .9rem; }
+    .home-page .blog-date { font-size: .75rem; }
+    .home-page .region-section, .home-page .upcoming-events { padding: 40px 0; }
+}
