@@ -5,7 +5,6 @@
     const scenes = [...hero.querySelectorAll('.hero-scene')];
     const controls = hero.querySelector('.hero-scene-controls');
     const dots = [...hero.querySelectorAll('[data-scene]')];
-    const pause = hero.querySelector('.hero-scene-pause');
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     let active = 0, request = 0, timer;
     let stopped = reduced.matches || Boolean(navigator.connection?.saveData);
@@ -13,10 +12,8 @@
     function schedule() {
         clearTimeout(timer);
         if (!stopped && !document.hidden) {
-            timer = setTimeout(() => show((active + 1) % scenes.length), 8000);
+            timer = setTimeout(() => show((active + 1) % scenes.length), 4000);
         }
-        pause.textContent = stopped ? 'Play' : 'Pause';
-        pause.setAttribute('aria-label', stopped ? 'Start image rotation' : 'Pause image rotation');
     }
 
     async function show(index) {
@@ -41,10 +38,8 @@
     }
 
     dots.forEach(dot => dot.addEventListener('click', () => {
-        stopped = true;
         show(Number(dot.dataset.scene));
     }));
-    pause.addEventListener('click', () => { stopped = !stopped; schedule(); });
     document.addEventListener('visibilitychange', schedule);
     reduced.addEventListener('change', () => {
         if (reduced.matches) stopped = true;
