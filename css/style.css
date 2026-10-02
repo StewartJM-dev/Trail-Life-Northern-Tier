@@ -1332,3 +1332,45 @@ details.vendor-card[open] .vendor-summary .resource-chevron { transform: rotate(
     .hero-scene { transition: none; }
     .hero--rotating .hero-content, .hero--rotating .hero-scroll { animation: none; }
 }
+
+
+/* Header scripture (KJV) under each page title */
+.page-scripture {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 22px auto 0;
+    padding: 0 10px;
+    border: 0;
+    text-align: center;
+}
+.page-header .page-scripture p,
+.hero .page-scripture p {
+    margin: 0 auto;
+    max-width: none;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 1.12rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.92);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+.page-scripture cite {
+    display: block;
+    margin-top: 8px;
+    font-family: var(--font-heading);
+    font-style: normal;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--tan);
+}
+.hero .page-scripture {
+    margin: -1.2rem auto 2.2rem;
+}
+@media (max-width: 600px) {
+    .page-header .page-scripture p,
+    .hero .page-scripture p { font-size: 0.98rem; }
+    .page-scripture cite { font-size: 0.75rem; }
+    .hero .page-scripture { margin: -1rem auto 1.6rem; }
+}
