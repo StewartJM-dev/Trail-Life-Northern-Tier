@@ -1280,3 +1280,38 @@ details.vendor-card[open] .vendor-summary .resource-chevron { transform: rotate(
     .page-header h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
     .page-header p { font-size: 1.05rem; }
 }
+
+/* Regional scenery and an open invitation to every troop. */
+.hero--rotating { background-image: none; min-height: 680px; padding: 120px 0; }
+.hero-scenes { position: absolute; inset: 0; }
+.hero-scene { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 1.2s ease; }
+.hero-scene.is-active { opacity: 1; }
+.hero--rotating .hero-overlay { z-index: 1; background: linear-gradient(rgba(10, 16, 20, .46), rgba(10, 16, 20, .64)); }
+.hero--rotating .hero-scroll { z-index: 2; bottom: 95px; }
+.hero-scene-controls { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; align-items: center; gap: 2px; }
+.hero-scene-controls[hidden] { display: none; }
+.hero-scene-dot { width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer; }
+.hero-scene-dot::before { content: ''; display: block; margin: auto; width: 10px; height: 10px; border: 2px solid white; border-radius: 50%; background: transparent; }
+.hero-scene-dot[aria-pressed="true"]::before { background: white; }
+.hero-scene-pause { min-height: 44px; padding: 8px 16px; border: 1px solid rgba(255,255,255,.6); border-radius: 24px; background: rgba(0,0,0,.3); color: white; cursor: pointer; }
+.hero-scene-controls button:focus-visible { outline: 3px solid var(--tan); outline-offset: 2px; }
+.hero-imagery-note { position: absolute; bottom: 8px; left: 16px; z-index: 2; margin: 0; color: white; font-size: 11px; line-height: 1.4; }
+.troop-showcase-section { padding: 30px 0 70px; background: var(--white); }
+.troop-showcase-card { display: grid; grid-template-columns: minmax(220px, .75fr) 1.25fr; margin-bottom: 40px; border: 1px solid #eadedb; border-radius: 18px; overflow: hidden; box-shadow: 0 12px 38px rgba(67, 20, 20, .09); background: white; }
+.troop-showcase-art { display: flex; align-items: center; justify-content: center; min-height: 320px; padding: 30px; background: repeating-linear-gradient(130deg, transparent 0 100px, rgba(35,0,0,.22) 100px 200px), radial-gradient(ellipse at top, #b50e19, #60060c); }
+.troop-showcase-art img { width: min(250px, 100%); height: 260px; object-fit: contain; }
+.troop-showcase-copy { padding: clamp(28px, 4vw, 55px); align-self: center; }
+.troop-showcase-eyebrow { display: block; margin-bottom: 12px; color: var(--gold); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; }
+.troop-showcase-copy h2 { color: var(--primary-red); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; margin-bottom: 18px; }
+.troop-showcase-copy p { margin-bottom: 24px; color: var(--gray); line-height: 1.7; }
+@media (max-width: 600px) {
+    .hero--rotating { min-height: 680px; }
+    .troop-showcase-card { grid-template-columns: 1fr; }
+    .troop-showcase-art { min-height: 240px; padding: 20px; }
+    .troop-showcase-art img { height: 210px; }
+    .troop-showcase-copy { padding: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero-scene { transition: none; }
+    .hero--rotating .hero-content, .hero--rotating .hero-scroll { animation: none; }
+}

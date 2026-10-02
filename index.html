@@ -66,7 +66,12 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero hero--rotating" aria-label="Northern Tier welcome">
+        <div class="hero-scenes" aria-hidden="true">
+            <img class="hero-scene is-active" src="images/hero/forest-trail.webp" srcset="images/hero/forest-trail-mobile.webp 768w, images/hero/forest-trail.webp 1600w" sizes="100vw" width="1600" height="900" alt="" fetchpriority="high" decoding="async">
+            <img class="hero-scene" data-scene-src="images/hero/mountain-overlook.webp" data-scene-srcset="images/hero/mountain-overlook-mobile.webp 768w, images/hero/mountain-overlook.webp 1600w" sizes="100vw" width="1600" height="900" alt="" decoding="async">
+            <img class="hero-scene" data-scene-src="images/hero/evening-camp.webp" data-scene-srcset="images/hero/evening-camp-mobile.webp 768w, images/hero/evening-camp.webp 1600w" sizes="100vw" width="1600" height="900" alt="" decoding="async">
+        </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">Trail Life Northern Tier</h1>
@@ -76,6 +81,13 @@
                 <a href="troops.html" class="btn btn-primary">Find a Troop</a>
             </div>
         </div>
+        <div class="hero-scene-controls" role="group" aria-label="Scenic image controls" hidden>
+            <button class="hero-scene-dot" type="button" aria-label="Show forest trail" aria-pressed="true" data-scene="0"></button>
+            <button class="hero-scene-dot" type="button" aria-label="Show mountain overlook" aria-pressed="false" data-scene="1"></button>
+            <button class="hero-scene-dot" type="button" aria-label="Show evening campsite" aria-pressed="false" data-scene="2"></button>
+            <button class="hero-scene-pause" type="button" aria-label="Pause image rotation">Pause</button>
+        </div>
+        <p class="hero-imagery-note">Illustrative scenery · AI-generated</p>
         <div class="hero-scroll">
             <i class="fas fa-chevron-down"></i>
         </div>
@@ -123,6 +135,23 @@
                     <h3>Photo Gallery</h3>
                     <p>Snapshots from the trail across the Area</p>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Invitation for troops across the region -->
+    <section class="troop-showcase-section" aria-label="Troop showcase invitation">
+        <div class="container">
+            <div class="troop-showcase-card">
+                <div class="troop-showcase-art" aria-hidden="true">
+                    <img src="images/headers/spotlight-lantern.webp" width="640" height="640" alt="" loading="lazy">
+                </div>
+                <div class="troop-showcase-copy">
+                    <span class="troop-showcase-eyebrow">Stories from across the Northern Tier</span>
+                    <h2>Your troop could be here</h2>
+                    <p>Every troop has a story. Share your adventures, service projects, and achievements with the Northern Tier.</p>
+                    <a href="contact.html" class="btn btn-primary">Share your troop’s story</a>
+                </div>
             </div>
         </div>
     </section>
@@ -214,6 +243,7 @@
     <!-- Scripts -->
     <script src="js/calendar.js?v=20261001-2"></script>
     <script src="js/main.js"></script>
+    <script src="js/hero-scenes.js?v=20261002"></script>
     <script src="js/reveal.js?v=20261001-polish"></script>
     <script src="js/sheet-cms.js"></script>
     <script src="js/home-achievements.js"></script>
