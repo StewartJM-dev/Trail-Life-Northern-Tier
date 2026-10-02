@@ -1323,14 +1323,19 @@ details.vendor-card[open] .vendor-summary .resource-chevron { transform: rotate(
 }
 
 
-/* Header scripture (KJV) under each page title */
+/* Header scripture (KJV) under each page title: brand gold text on a
+   parchment plaque (the brand gold alone has ~1.1:1 contrast on the red
+   headers; on parchment it's ~4.8:1). */
 .page-scripture {
     position: relative;
     z-index: 1;
-    max-width: 680px;
-    margin: 22px auto 0;
-    padding: 0 10px;
-    border: 0;
+    max-width: 620px;
+    margin: 24px auto 0;
+    padding: 16px 24px 14px;
+    background: #f6efe2;
+    border: 2px solid var(--gold);
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
     text-align: center;
 }
 .page-header .page-scripture p,
@@ -1339,33 +1344,31 @@ details.vendor-card[open] .vendor-summary .resource-chevron { transform: rotate(
     max-width: none;
     font-family: Georgia, 'Times New Roman', serif;
     font-style: italic;
-    font-size: 1.12rem;
     font-weight: 700;
+    font-size: 1.08rem;
     line-height: 1.6;
-    /* A brighter gold than --gold (#876237), which nearly disappears on
-       the red headers (1.1:1 contrast); this one is ~4.3:1 on the
-       brightest red and ~8:1 on the darker reds. */
-    color: #f7d27a;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+    color: var(--gold);
+    text-shadow: none;
 }
 .page-scripture cite {
     display: block;
     margin-top: 8px;
     font-family: var(--font-heading);
     font-style: normal;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--tan);
+    color: var(--dark-red);
 }
 .hero .page-scripture {
     margin: -1.2rem auto 2.2rem;
 }
 @media (max-width: 600px) {
+    .page-scripture { padding: 13px 16px 11px; margin-left: 4px; margin-right: 4px; }
     .page-header .page-scripture p,
-    .hero .page-scripture p { font-size: 0.98rem; }
-    .page-scripture cite { font-size: 0.75rem; }
-    .hero .page-scripture { margin: -1rem auto 1.6rem; }
+    .hero .page-scripture p { font-size: 0.96rem; }
+    .page-scripture cite { font-size: 0.74rem; }
+    .hero .page-scripture { margin: -1rem 4px 1.6rem; }
 }
 /* A shorter welcome lets the scenery lead, especially on phones. */
 .hero-eyebrow { display: block; color: white; font-weight: 700; text-transform: uppercase; letter-spacing: .18em; margin-bottom: 12px; }
