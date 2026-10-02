@@ -139,6 +139,35 @@
             margin-right: 5px;
         }
 
+        .podcast-video {
+            margin-top: 35px;
+            padding: 25px 28px;
+            background: var(--light-gray);
+            border-left: 5px solid var(--gold);
+            border-radius: 8px;
+        }
+
+        .podcast-video h3 {
+            color: var(--primary-red);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .podcast-video h3 i {
+            color: var(--gold);
+            margin-right: 8px;
+        }
+
+        .podcast-video > p:first-of-type {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .podcast-video { padding: 20px 18px; }
+        }
+
         .podcast-guest {
             margin-top: 35px;
             padding-top: 25px;
@@ -577,7 +606,7 @@
             <details class="resource-section" id="podcasts">
                 <summary class="resource-section-toggle">
                     <i class="fas fa-podcast resource-section-icon" aria-hidden="true"></i>
-                    <span class="resource-section-text"><span class="resource-section-title">Podcasts</span><span class="resource-section-sub">Listen-and-learn for dads, leaders, and mentors</span></span>
+                    <span class="resource-section-text"><span class="resource-section-title">Podcasts &amp; Videos</span><span class="resource-section-sub">Listen, watch, and learn: for leaders, dads, and Trailmen</span></span>
                     <i class="fas fa-chevron-down resource-section-chevron" aria-hidden="true"></i>
                 </summary>
                 <div class="resource-section-body resource-list">
@@ -601,6 +630,15 @@
                             <a href="https://www.raisingtrailmen.com/" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Website</a>
                         </p>
                     </div>
+                </div>
+                <div class="podcast-video">
+                    <h3><i class="fas fa-video"></i> Trail Hacks with the Wild Brothers</h3>
+                    <p>A Trail Life USA video series of quick, five-minute outdoor-skills lessons: backcountry essentials, shelter building, fire-starting, fishing, campfire cooking, canoeing, and fitting a backpack. Taught by the Wild brothers, who grew up as missionary kids among the Wano people in the jungles of Indonesia. Great to watch with your Trailmen before a campout.</p>
+                    <p class="podcast-links">
+                        <a href="https://www.traillifeusa.com/trailhacks-waypost" target="_blank" rel="noopener"><i class="fas fa-compass"></i> Trail Life page</a>
+                        <a href="https://www.angel.com/watch/trail-hacks" target="_blank" rel="noopener"><i class="fas fa-play-circle"></i> Watch on Angel</a>
+                        <a href="https://www.youtube.com/channel/UCZsYiEYNuSawvp3885rVx6A" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> Wild Brothers on YouTube</a>
+                    </p>
                 </div>
                 <div class="podcast-guest">
                     <h3><i class="fas fa-microphone-alt"></i> Trail Life on Other Podcasts</h3>
