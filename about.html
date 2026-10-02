@@ -28,28 +28,75 @@
     <style>
         .about-section {
             background: white;
-            padding: 50px;
             border-radius: 10px;
+            border-left: 5px solid var(--primary-red);
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
-        
-        .about-section h2 {
+
+        .about-toggle {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 24px 30px;
+            cursor: pointer;
+            list-style: none;
+        }
+
+        .about-toggle::-webkit-details-marker { display: none; }
+
+        .about-toggle h2 {
+            flex: 1;
             color: var(--primary-red);
-            font-size: 2rem;
-            margin-bottom: 25px;
-            border-bottom: 3px solid var(--gold);
-            padding-bottom: 15px;
+            font-size: 1.6rem;
+            margin: 0;
         }
-        
-        .about-section h3 {
+
+        .about-toggle-icon {
+            flex: none;
+            width: 2.2rem;
+            text-align: center;
+            font-size: 1.8rem;
             color: var(--gold);
-            font-size: 1.5rem;
-            margin-top: 30px;
-            margin-bottom: 15px;
+        }
+
+        .about-toggle-chevron {
+            flex: none;
+            color: var(--primary-red);
+            font-size: 1.1rem;
+            transition: transform 0.25s ease;
+        }
+
+        .about-section[open] .about-toggle-chevron { transform: rotate(180deg); }
+
+        .about-body {
+            margin: 0 30px;
+            padding: 25px 0 35px;
+            border-top: 3px solid var(--gold);
+        }
+
+        .about-body h3:first-child { margin-top: 0; }
+
+        .motto-slogan {
+            margin: 20px 0 0;
+            font-family: var(--font-heading);
+            font-style: normal !important;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--tan) !important;
+        }
+
+        .about-body h3 {
+            color: var(--gold);
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 25px;
+            margin-bottom: 8px;
         }
         
-        .about-section p {
+        .about-body p {
             color: var(--gray);
             line-height: 1.9;
             font-size: 1.05rem;
@@ -124,14 +171,28 @@
         }
 
         @media (max-width: 600px) {
-            .about-section,
             .motto-box,
             .oath-box {
                 padding: 25px;
             }
 
-            .about-section h2 {
+            .about-toggle {
+                padding: 20px 18px;
+                gap: 14px;
+            }
+
+            .about-toggle h2 {
+                font-size: 1.3rem;
+            }
+
+            .about-toggle-icon {
                 font-size: 1.5rem;
+                width: 1.8rem;
+            }
+
+            .about-body {
+                margin: 0 18px;
+                padding-bottom: 25px;
             }
         }
     </style>
@@ -177,31 +238,32 @@
             <div class="motto-box">
                 <h2><i class="fas fa-hiking"></i> The Motto: Walk Worthy</h2>
                 <p>Colossians 1:10—"...that you may walk worthy of the Lord, fully pleasing Him, being fruitful in every good work and increasing in the knowledge of God;..."</p>
+                <p class="motto-slogan">Adventure &gt; Character &gt; Leadership</p>
             </div>
 
-            <!-- Slogan -->
-            <div class="about-section reveal">
-                <h2>The Slogan</h2>
-                <p style="font-size: 1.5rem; color: var(--primary-red); font-weight: 700; text-align: center;">
-                    Adventure > Character > Leadership
-                </p>
-            </div>
-
-            <!-- Mission Statement -->
-            <div class="about-section reveal">
-                <h2><i class="fas fa-bullseye"></i> Mission Statement</h2>
+            <details class="about-section reveal" id="mission-vision">
+                <summary class="about-toggle">
+                    <i class="fas fa-bullseye about-toggle-icon" aria-hidden="true"></i>
+                    <h2>Mission &amp; Vision</h2>
+                    <i class="fas fa-chevron-down about-toggle-chevron" aria-hidden="true"></i>
+                </summary>
+                <div class="about-body">
+                <h3>Mission</h3>
                 <p>Our Mission is to guide generations of courageous young men to honor God, lead with integrity, serve others, and experience outdoor adventure.</p>
-            </div>
-
-            <!-- Vision Statement -->
-            <div class="about-section reveal">
-                <h2><i class="fas fa-eye"></i> Vision Statement</h2>
+            
+                <h3>Vision</h3>
                 <p>Our Vision is to be the premier national character development organization for young men, which produces godly and responsible husbands, fathers, and citizens.</p>
-            </div>
+            
+                </div>
+            </details>
 
-            <!-- The Oath -->
-            <div class="about-section reveal">
-                <h2><i class="fas fa-hand-paper"></i> The Oath</h2>
+            <details class="about-section reveal" id="oath">
+                <summary class="about-toggle">
+                    <i class="fas fa-hand-paper about-toggle-icon" aria-hidden="true"></i>
+                    <h2>The Oath</h2>
+                    <i class="fas fa-chevron-down about-toggle-chevron" aria-hidden="true"></i>
+                </summary>
+                <div class="about-body">
                 <div class="oath-box">
                     <p>
                         On my honor, I will do my best<br>
@@ -211,11 +273,17 @@
                         And to treat others as I want to be treated.
                     </p>
                 </div>
-            </div>
+            
+                </div>
+            </details>
 
-            <!-- Statement of Faith -->
-            <div class="about-section reveal">
-                <h2><i class="fas fa-bible"></i> Statement of Faith</h2>
+            <details class="about-section reveal" id="statement-of-faith">
+                <summary class="about-toggle">
+                    <i class="fas fa-bible about-toggle-icon" aria-hidden="true"></i>
+                    <h2>Statement of Faith</h2>
+                    <i class="fas fa-chevron-down about-toggle-chevron" aria-hidden="true"></i>
+                </summary>
+                <div class="about-body">
                 <p>We believe there is One Triune God—God the Father; Jesus Christ, His one and only Son; and the Holy Spirit, Creator of the universe and eternally existent.</p>
                 
                 <p>We believe the Holy Scriptures (Old and New Testaments) to be the inspired and authoritative Word of God.</p>
@@ -227,11 +295,17 @@
                 <p>We believe each of us is called to love the Lord our God with all of our heart, mind, soul, and strength, and to love our neighbors as ourselves.</p>
                 
                 <p>We believe God calls us to lives of purity, service, stewardship, and integrity.</p>
-            </div>
+            
+                </div>
+            </details>
 
-            <!-- Statement of Values -->
-            <div class="about-section reveal">
-                <h2><i class="fas fa-heart"></i> Statement of Values</h2>
+            <details class="about-section reveal" id="statement-of-values">
+                <summary class="about-toggle">
+                    <i class="fas fa-heart about-toggle-icon" aria-hidden="true"></i>
+                    <h2>Statement of Values</h2>
+                    <i class="fas fa-chevron-down about-toggle-chevron" aria-hidden="true"></i>
+                </summary>
+                <div class="about-body">
                 
                 <div class="values-grid">
                     <div class="value-card reveal">
@@ -254,7 +328,9 @@
                         <p>God calls us to live moral lives that demonstrate an inward motivation to do what is biblically right regardless of the cost.</p>
                     </div>
                 </div>
-            </div>
+            
+                </div>
+            </details>
 
             <!-- Call to Action -->
             <div style="text-align: center; margin-top: 60px; padding: 60px 40px; background: var(--light-gray); border-radius: 10px;">
@@ -301,6 +377,14 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+        function openAboutSectionFromHash() {
+            var el = location.hash && document.getElementById(location.hash.slice(1));
+            if (el && el.tagName === 'DETAILS') { el.open = true; el.scrollIntoView(); }
+        }
+        window.addEventListener('hashchange', openAboutSectionFromHash);
+        document.addEventListener('DOMContentLoaded', openAboutSectionFromHash);
+    </script>
     <script src="js/reveal.js?v=20261001-polish"></script>
 </body>
 </html>
