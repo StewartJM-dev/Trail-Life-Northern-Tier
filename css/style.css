@@ -1351,9 +1351,13 @@ details.vendor-card[open] .vendor-summary .resource-chevron { transform: rotate(
     font-family: Georgia, 'Times New Roman', serif;
     font-style: italic;
     font-size: 1.12rem;
+    font-weight: 700;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.92);
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+    /* A brighter gold than --gold (#876237), which nearly disappears on
+       the red headers (1.1:1 contrast); this one is ~4.3:1 on the
+       brightest red and ~8:1 on the darker reds. */
+    color: #f7d27a;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
 }
 .page-scripture cite {
     display: block;
