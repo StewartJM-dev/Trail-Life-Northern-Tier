@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New to Trail Life? - Trail Life Northern Tier</title>
+    <meta name="description" content="New to Trail Life? Age groups, what a troop meeting looks like, what it costs, and how to visit a Trail Life troop near you in the Northern Tier.">
+    <!-- Link previews (texts, Facebook, etc.) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Trail Life USA Northern Tier Area">
+    <meta property="og:title" content="New to Trail Life? - Trail Life Northern Tier">
+    <meta property="og:description" content="New to Trail Life? Age groups, what a troop meeting looks like, what it costs, and how to visit a Trail Life troop near you in the Northern Tier.">
+    <meta property="og:url" content="https://stewartjm-dev.github.io/Trail-Life-Northern-Tier/new-to-trail-life.html">
+    <meta property="og:image" content="https://stewartjm-dev.github.io/Trail-Life-Northern-Tier/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Trail Life logo beside an American flag over a mountain lake at sunrise">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="images/trail-life-block-logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=20261002-newfam">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .intro-lead { max-width: 820px; margin: 0 auto 50px; text-align: center; font-size: 1.15rem; line-height: 1.8; color: var(--dark-gray); }
+        .ntl-section { margin-bottom: 60px; }
+        .age-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+        .age-card { background: white; border-radius: 12px; border-top: 5px solid var(--primary-red); box-shadow: 0 5px 20px rgba(0,0,0,0.08); padding: 28px; }
+        .age-card.navigators { border-top-color: var(--gold); }
+        .age-card.adventurers { border-top-color: var(--dark-green); }
+        .age-card h3 { color: var(--primary-red); margin-bottom: 4px; font-size: 1.5rem; }
+        .age-card .ages { font-family: var(--font-heading); letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); font-size: 0.95rem; margin-bottom: 14px; display: block; }
+        .age-card p { color: var(--gray); line-height: 1.7; }
+        .patrols { list-style: none; padding: 0; margin: 14px 0 0; }
+        .patrols li { padding: 8px 0; border-top: 1px solid var(--light-gray); color: var(--dark-gray); }
+        .patrols strong { color: var(--black); }
+        .patrols span { color: var(--gray); font-size: 0.92rem; }
+        .meeting-flow { counter-reset: step; list-style: none; padding: 0; max-width: 720px; margin: 0 auto; }
+        .meeting-flow li { counter-increment: step; position: relative; padding: 14px 0 14px 58px; border-bottom: 1px dashed rgba(135,98,55,0.35); font-size: 1.08rem; color: var(--dark-gray); }
+        .meeting-flow li:last-child { border-bottom: none; }
+        .meeting-flow li::before { content: counter(step); position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: var(--primary-red); color: white; font-family: var(--font-heading); font-weight: 700; display: flex; align-items: center; justify-content: center; }
+        .join-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .join-step { background: var(--light-gray); border-radius: 12px; padding: 24px; }
+        .join-step i { font-size: 1.8rem; color: var(--gold); margin-bottom: 12px; display: block; }
+        .join-step h3 { color: var(--primary-red); font-size: 1.2rem; margin-bottom: 8px; }
+        .join-step p { color: var(--gray); line-height: 1.7; }
+        .join-step a { color: var(--primary-red); font-weight: 600; }
+        .faq-list { max-width: 820px; margin: 0 auto; }
+        .faq-item { background: white; border-radius: 10px; border-left: 5px solid var(--primary-red); box-shadow: 0 4px 14px rgba(0,0,0,0.07); margin-bottom: 14px; }
+        .faq-item summary { list-style: none; cursor: pointer; padding: 18px 22px; display: flex; align-items: center; gap: 14px; font-weight: 700; color: var(--black); font-size: 1.05rem; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after { content: '+'; margin-left: auto; font-size: 1.5rem; color: var(--primary-red); line-height: 1; }
+        .faq-item[open] summary::after { content: '\2013'; }
+        .faq-item .faq-answer { padding: 0 22px 20px; color: var(--gray); line-height: 1.75; }
+        .faq-answer a { color: var(--primary-red); font-weight: 600; }
+        .ntl-cta { text-align: center; padding: 50px 30px; border-radius: 12px; background: linear-gradient(135deg, var(--primary-red), var(--dark-red)); color: white; }
+        .ntl-cta h2 { color: white; margin-bottom: 12px; }
+        .ntl-cta p { color: rgba(255,255,255,0.92); font-size: 1.1rem; margin-bottom: 26px; }
+        .ntl-cta .btn-secondary { margin-left: 10px; }
+        .ntl-source { text-align: center; color: var(--gray); font-size: 0.9rem; margin-top: 30px; }
+        .ntl-source a { color: var(--primary-red); }
+        @media (max-width: 600px) {
+            .intro-lead { font-size: 1.02rem; }
+            .meeting-flow li { padding-left: 52px; font-size: 1rem; }
+            .ntl-cta { padding: 36px 20px; }
+            .ntl-cta .btn-secondary { margin: 12px 0 0; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/trail-life-block-logo.png" alt="Trail Life USA Logo">
+                <span class="nav-title">Northern Tier</span>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="troops.html">Troops</a></li>
+                <li><a href="spotlight.html">Spotlight</a></li>
+                <li><a href="leaders.html">Area Team</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="page-header">
+        <img class="page-header-art" src="images/headers/team-signpost.webp" width="640" height="640" alt="" aria-hidden="true" decoding="async" fetchpriority="high">
+        <h1>New to Trail Life?</h1>
+        <p>Everything a family needs to know to get started</p>
+        <blockquote class="page-scripture">
+            <p>“Let no man despise thy youth; but be thou an example of the believers, in word, in conversation, in charity, in spirit, in faith, in purity.”</p>
+            <cite>1 Timothy 4:12 (KJV)</cite>
+        </blockquote>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <p class="intro-lead">Trail Life USA is a Christ-centered, boy-focused outdoor adventure, character, and leadership program for boys and young men ages 5 to 17. Troops are chartered by local churches and led by trained, background-checked Christian men. Boys learn real outdoor skills, grow in faith, and learn to lead.</p>
+
+            <!-- Age groups -->
+            <div class="ntl-section">
+                <h2 class="section-title">Where Will My Son Fit?</h2>
+                <div class="age-grid">
+                    <div class="age-card reveal">
+                        <h3>Woodlands Trail</h3>
+                        <span class="ages">Ages 5&ndash;10</span>
+                        <p>Outdoor skills and character through fun activities, awards, and skill instruction, in small patrols by age.</p>
+                        <ul class="patrols">
+                            <li><strong>Foxes</strong> <span>ages 5&ndash;6 (about K&ndash;1st grade). A parent attends every meeting and outing.</span></li>
+                            <li><strong>Hawks</strong> <span>ages 7&ndash;8 (about 2nd&ndash;3rd grade)</span></li>
+                            <li><strong>Mountain Lions</strong> <span>ages 9&ndash;10 (about 4th&ndash;5th grade). Eligible for the Timberline Award.</span></li>
+                        </ul>
+                    </div>
+                    <div class="age-card navigators reveal">
+                        <h3>Navigators</h3>
+                        <span class="ages">Ages 11&ndash;13</span>
+                        <p>Boys build values and responsibility through outdoor adventure and in their home and school life, and begin earning Trail Badges toward the Freedom Award.</p>
+                    </div>
+                    <div class="age-card adventurers reveal">
+                        <h3>Adventurers</h3>
+                        <span class="ages">Ages 14&ndash;17</span>
+                        <p>Young men take on harder challenges and real leadership, working toward the Freedom Award, Trail Life&rsquo;s highest honor.</p>
+                    </div>
+                </div>
+                <p class="ntl-source">Not sure which group fits? Placement is by age, and your troop will help you get it right.</p>
+            </div>
+
+            <!-- Meeting -->
+            <div class="ntl-section">
+                <h2 class="section-title">What Does a Meeting Look Like?</h2>
+                <p class="intro-lead" style="margin-bottom: 25px;">Most troops meet once a week for about eight to nine months of the year. Meetings are active, fun, and most often outdoors, and they generally follow this flow:</p>
+                <ol class="meeting-flow">
+                    <li>Opening ceremony</li>
+                    <li>Troop-wide announcements and devotion</li>
+                    <li>Patrol breakout activities by age group</li>
+                    <li>Troop-wide game or activity</li>
+                    <li>Biblical connections and closing ceremony</li>
+                </ol>
+            </div>
+
+            <!-- How to join -->
+            <div class="ntl-section">
+                <h2 class="section-title">How to Get Started</h2>
+                <div class="join-steps">
+                    <div class="join-step reveal">
+                        <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
+                        <h3>1. Find a troop</h3>
+                        <p>See the <a href="troops.html">Northern Tier troops</a> on our map, with where each one meets.</p>
+                    </div>
+                    <div class="join-step reveal">
+                        <i class="fas fa-door-open" aria-hidden="true"></i>
+                        <h3>2. Visit a meeting</h3>
+                        <p>Reach out to the troop and come see a meeting with your son. It&rsquo;s the best way to know if it&rsquo;s a fit.</p>
+                    </div>
+                    <div class="join-step reveal">
+                        <i class="fas fa-id-card" aria-hidden="true"></i>
+                        <h3>3. Register</h3>
+                        <p>Your troop will walk you through signing up. Youth membership with Trail Life USA is $42.98 a year.</p>
+                    </div>
+                    <div class="join-step reveal">
+                        <i class="fas fa-hiking" aria-hidden="true"></i>
+                        <h3>4. Hit the trail</h3>
+                        <p>Pick up a handbook and uniform from the <a href="https://shop.traillifeusa.com/" target="_blank" rel="noopener">Trail Life store</a> and start the adventure.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="ntl-section">
+                <h2 class="section-title">Common Questions</h2>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>Who can join?</summary>
+                        <div class="faq-answer">Boys who are at least 5 years old and under 18. Trail Life is for boys only; for girls, Trail Life recommends its sister program, <a href="https://americanheritagegirls.org/" target="_blank" rel="noopener">American Heritage Girls</a>.</div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Does my son have to be a Christian?</summary>
+                        <div class="faq-answer">No. Trail Life welcomes boys of any faith, or no faith at all. The program is unapologetically Christ-centered, with faith woven throughout without being &ldquo;churchy,&rdquo; and adult leaders are Christian men. Because each troop belongs to a local church, a troop may have its own additional guidelines.</div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What does it cost?</summary>
+                        <div class="faq-answer">Trail Life USA youth membership is $42.98 per year, paid by credit or debit card. Many troops also have their own troop dues or activity costs, so ask the troop you visit. Membership fees are non-refundable.</div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Does he need a uniform right away?</summary>
+                        <div class="faq-answer">No. There&rsquo;s no strict requirement for the full uniform when a Trailman first starts, but he should have one soon. There are three levels: a Trail Uniform (t-shirt), a Travel Uniform (polo), and the more formal Troop Uniform.</div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Do parents need to be involved?</summary>
+                        <div class="faq-answer">Parents are encouraged to take an active role, and many dads serve alongside their sons. For Foxes (ages 5&ndash;6), at least one parent is required at all meetings and outings.</div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How do you keep boys safe?</summary>
+                        <div class="faq-answer">Every adult leader must pass a nationwide criminal background check, initially and periodically, and complete Child Safety Youth Protection Training. Troops follow Trail Life&rsquo;s youth protection essentials: no one-on-one contact between an adult and a boy, two-deep leadership, and the buddy system.</div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Can he join partway through the year?</summary>
+                        <div class="faq-answer">Yes. Boys can join any time of year. Reach out to a troop near you and they&rsquo;ll help him jump in.</div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How is Trail Life different from scouting?</summary>
+                        <div class="faq-answer">Trail Life is built on a Christian worldview with the Bible as the foundation for truth, is for boys only, and is led by trained, background-checked Christian men. Its activities are designed to let boys be boys, and each troop is owned and operated by its chartering church.</div>
+                    </details>
+                </div>
+            </div>
+
+            <div class="ntl-cta">
+                <h2>Ready to Visit a Troop?</h2>
+                <p>Find the Northern Tier troop closest to you and come see a meeting.</p>
+                <a href="troops.html" class="btn btn-primary" style="background: white; color: var(--primary-red);">Find a Troop</a>
+                <a href="about.html" class="btn btn-secondary">Learn About Trail Life</a>
+            </div>
+            <p class="ntl-source">Program details, fees, and policies from <a href="https://www.traillifeusa.com/faqs/" target="_blank" rel="noopener">Trail Life USA&rsquo;s official FAQ</a>; check there for the latest.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="images/trail-life-block-logo.png" alt="Trail Life USA" class="footer-logo">
+                    <p>Trail Life USA Northern Tier</p>
+                    <p class="footer-tagline">Adventure > Character > Leadership</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="new-to-trail-life.html" class="active">New to Trail Life?</a></li>
+                        <li><a href="blog.html">Area Blog</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="troops.html">Our Troops</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="leaders.html">Area Team</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="https://www.traillifeusa.com" target="_blank">Trail Life USA</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span class="footer-year">2025</span> Trail Life USA Northern Tier. All rights reserved.</p>
+                <p>Trail Life USA is a registered trademark.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+    <script src="js/reveal.js?v=20261001-polish"></script>
+</body>
+</html>

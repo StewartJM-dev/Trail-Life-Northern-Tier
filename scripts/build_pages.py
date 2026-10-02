@@ -40,6 +40,7 @@ NAV_ITEMS = [
 ]
 
 FOOTER_QUICK_LINKS = [
+    ("New to Trail Life?", "new-to-trail-life.html"),
     ("Area Blog", "blog.html"),
     ("Resources", "resources.html"),
     ("Events", "events.html"),
@@ -52,7 +53,12 @@ FOOTER_CONNECT_LINKS = [
     ("Trail Life USA", "https://www.traillifeusa.com"),
 ]
 
-TEMPLATED_PAGES = [href for _, href in NAV_ITEMS]
+# Public pages that get the shared nav/footer but aren't items in the top
+# menu (the menu is already at its 11-item width limit; these are reached
+# from buttons and the footer instead).
+EXTRA_TEMPLATED_PAGES = ['new-to-trail-life.html']
+
+TEMPLATED_PAGES = [href for _, href in NAV_ITEMS] + EXTRA_TEMPLATED_PAGES
 
 NAV_RE = re.compile(r'    <nav class="navbar">.*?</nav>\n', re.DOTALL)
 FOOTER_RE = re.compile(r'    <footer class="footer">.*?</footer>\n', re.DOTALL)

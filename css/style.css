@@ -1481,3 +1481,7 @@ details.vendor-card[open] .vendor-summary .resource-chevron { transform: rotate(
 
 .region-selection-close { float: none; display: block; margin-left: auto; margin-bottom: 8px; }
 .region-search[hidden] { display: none; }
+
+/* Pointer from the troops page to the New to Trail Life guide */
+.troops-new-family { text-align: center; color: var(--gray); margin: -10px 0 24px; }
+.troops-new-family a { color: var(--primary-red); font-weight: 700; }

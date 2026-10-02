@@ -4,7 +4,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_PAGES = ['index', 'about', 'blog', 'resources', 'events', 'gallery',
-                'troops', 'spotlight', 'leaders', 'achievements', 'contact']
+                'troops', 'spotlight', 'leaders', 'achievements', 'contact',
+                'new-to-trail-life']
 REQUIRED = ['og:title', 'og:description', 'og:url', 'og:image']
 
 
