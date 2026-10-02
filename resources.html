@@ -15,40 +15,82 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        .resource-categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-        
-        .resource-category {
-            background: white;
-            border-radius: 10px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border-top: 4px solid var(--primary-red);
-        }
-        
-        .resource-category:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(193, 39, 45, 0.2);
-        }
-        
-        .resource-category i {
-            font-size: 4rem;
-            color: var(--gold);
+        .resource-section {
             margin-bottom: 20px;
         }
-        
-        .resource-category h3 {
-            color: var(--primary-red);
-            margin-bottom: 15px;
+
+        .resource-section-toggle {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 26px 30px;
+            background: white;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary-red);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            cursor: pointer;
+            list-style: none;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
-        
+
+        .resource-section-toggle::-webkit-details-marker { display: none; }
+
+        .resource-section-toggle:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(193, 39, 45, 0.18);
+        }
+
+        .resource-section-icon {
+            flex: none;
+            width: 2.5rem;
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--gold);
+        }
+
+        .resource-section-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .resource-section-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            line-height: 1.2;
+        }
+
+        .resource-section-sub {
+            color: var(--gray);
+            font-size: 0.98rem;
+        }
+
+        .resource-section-chevron {
+            flex: none;
+            color: var(--primary-red);
+            font-size: 1.2rem;
+            transition: transform 0.25s ease;
+        }
+
+        .resource-section[open] .resource-section-chevron { transform: rotate(180deg); }
+
+        .resource-section[open] .resource-section-toggle {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .resource-section-body {
+            padding-top: 30px;
+        }
+
+        .resource-section-body.resource-list {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
         .resource-list {
             background: white;
             border-radius: 10px;
@@ -159,12 +201,18 @@
         }
 
         @media (max-width: 600px) {
-            .resource-category {
-                padding: 25px 20px;
+            .resource-section-toggle {
+                padding: 20px 18px;
+                gap: 14px;
             }
 
-            .resource-category i {
-                font-size: 2.8rem;
+            .resource-section-icon {
+                font-size: 1.7rem;
+                width: 2rem;
+            }
+
+            .resource-section-title {
+                font-size: 1.25rem;
             }
 
             .resource-list {
@@ -216,26 +264,14 @@
     <section class="content-section trail-texture">
         <div class="container">
             
-            <!-- Resource Categories -->
-            <div class="resource-categories">
-                <a href="#program-ideas" class="resource-category link-plain">
-                    <i class="fas fa-lightbulb"></i>
-                    <h3>Program Ideas</h3>
-                    <p>Activity plans and program suggestions</p>
-                </a>
-                <a href="#fundraising" class="resource-category link-plain">
-                    <i class="fas fa-hand-holding-usd"></i>
-                    <h3>Fundraising</h3>
-                    <p>Proven fundraising ideas and vendor partners</p>
-                </a>
-            </div>
-
             <!-- Partner Resources -->
-            <div class="resource-list" id="partner-resources">
-                <h2 class="section-title"><i class="fas fa-handshake"></i> Partner Resources</h2>
-                <p class="text-gray-center-mb40-lg">
-                    Valuable resources from Trail Life USA partners and recommended organizations
-                </p>
+            <details class="resource-section" id="partner-resources">
+                <summary class="resource-section-toggle">
+                    <i class="fas fa-handshake resource-section-icon" aria-hidden="true"></i>
+                    <span class="resource-section-text"><span class="resource-section-title">Partner Resources</span><span class="resource-section-sub">Trusted organizations, training, and the official store</span></span>
+                    <i class="fas fa-chevron-down resource-section-chevron" aria-hidden="true"></i>
+                </summary>
+                <div class="resource-section-body resource-list">
                 
                 <!-- Trail Life Store -->
                 <details class="resource-item reveal" style="background: linear-gradient(135deg, var(--gold), var(--dark-brown)); border-left: 5px solid var(--primary-red);"><summary class="resource-summary"><h4 style="color: white; margin-bottom: 8px;"><i class="fas fa-store" style="color: white; margin-right: 10px;"></i>Trail Life USA Official Store</h4><span class="resource-chevron"><i class="fas fa-chevron-right"></i></span></summary><div class="resource-body">
@@ -337,13 +373,16 @@
                     </div>
                 </div></details>
             </div>
+            </details>
 
             <!-- Program Ideas Database -->
-            <div class="resource-list" id="program-ideas">
-                <h2 class="section-title"><i class="fas fa-lightbulb"></i> Program Ideas Database</h2>
-                <p class="text-gray-center-mb40-lg">
-                    Downloadable guides for exciting troop activities and projects
-                </p>
+            <details class="resource-section" id="program-ideas">
+                <summary class="resource-section-toggle">
+                    <i class="fas fa-lightbulb resource-section-icon" aria-hidden="true"></i>
+                    <span class="resource-section-text"><span class="resource-section-title">Program Ideas</span><span class="resource-section-sub">Downloadable guides for troop activities</span></span>
+                    <i class="fas fa-chevron-down resource-section-chevron" aria-hidden="true"></i>
+                </summary>
+                <div class="resource-section-body resource-list">
                 
                 <!-- Pinewood Derby Guide -->
                 <details class="resource-item reveal"><summary class="resource-summary"><h4><i class="fas fa-car text-red-mr10"></i>Pinewood Derby Guide</h4><span class="resource-chevron"><i class="fas fa-chevron-right"></i></span></summary><div class="resource-body">
@@ -429,10 +468,16 @@
                     </a>
                 </div>
             </div>
+            </details>
 
             <!-- Fundraising Section -->
-            <div style="margin-top: 80px;" id="fundraising">
-                <h2 class="section-title"><i class="fas fa-hand-holding-usd"></i> Troop Fundraising Resources</h2>
+            <details class="resource-section" id="fundraising">
+                <summary class="resource-section-toggle">
+                    <i class="fas fa-hand-holding-usd resource-section-icon" aria-hidden="true"></i>
+                    <span class="resource-section-text"><span class="resource-section-title">Fundraising</span><span class="resource-section-sub">Best practices, vendor partners, and TLUSA policy</span></span>
+                    <i class="fas fa-chevron-down resource-section-chevron" aria-hidden="true"></i>
+                </summary>
+                <div class="resource-section-body">
                 <p style="text-align: center; color: var(--gray); margin-bottom: 40px; font-size: 1.1rem; max-width: 800px; margin-left: auto; margin-right: auto;">
                     Don't let limited funds prevent your troop from delivering on the promise of adventure! These proven fundraising solutions help troops across the Northern Tier fund their entire annual program with just one major fundraiser.
                 </p>
@@ -700,6 +745,7 @@
                     </a>
                 </div>
             </div>
+            </details>
 
         </div>
     </section>
@@ -739,5 +785,14 @@
 
     <script src="js/main.js"></script>
     <script src="js/reveal.js?v=20261001-polish"></script>
+    <script>
+        // Open the drop-down named in the URL (resources.html#fundraising etc.)
+        function openResourceSectionFromHash() {
+            var el = location.hash && document.getElementById(location.hash.slice(1));
+            if (el && el.tagName === 'DETAILS') { el.open = true; el.scrollIntoView(); }
+        }
+        window.addEventListener('hashchange', openResourceSectionFromHash);
+        document.addEventListener('DOMContentLoaded', openResourceSectionFromHash);
+    </script>
 </body>
 </html>
