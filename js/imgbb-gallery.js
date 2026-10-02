@@ -1,32 +1,58 @@
-// Trail Life Northern Tier - Gallery powered by Google Sheets + ImgBB
-// Super simple - just 2 columns: image_url, published
-// CSV fetching/parsing lives in js/sheet-cms.js (loaded before this file).
+// Thumbnails and the published photo list are built from the Google Sheet.
+// Only an explicit lightbox open fetches the original ImgBB photograph.
 
 const GALLERY_CONFIG = {
-    SHEET_URL: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTd_X6dSEGVXlheOHOroGqZzK6bT6Y_v2RpkU30JPXdnRN9mz5q-7KN66WvTynC-bUbHbecsmOwDB3I/pub?output=csv'
+    SNAPSHOT_URL: 'data/gallery.json'
 };
 
 let allPhotos = [];
 let currentPhotoIndex = 0;
 
 // Create photo HTML
-function createPhotoHTML(photo, index) {
-    const caption = photo.caption || '';
-    
-    return `
-        <div class="gallery-item reveal" onclick="openLightbox(${index})">
-            <img src="${photo.image_url}" alt="${caption}" loading="lazy">
-            ${caption ? `<div class="gallery-item-caption">${caption}</div>` : ''}
-        </div>
-    `;
+function createPhotoElement(photo, index) {
+    const item = document.createElement('div');
+    item.className = 'gallery-item';
+    item.tabIndex = 0;
+    item.setAttribute('role', 'button');
+    item.setAttribute('aria-label', `Open photo: ${photo.caption || 'Trail Life adventure'}`);
+    item.addEventListener('click', () => openLightbox(index));
+    item.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openLightbox(index);
+        }
+    });
+    const image = document.createElement('img');
+    image.src = photo.thumbnail_url;
+    image.alt = photo.caption || 'Trail Life adventure';
+    image.width = photo.width;
+    image.height = photo.height;
+    image.loading = index < 3 ? 'eager' : 'lazy';
+    image.decoding = 'async';
+    image.addEventListener('error', () => {
+        const fallback = document.createElement('p');
+        fallback.textContent = 'Preview unavailable. Tap to open the original photo.';
+        fallback.style.padding = '24px';
+        image.replaceWith(fallback);
+    }, {once: true});
+    item.append(image);
+    if (photo.caption) {
+        const caption = document.createElement('div');
+        caption.className = 'gallery-item-caption';
+        caption.textContent = photo.caption;
+        item.append(caption);
+    }
+    return item;
 }
 
 // Lightbox functions
 function openLightbox(index) {
+    if (!allPhotos[index]) return;
     currentPhotoIndex = index;
     const photo = allPhotos[index];
     
     document.getElementById('lightbox-img').src = photo.image_url;
+    document.getElementById('lightbox-img').alt = photo.caption || 'Trail Life adventure';
     document.getElementById('lightbox').classList.add('active');
     document.body.style.overflow = 'hidden';
 }
@@ -37,6 +63,7 @@ function closeLightbox() {
 }
 
 function navigateLightbox(direction) {
+    if (!allPhotos.length) return;
     currentPhotoIndex += direction;
     
     if (currentPhotoIndex < 0) {
@@ -52,9 +79,9 @@ function navigateLightbox(direction) {
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         closeLightbox();
-    } else if (e.key === 'ArrowLeft') {
+    } else if (e.key === 'ArrowLeft' && document.getElementById('lightbox').classList.contains('active')) {
         navigateLightbox(-1);
-    } else if (e.key === 'ArrowRight') {
+    } else if (e.key === 'ArrowRight' && document.getElementById('lightbox').classList.contains('active')) {
         navigateLightbox(1);
     }
 });
@@ -66,21 +93,18 @@ document.getElementById('lightbox').addEventListener('click', (e) => {
     }
 });
 
-// Load gallery from Google Sheets
+// Load the same-origin gallery snapshot; new sheet photos sync every six hours.
 async function loadGallery() {
     const loadingEl = document.getElementById('loading');
     const errorEl = document.getElementById('error');
     const galleryGrid = document.getElementById('gallery-grid');
 
     try {
-        allPhotos = await SheetCMS.fetchPublishedRows(GALLERY_CONFIG.SHEET_URL, {
-            extraFilter: photo => !!photo.image_url
-        });
-
-        // Sort by date if date column exists, otherwise keep sheet order
-        if (allPhotos.length > 0 && allPhotos[0].date) {
-            allPhotos = SheetCMS.sortByDateDesc(allPhotos);
-        }
+        const response = await fetch(GALLERY_CONFIG.SNAPSHOT_URL, {cache: 'no-store'});
+        if (!response.ok) throw new Error(`Gallery HTTP ${response.status}`);
+        const snapshot = await response.json();
+        if (!Array.isArray(snapshot.photos)) throw new Error('Invalid gallery snapshot');
+        allPhotos = snapshot.photos;
 
         loadingEl.style.display = 'none';
 
@@ -96,25 +120,13 @@ async function loadGallery() {
         }
 
         // Display all photos in grid
-        galleryGrid.innerHTML = allPhotos.map((photo, index) =>
-            createPhotoHTML(photo, index)
-        ).join('');
-        if (window.observeReveal) window.observeReveal(galleryGrid);
+        galleryGrid.replaceChildren(...allPhotos.map(createPhotoElement));
 
     } catch (error) {
         console.error('Error loading gallery:', error);
         loadingEl.style.display = 'none';
         errorEl.style.display = 'block';
-        errorEl.innerHTML = `
-            <strong>Error loading gallery:</strong> ${error.message}
-            <br><br>
-            Please make sure:
-            <ul style="margin-top: 10px; padding-left: 20px;">
-                <li>Your Google Sheet is published to the web</li>
-                <li>The CSV URL is correctly configured in js/imgbb-gallery.js</li>
-                <li>Your sheet has the correct column headers (image_url, published)</li>
-            </ul>
-        `;
+        errorEl.textContent = 'The gallery is temporarily unavailable. Please refresh or try again shortly.';
     }
 }
 

@@ -30,9 +30,11 @@ jobs:
           cache: pip
           cache-dependency-path: scripts/calendar-requirements.txt
       - run: pip install -r scripts/calendar-requirements.txt
+      - run: pip install -r scripts/gallery-requirements.txt
       - run: python -m unittest discover -s tests
       - run: python scripts/sync_calendar.py
       - run: python scripts/sync_troop_events.py
+      - run: python scripts/sync_gallery.py
       - uses: actions/configure-pages@v5
       - name: Prepare public files
         run: |
