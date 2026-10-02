@@ -69,8 +69,12 @@
     function select(troop) {
         if (!map) return;
         if (popup) popup.remove();
-        map.flyTo({ center: [troop.lng, troop.lat], zoom: 16.5, pitch: terrain ? 55 : 0,
-            bearing: terrain ? -15 : 0, padding: { top: 70, bottom: 20, left: 20, right: 20 }, duration: reduced.matches ? 0 : 1800 });
+        // The regional DEM is too coarse for a tilted street-scale camera.
+        // Use a centered overhead view for troop detail, then restore terrain on overview.
+        map.stop();
+        map.setTerrain(null);
+        map.flyTo({ center: [troop.lng, troop.lat], zoom: 16.5, pitch: 0,
+            bearing: 0, padding: { top: 0, bottom: 0, left: 0, right: 0 }, duration: reduced.matches ? 0 : 1400 });
         selection.replaceChildren();
         const close = document.createElement('button');
         close.type = 'button';
@@ -132,6 +136,7 @@
             });
             const overview = () => {
                 clearSelection();
+                if (map.isStyleLoaded()) map.setTerrain(terrain ? { source: 'regional-terrain', exaggeration: 1.4 } : null);
                 map.fitBounds(bounds, { padding: 55, pitch: terrain ? 48 : 0,
                     bearing: terrain ? -12 : 0, duration: reduced.matches ? 0 : 800 });
             };
@@ -145,6 +150,7 @@
                     showTroop: select,
                     showLocation(point, nearest) {
                         clearSelection();
+                        map.setTerrain(terrain ? { source: 'regional-terrain', exaggeration: 1.4 } : null);
                         if (locationMarker) locationMarker.remove();
                         const dot = document.createElement('div');
                         dot.className = 'region-search-location';
@@ -167,7 +173,7 @@
             document.getElementById('region-view').addEventListener('click', event => {
                 terrain = !terrain;
                 map.setTerrain(terrain ? { source: 'regional-terrain', exaggeration: 1.4 } : null);
-                map.easeTo({ pitch: terrain ? 48 : 0, bearing: terrain ? -12 : 0, duration: reduced.matches ? 0 : 600 });
+                overview();
                 event.currentTarget.setAttribute('aria-pressed', String(terrain));
                 event.currentTarget.textContent = terrain ? '3D terrain' : 'Flat map';
             });
