@@ -1173,8 +1173,8 @@ details.vendor-card[open] .vendor-summary .resource-chevron { transform: rotate(
     text-align: center;
 }
 .team-avatar {
-    width: 90px;
-    height: 90px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     margin: 0 auto 20px;
     display: flex;
@@ -1184,6 +1184,11 @@ details.vendor-card[open] .vendor-summary .resource-chevron { transform: rotate(
 .team-avatar-red { background: var(--primary-red); }
 .team-avatar-gold { background: var(--gold); }
 .team-avatar i { font-size: 2.5rem; color: white; }
+.team-avatar-photo {
+    object-fit: cover;
+    border: 4px solid var(--gold);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
 .team-name { color: var(--primary-red); margin-bottom: 10px; font-size: 1.5rem; }
 .team-role { color: var(--gray); font-weight: 600; }
 
