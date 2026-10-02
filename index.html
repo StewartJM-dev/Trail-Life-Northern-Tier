@@ -33,7 +33,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css?v=20261002-quiet">
+    <link rel="stylesheet" href="css/style.css?v=20261002-pin-search">
     
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -147,6 +147,17 @@
                 <h2 class="section-title" id="region-heading">Find your place on the trail</h2>
                 <p>Meet the troops across Pennsylvania and New York. Explore the terrain and select a troop to get closer.</p>
             </div>
+            <form class="region-search" id="region-search-form" hidden>
+                <label for="region-address">Find troops near you</label>
+                <div class="region-search-fields">
+                    <input id="region-address" name="address" type="search" placeholder="Address, town, or ZIP code" required minlength="2" maxlength="200" autocomplete="off">
+                    <button class="btn btn-primary" type="submit">Search map</button>
+                    <button type="button" id="region-search-clear" hidden>Clear</button>
+                </div>
+                <p class="region-search-credit">Address search by Esri. <a href="https://www.esri.com/en-us/privacy/privacy-statements/privacy-statement" target="_blank" rel="noopener">Privacy</a></p>
+                <p id="region-search-status" role="status" aria-live="polite"></p>
+                <ul id="region-nearby" aria-label="Nearest listed troops"></ul>
+            </form>
             <div class="region-grid">
                 <div class="region-map-panel">
                 <div id="region-map" aria-label="3D terrain map of Northern Tier troop locations"><p class="region-map-fallback">Explore our troop locations in the directory below.</p></div>
@@ -219,6 +230,7 @@
     <script src="js/reveal.js?v=20261001-polish"></script>
     <script src="js/sheet-cms.js"></script>
     <script src="js/home-blog.js"></script>
-    <script src="js/region-map.js?v=20261002"></script>
+    <script src="js/region-map.js?v=20261002-pin-search"></script>
+    <script src="js/region-search.js?v=20261002"></script>
 </body>
 </html>

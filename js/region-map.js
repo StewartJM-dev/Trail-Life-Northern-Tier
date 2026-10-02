@@ -5,7 +5,18 @@
     if (!container || !directory) return;
     const toolbar = document.querySelector('.region-map-toolbar');
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let map, popup, terrain = true;
+    let map, popup, locationMarker, terrain = true;
+    const selection = document.createElement('div');
+    selection.className = 'region-selected';
+    selection.hidden = true;
+    selection.setAttribute('role', 'region');
+    selection.setAttribute('aria-label', 'Selected troop details');
+    toolbar.after(selection);
+
+    function clearSelection() {
+        if (popup) popup.remove();
+        selection.hidden = true;
+    }
 
     function fallback() {
         if (map) { map.remove(); map = undefined; }
@@ -19,15 +30,28 @@
 
     function popupContent(troop) {
         const card = document.createElement('div');
-        card.className = 'region-map-popup';
+        card.className = 'region-selected-card';
         const title = document.createElement('h3');
         title.textContent = 'Troop ' + troop.troop_number;
         const location = document.createElement('p');
         location.textContent = troop.location;
         const link = document.createElement('a');
-        link.href = 'troops.html';
+        const hasWebsite = typeof troop.website === 'string' && /^https?:\/\//.test(troop.website);
+        link.href = hasWebsite ? troop.website : 'troops.html';
+        if (hasWebsite) { link.target = '_blank'; link.rel = 'noopener'; }
         link.textContent = 'Troop details →';
-        card.append(title, location, link);
+        card.append(title, location);
+        if (troop.sponsor) {
+            const sponsor = document.createElement('p');
+            sponsor.textContent = troop.sponsor;
+            card.append(sponsor);
+        }
+        if (troop.meetings) {
+            const meetings = document.createElement('p');
+            meetings.textContent = troop.meetings;
+            card.append(meetings);
+        }
+        card.append(link);
         return card;
     }
 
@@ -35,10 +59,22 @@
         if (!map) return;
         if (popup) popup.remove();
         map.flyTo({ center: [troop.lng, troop.lat], zoom: 11, pitch: terrain ? 58 : 0,
-            bearing: terrain ? -15 : 0, duration: reduced.matches ? 0 : 1400 });
-        popup = new maplibregl.Popup({ offset: 26 }).setLngLat([troop.lng, troop.lat])
-            .setDOMContent(popupContent(troop)).addTo(map);
-        container.scrollIntoView({ behavior: 'auto', block: 'center' });
+            bearing: terrain ? -15 : 0, padding: { top: 180, bottom: 0, left: 20, right: 20 }, duration: reduced.matches ? 0 : 1400 });
+        selection.replaceChildren();
+        const close = document.createElement('button');
+        close.type = 'button';
+        close.className = 'region-selection-close';
+        close.textContent = 'Close details ×';
+        close.addEventListener('click', clearSelection);
+        selection.append(close, popupContent(troop));
+        selection.hidden = false;
+        const label = document.createElement('div');
+        label.className = 'region-map-popup';
+        label.textContent = 'Troop ' + troop.troop_number;
+        popup = new maplibregl.Popup({ offset: 26, closeOnClick: false, closeButton: false,
+            focusAfterOpen: false, maxWidth: '160px' }).setLngLat([troop.lng, troop.lat])
+            .setDOMContent(label).addTo(map);
+        selection.scrollIntoView({ behavior: 'auto', block: 'nearest' });
     }
 
     async function initialize(troops) {
@@ -73,11 +109,18 @@
                 pin.className = 'region-map-pin';
                 pin.type = 'button';
                 pin.setAttribute('aria-label', 'Explore troop ' + troop.troop_number + ', ' + troop.location);
-                pin.addEventListener('click', () => select(troop));
+                // A pin tap must not become a map tap that closes its new popup.
+                pin.addEventListener('click', event => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    select(troop);
+                });
+                pin.addEventListener('mousedown', event => event.stopPropagation());
+                pin.addEventListener('touchstart', event => event.stopPropagation(), { passive: true });
                 new maplibregl.Marker({ element: pin, anchor: 'bottom' }).setLngLat([troop.lng, troop.lat]).addTo(map);
             });
             const overview = () => {
-                if (popup) popup.remove();
+                clearSelection();
                 map.fitBounds(bounds, { padding: 55, pitch: terrain ? 48 : 0,
                     bearing: terrain ? -12 : 0, duration: reduced.matches ? 0 : 800 });
             };
@@ -87,6 +130,24 @@
                 clearTimeout(timeout);
                 map.setTerrain({ source: 'regional-terrain', exaggeration: 1.4 });
                 toolbar.hidden = false;
+                window.NorthernTierMap = {
+                    showTroop: select,
+                    showLocation(point, nearest) {
+                        clearSelection();
+                        if (locationMarker) locationMarker.remove();
+                        const dot = document.createElement('div');
+                        dot.className = 'region-search-location';
+                        dot.setAttribute('role', 'img');
+                        dot.setAttribute('aria-label', 'Your searched location');
+                        locationMarker = new maplibregl.Marker({ element: dot }).setLngLat([point.lng, point.lat]).addTo(map);
+                        const nearby = new maplibregl.LngLatBounds([point.lng, point.lat], [point.lng, point.lat]);
+                        nearest.forEach(troop => nearby.extend([troop.lng, troop.lat]));
+                        map.fitBounds(nearby, { padding: 55, maxZoom: 12, pitch: terrain ? 48 : 0,
+                            bearing: terrain ? -12 : 0, duration: reduced.matches ? 0 : 1000 });
+                    },
+                    clearSearch() { if (locationMarker) locationMarker.remove(); overview(); }
+                };
+                window.dispatchEvent(new Event('region-map-ready'));
             });
             map.on('error', event => {
                 if (map && !event.sourceId && !map.isStyleLoaded()) { clearTimeout(timeout); fallback(); }

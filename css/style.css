@@ -1452,3 +1452,32 @@ details.vendor-card[open] .vendor-summary .resource-chevron { transform: rotate(
     .home-page .blog-date { font-size: .75rem; }
     .home-page .region-section, .home-page .upcoming-events { padding: 40px 0; }
 }
+
+.region-map-popup { max-height: 220px; overflow-y: auto; padding-right: 5px; }
+
+.region-map-panel .maplibregl-popup { z-index: 4; }
+
+.region-selected { padding: 20px; background: white; border: 1px solid #eadedb; border-left: 4px solid var(--primary-red); border-radius: 12px; margin-top: 16px; }
+.region-selected[hidden] { display: none; }
+.region-selected h3 { color: var(--primary-red); font-size: 1.4rem; margin: 0 0 10px; }
+.region-selected p { margin-bottom: 10px; }
+.region-selected a { display: inline-block; padding: 7px 0; color: var(--primary-red); font-weight: 700; text-decoration: underline; }
+.region-selection-close { float: right; border: 0; background: transparent; color: var(--gray); padding: 7px; cursor: pointer; font: inherit; font-size: .8rem; }
+
+.region-search { max-width: 850px; margin: 0 auto 28px; }
+.region-search label { display: block; font-weight: 700; margin-bottom: 8px; }
+.region-search-fields { display: flex; gap: 10px; }
+.region-search-fields input { flex: 1; min-width: 0; padding: 13px 16px; border: 1px solid #d5cabd; border-radius: 6px; font: inherit; background: white; }
+.region-search-fields button { flex-shrink: 0; }
+#region-search-clear { border: 0; background: transparent; font: inherit; color: var(--primary-red); padding: 10px; cursor: pointer; }
+.region-search-credit { font-size: .75rem; color: var(--gray); margin-top: 8px; }
+.region-search-credit a { text-decoration: underline; }
+#region-search-status { margin-top: 12px; }
+#region-nearby { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin-top: 12px; }
+#region-nearby:empty, #region-search-status:empty { display: none; }
+#region-nearby button { text-align: left; padding: 12px 16px; background: white; border: 1px solid #d5cabd; border-radius: 8px; color: var(--primary-red); font: inherit; cursor: pointer; }
+.region-search-location { width: 20px; height: 20px; border: 3px solid white; border-radius: 50%; background: #087ab2; box-shadow: 0 0 0 5px #087ab255; }
+@media (max-width: 600px) { .region-search-fields { flex-wrap: wrap; } .region-search-fields input { flex-basis: 100%; } .region-search-fields .btn { font-size: .8rem; padding: 10px 16px; } #region-nearby { display: grid; } }
+
+.region-selection-close { float: none; display: block; margin-left: auto; margin-bottom: 8px; }
+.region-search[hidden] { display: none; }
