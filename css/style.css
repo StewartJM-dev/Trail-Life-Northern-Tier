@@ -1306,7 +1306,9 @@ details.vendor-card[open] .vendor-summary .resource-chevron { transform: rotate(
 .troop-showcase-copy h2 { color: var(--primary-red); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; margin-bottom: 18px; }
 .troop-showcase-copy p { margin-bottom: 24px; color: var(--gray); line-height: 1.7; }
 @media (max-width: 600px) {
-    .hero--rotating { min-height: 680px; }
+    .hero--rotating { min-height: 680px; background-color: #17232b; }
+    /* Fit the flag and pole into the phone frame, fading into the text backdrop. */
+    .hero-scene--flag { height: min(460px, 110vw); object-position: left top; mask-image: linear-gradient(#000 75%, transparent); -webkit-mask-image: linear-gradient(#000 75%, transparent); }
     .troop-showcase-card { grid-template-columns: 1fr; }
     .troop-showcase-art { min-height: 240px; padding: 20px; }
     .troop-showcase-art img { height: 210px; }
