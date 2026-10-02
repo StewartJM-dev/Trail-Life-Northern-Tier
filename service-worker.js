@@ -1,5 +1,5 @@
 // Scope-relative caching; calendar data and pages always try the network first.
-const CACHE_NAME = 'traillife-northern-tier-v19-building-pins';
+const CACHE_NAME = 'traillife-northern-tier-v20-map-preview';
 const ASSETS = ['index.html', 'events.html', 'css/style.css', 'js/main.js', 'js/calendar.js', 'images/trail-life-block-logo.png'];
 self.addEventListener('install', event => {
     event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));

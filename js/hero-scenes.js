@@ -2,6 +2,17 @@
 (() => {
     const hero = document.querySelector('.hero--rotating');
     if (!hero) return;
+    const month = Number(new Intl.DateTimeFormat('en-US', { month: 'numeric', timeZone: 'America/New_York' }).format(new Date()));
+    if (month >= 9 && month <= 11) {
+        const seasonal = hero.querySelector('[data-autumn-src]');
+        if (seasonal) {
+            seasonal.dataset.sceneSrc = seasonal.dataset.autumnSrc;
+            seasonal.dataset.sceneSrcset = seasonal.dataset.autumnSrcset;
+            document.body.dataset.season = 'autumn';
+            hero.querySelector('.hero-eyebrow').textContent = 'Trail Life USA · Autumn on the trail';
+            hero.querySelector('[data-scene="1"]').setAttribute('aria-label', 'Show autumn forest trail');
+        }
+    }
     const scenes = [...hero.querySelectorAll('.hero-scene')];
     const controls = hero.querySelector('.hero-scene-controls');
     const dots = [...hero.querySelectorAll('[data-scene]')];

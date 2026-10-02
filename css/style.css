@@ -1548,3 +1548,34 @@ details.vendor-card[open] .vendor-summary .resource-chevron { transform: rotate(
     .new-family-banner p { font-size: 1rem; }
     .new-family-btn { width: 100%; }
 }
+
+/* A selected troop becomes a quiet beacon; never animate the marker's map transform. */
+.region-map-pin.is-selected { z-index: 2; border-color: #ffdf9a; }
+.region-map-pin.is-selected::before { content: ''; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid #ffdf9a; pointer-events: none; animation: troop-beacon 2.4s ease-out infinite; }
+@keyframes troop-beacon { 0% { box-shadow: 0 0 0 0 #ffdf9a99; opacity: 1; } 100% { box-shadow: 0 0 0 18px #ffdf9a00; opacity: .15; } }
+.region-selected { border-left: 0; border-top: 4px solid var(--primary-red); border-radius: 18px; padding: 24px; box-shadow: 0 10px 30px #4c2b1810; scroll-margin-top: 100px; }
+.region-preview-heading { display: flex; gap: 18px; align-items: center; clear: both; padding: 8px 0 20px; }
+.region-preview-heading img { flex: 0 0 70px; width: 70px; height: 80px; object-fit: contain; }
+.region-preview-heading > div { min-width: 0; }
+.region-preview-eyebrow { display: block; font-size: .65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #80674b; margin-bottom: 6px; }
+.region-preview-heading h3 { margin: 0 0 4px; font-size: clamp(1.5rem, 3vw, 2rem); }
+.region-preview-heading p { margin: 0; color: var(--gray); }
+.region-preview-facts { margin: 0; border-top: 1px solid #eee5db; }
+.region-preview-facts > div { padding: 13px 0; border-bottom: 1px solid #eee5db; }
+.region-preview-facts dt { font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: #80674b; font-weight: 700; margin-bottom: 4px; }
+.region-preview-facts dd { margin: 0; font-size: .92rem; line-height: 1.5; overflow-wrap: anywhere; }
+.region-preview-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 20px; }
+.region-preview-actions a { padding: 11px 0; font-size: .82rem; }
+.region-preview-actions .region-preview-primary { padding: 12px 18px; background: var(--primary-red); color: white; text-decoration: none; border-radius: 8px; }
+.region-preview-actions a:focus-visible { outline: 3px solid #c18c42; outline-offset: 4px; }
+.region-selected .region-preview-note { font-size: .72rem; line-height: 1.5; color: var(--gray); margin: 16px 0 0; }
+body[data-season="autumn"] .region-section { background: radial-gradient(ellipse at 0% 0%, #eac79533, transparent 55%), #f6f3ee; }
+body[data-season="autumn"] .hero-eyebrow { color: #ffe0a2; }
+@media (max-width: 600px) {
+    .region-selected { padding: 18px; }
+    .region-preview-heading { gap: 12px; }
+    .region-preview-heading img { flex-basis: 54px; width: 54px; height: 66px; }
+    .region-preview-eyebrow { font-size: .6rem; }
+    .region-preview-actions .region-preview-primary { width: 100%; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) { .region-map-pin.is-selected::before { animation: none; opacity: 1; box-shadow: 0 0 0 5px #ffdf9a55; } }

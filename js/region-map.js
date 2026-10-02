@@ -13,8 +13,17 @@
     selection.setAttribute('aria-label', 'Selected troop details');
     toolbar.after(selection);
 
+    function highlightPin(number) {
+        container.querySelectorAll('.region-map-pin').forEach(pin => {
+            const selected = pin.dataset.troopNumber === number;
+            pin.classList.toggle('is-selected', selected);
+            pin.setAttribute('aria-pressed', String(selected));
+        });
+    }
+
     function clearSelection() {
         if (popup) popup.remove();
+        highlightPin(null);
         selection.hidden = true;
     }
 
@@ -31,6 +40,17 @@
     function popupContent(troop) {
         const card = document.createElement('div');
         card.className = 'region-selected-card';
+        const heading = document.createElement('div');
+        heading.className = 'region-preview-heading';
+        const logo = document.createElement('img');
+        logo.src = 'images/trail-life-block-logo.png';
+        logo.alt = '';
+        logo.width = 70;
+        logo.height = 80;
+        const identity = document.createElement('div');
+        const eyebrow = document.createElement('span');
+        eyebrow.className = 'region-preview-eyebrow';
+        eyebrow.textContent = 'Northern Tier · Trail Life USA';
         const title = document.createElement('h3');
         title.textContent = 'Troop ' + troop.troop_number;
         const location = document.createElement('p');
@@ -39,33 +59,44 @@
         const hasWebsite = typeof troop.website === 'string' && /^https?:\/\//.test(troop.website);
         link.href = hasWebsite ? troop.website : 'troops.html';
         if (hasWebsite) { link.target = '_blank'; link.rel = 'noopener'; }
-        link.textContent = 'Troop details →';
-        card.append(title, location);
-        if (troop.address) {
-            const address = document.createElement('p');
-            address.textContent = troop.address;
-            card.append(address);
-        }
-        if (troop.sponsor) {
-            const sponsor = document.createElement('p');
-            sponsor.textContent = troop.sponsor;
-            card.append(sponsor);
-        }
-        if (troop.meetings) {
-            const meetings = document.createElement('p');
-            meetings.textContent = troop.meetings;
-            card.append(meetings);
-        }
-        card.append(link);
+        link.className = 'region-preview-primary';
+        link.textContent = hasWebsite ? 'Visit troop website ↗' : 'Troop details →';
+        identity.append(eyebrow, title, location);
+        heading.append(logo, identity);
+        card.append(heading);
+        const facts = document.createElement('dl');
+        facts.className = 'region-preview-facts';
+        [['Hosted by', troop.sponsor], ['Meeting address', troop.address],
+            ['Meetings', troop.meetings || 'Contact the troop for current meeting times.']].forEach(([label, value]) => {
+            if (!value) return;
+            const row = document.createElement('div');
+            const term = document.createElement('dt');
+            const detail = document.createElement('dd');
+            term.textContent = label;
+            detail.textContent = value;
+            row.append(term, detail);
+            facts.append(row);
+        });
+        card.append(facts);
+        const actions = document.createElement('div');
+        actions.className = 'region-preview-actions';
+        actions.append(link);
         const streetView = document.createElement('a');
         const viewpoint = new URLSearchParams({ api: '1', map_action: 'pano', viewpoint: troop.lat + ',' + troop.lng });
         streetView.href = 'https://www.google.com/maps/@?' + viewpoint.toString();
         streetView.target = '_blank';
         streetView.rel = 'noopener noreferrer';
         streetView.textContent = 'Google Street View ↗';
-        streetView.style.marginLeft = '20px';
-        card.append(streetView);
+        actions.append(streetView);
+        const directions = document.createElement('a');
+        directions.href = 'https://www.google.com/maps/dir/?' + new URLSearchParams({ api: '1', destination: troop.address || troop.lat + ',' + troop.lng });
+        directions.target = '_blank';
+        directions.rel = 'noopener noreferrer';
+        directions.textContent = 'Get directions ↗';
+        actions.append(directions);
+        card.append(actions);
         const note = document.createElement('p');
+        note.className = 'region-preview-note';
         note.textContent = 'Street View opens nearby imagery where available. Confirm meeting details with the troop before visiting.';
         card.append(note);
         return card;
@@ -74,6 +105,7 @@
     function select(troop) {
         if (!map) return;
         if (popup) popup.remove();
+        highlightPin(troop.troop_number);
         // The regional DEM is too coarse for a tilted street-scale camera.
         // Use a centered overhead view for troop detail, then restore terrain on overview.
         map.stop();
@@ -128,6 +160,8 @@
                 const pin = document.createElement('button');
                 pin.className = 'region-map-pin';
                 pin.type = 'button';
+                pin.dataset.troopNumber = troop.troop_number;
+                pin.setAttribute('aria-pressed', 'false');
                 pin.setAttribute('aria-label', 'Explore troop ' + troop.troop_number + ', ' + troop.location);
                 // A pin tap must not become a map tap that closes its new popup.
                 pin.addEventListener('click', event => {
